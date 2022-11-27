@@ -1,2 +1,72 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div id="home">
+  <video autoplay="autoplay" muted="muted" loop="loop" class="banner-video">
+    <source src="/assets/red_plate.mp4">
+  </video>
+  <div class="home-navbar">
+    <%= link_to "/", class: "logo-navbar" do %>
+      <%= image_tag "ruby_transparent.png" %>
+    <% end %>
+    <%= link_to "LOGIN", new_user_session_path %>
+  </div>
+  <div class="banner-description">
+    <div class="home-pitch">
+      <h1><strong>RubyHunters</strong></h1>
+      <h4>Can't find the solution?</h4>
+      <h4>Put a bounty on it!</h4>
+    </div>
+    <div class="home-link">
+      <%= link_to "Get Started", new_user_session_path, class:"btn-start"%>
+      <%= link_to "Learn More", "#infos", class:"btn-infos"%>
+    </div>
+  </div>
+</div>
+
+
+<div id="infos">
+  <div id="infos-target">
+    <div class="info-wrapper">
+      <h2>PROCESS</h2>
+      <h1> It was about damn time solutions became more accessible.</h1>
+      <div class="info-box">
+        <div class="box-description">
+          <h6>Title</h6>
+          <p>Praesent ultrices euismod luctus. Cras at molestie erat, quis efficitur risus.
+            Pellentesque dapibus vulputate odio, non lacinia augue commodo non.
+            Maecenas finibus lectus nisi, at malesuada lectus vestibulum eget.
+            Praesent in purus blandit, ultricies velit ut, malesuada justo.</p>
+        </div>
+        <div class="box-description">
+          <h6>Title</h6>
+          <p>Praesent ultrices euismod luctus. Cras at molestie erat, quis efficitur risus.
+            Pellentesque dapibus vulputate odio, non lacinia augue commodo non.
+            Maecenas finibus lectus nisi, at malesuada lectus vestibulum eget.
+            Praesent in purus blandit, ultricies velit ut, malesuada justo.</p>
+        </div>
+        <div class="box-description">
+          <h6>Title</h6>
+          <p>Praesent ultrices euismod luctus. Cras at molestie erat, quis efficitur risus.
+            Pellentesque dapibus vulputate odio, non lacinia augue commodo non.
+            Maecenas finibus lectus nisi, at malesuada lectus vestibulum eget.
+            Praesent in purus blandit, ultricies velit ut, malesuada justo.</p>
+        </div>
+        <div class="box-description">
+          <h6>Title</h6>
+          <p>Praesent ultrices euismod luctus. Cras at molestie erat, quis efficitur risus.
+            Pellentesque dapibus vulputate odio, non lacinia augue commodo non.
+            Maecenas finibus lectus nisi, at malesuada lectus vestibulum eget.
+            Praesent in purus blandit, ultricies velit ut, malesuada justo.</p>
+        </div>
+        <div class="box-description">
+          <h6>Title</h6>
+          <p>Praesent ultrices euismod luctus. Cras at molestie erat, quis efficitur risus.
+            Pellentesque dapibus vulputate odio, non lacinia augue commodo non.
+            Maecenas finibus lectus nisi, at malesuada lectus vestibulum eget.
+            Praesent in purus blandit, ultricies velit ut, malesuada justo.</p>
+        </div>
+      </div>
+    </div>
+    <div class="container-bot">
+      <%= link_to "Go Top", "#home", class:"btn-up" %>
+    </div>
+  </div>
+</div>
