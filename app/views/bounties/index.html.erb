@@ -1,6 +1,11 @@
 <h1>Welcome to the first view, the index of the fucking final project</h1>
 <% @bounties.each do |bounty| %>
 <li> <%= bounty.title %></li>
+<li> <%= bounty.title %></li>
 <li> <%= bounty.content %></li>
 <li> <%= bounty.price_cents %></li>
 <%end %>
+
+
+
+<%= link_to "Create a new bounty", new_bounty_path %>
