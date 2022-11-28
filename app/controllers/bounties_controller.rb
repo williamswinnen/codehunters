@@ -1,6 +1,7 @@
 class BountiesController < ApplicationController
   before_action :set_bounty, only: [:create, :edit, :show]
   def index
+    raise
     @bounties = Bounty.all
   end
 
