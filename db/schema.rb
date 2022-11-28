@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_28_135832) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_28_140940) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -24,6 +24,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_28_135832) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_bounties_on_user_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.text "content"
+    t.bigint "solution_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["solution_id"], name: "index_messages_on_solution_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "solutions", force: :cascade do |t|
@@ -50,6 +60,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_28_135832) do
   end
 
   add_foreign_key "bounties", "users"
+  add_foreign_key "messages", "solutions"
+  add_foreign_key "messages", "users"
   add_foreign_key "solutions", "bounties"
   add_foreign_key "solutions", "users"
 end
