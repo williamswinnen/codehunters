@@ -3,6 +3,7 @@
   <div class="col-4 offset-4 my-5 pb-5">
     <h2 class="text-center">Create a bounty </h2>
     <%= simple_form_for(@bounty) do |f| %>
+      <%= f.input :title%>
       <%= f.input :content, :placeholder => "Detail your coding problem" %>
       <%= f.input :price_cents, :placeholder => "What price are you willing to pay?" %>
       <%= f.input :difficulty_level %>
