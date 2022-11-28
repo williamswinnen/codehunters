@@ -6,3 +6,7 @@
 <p><%= @bounty.difficulty_level %></p>
 <p><%= @bounty.deadline %></p>
 <p><%= @bounty.github_repo %></p>
+
+<% if policy(@bounty).edit? %>
+  <%= link_to "Edit this bounty", edit_bounty_path(@bounty) %> |
+<% end %>
