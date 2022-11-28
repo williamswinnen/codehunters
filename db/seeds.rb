@@ -5,3 +5,10 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+User.destroy_all
+Bounty.destroy_all
+puts "destroying users & bounties"
+puts "creating users & bounties"
+user = User.create!(email: "default@default.com", password:"123456")
+Bounty.create!(content: "I can't get my variable to display anything !", price_cents: 1000, difficulty_level: 300, github_repo: "https://github.com/roMPrd/RubyHunters", user: user)
+puts "bounties & users successfully created"
