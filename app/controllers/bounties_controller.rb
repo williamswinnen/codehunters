@@ -1,7 +1,7 @@
 class BountiesController < ApplicationController
   before_action :set_bounty, only: [:edit, :show]
   def index
-    @bounties = Bounty.all
+    @bounties = policy_scope(Bounty)
   end
 
   def new
@@ -11,6 +11,8 @@ class BountiesController < ApplicationController
 
   def create
     @bounty = Bounty.new(bounties_params)
+    @bounty.user = current_user
+    authorize @bounty
     if @bounty.save
       redirect_to bounties(@bounty)
     else
@@ -23,6 +25,7 @@ class BountiesController < ApplicationController
   end
 
   def edit
+    authorize @bounty
   end
 
 
