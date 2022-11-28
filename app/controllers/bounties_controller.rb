@@ -23,6 +23,7 @@ class BountiesController < ApplicationController
   end
 
   def edit
+    authorize @bounty
   end
 
 
