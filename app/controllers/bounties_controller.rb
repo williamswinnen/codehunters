@@ -1,7 +1,6 @@
 class BountiesController < ApplicationController
-  before_action :set_bounty, only: [:create, :edit, :show]
+  before_action :set_bounty, only: [:edit, :show]
   def index
-    raise
     @bounties = Bounty.all
   end
 
@@ -10,7 +9,12 @@ class BountiesController < ApplicationController
   end
 
   def create
-    raise
+    @bounty = Bounty.new(bounties_params)
+    if @bounty.save
+      redirect_to bounties(@bounty)
+    else
+      render "new", status: :unprocessable_entity
+    end
   end
 
   def show
@@ -23,7 +27,7 @@ class BountiesController < ApplicationController
   private
 
   def bounties_params
-    params.require(:bounty).permit(:content, :price_cents, :github_repo)
+    params.require(:bounty).permit(:content, :price_cents, :github_repo, :deadline, :difficulty_level)
   end
 
   def set_bounty
