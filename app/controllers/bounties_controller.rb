@@ -6,6 +6,7 @@ class BountiesController < ApplicationController
 
   def new
     @bounty = Bounty.new
+    authorize @bounty
   end
 
   def create
@@ -18,6 +19,7 @@ class BountiesController < ApplicationController
   end
 
   def show
+    authorize @bounty
   end
 
   def edit
