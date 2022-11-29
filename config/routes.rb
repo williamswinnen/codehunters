@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root to: "pages#home"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   resources :bounties, only: [:index, :new, :create, :update, :edit, :show] do
-    resources :solutions, only: [:edit, :new]
+    resources :solutions, only: [:edit, :new, :create]
   end
 
   # Defines the root path route ("/")
