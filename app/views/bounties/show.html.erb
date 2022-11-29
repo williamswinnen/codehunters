@@ -30,5 +30,14 @@
 
 
     <div class="solutions-list">
+      <ul>
+        <% @solutions.each do |solution| %>
+          <li><%= solution.title %></li>
+          <li><%= solution.content %></li>
+          <li><%= solution.status %></li>
+          <li><%= solution.github_repo %></li>
+          -------------------------------
+        <% end %>
+      </ul>
     </div>
 </div>
