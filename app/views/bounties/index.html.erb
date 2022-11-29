@@ -1,58 +1,63 @@
 <h1 class="text-center m-4">Welcome to the first view, the index of the fucking final project</h1>
-  <body class="bg-dark p-2 text-white bg-opacity-2">
+<section class="bg-dark p-2 text-white bg-opacity-2">
     <div class="d-flex" id="sidebar">
       <div class="border-end bg-white" id="sidebar-wrapper" style="width: 20vw">
-          <div class="sidebar-heading border-bottom bg-light text-dark">Sidebar</div>
-          <div class="list-group list-group-flush">
-              <div class="list-group-item list-group-item-light p-3">
-                <h6>Language:</h6>
-                <div class="filter-field">
-                  <div class="filter-element">
-                    <p>C</p> <input type="checkbox">
-                    <p>Ruby</p> <input type="checkbox">
-                    <p>Python</p><input type="checkbox">
-                  </div>
-                </div>
+        <div class="sidebar-heading border-bottom bg-light text-dark">Sidebar</div>
+        <div class="list-group list-group-flush">
+          <div class="list-group-item list-group-item-light p-3">
+            <h6>Language:</h6>
+            <div class="filter-field">
+              <div class="filter-element">
+                <p>C</p> <input type="checkbox">
+                <p>Ruby</p> <input type="checkbox">
+                <p>Python</p><input type="checkbox">
               </div>
-              <div class="list-group-item list-group-item-light p-3">
-                <H6>Deadline: </H6>
-                <p>1 week </p> <input type="checkbox">
-                <p>2 week </p> <input type="checkbox">
-                <p>3 week</p><input type="checkbox">
-              </div>
+            </div>
           </div>
-      </div>
-  <div class="container">
-    <div class="row">
-        <div class="col-4 offset-4 mb-2">
-          <%= form_with url: bounties_path, method: :get, class: "d-flex" do %>
-          <%= text_field_tag :query,
-              params[:query],
-              class: "form-control",
-              placeholder: "Search for a problem"
-              %>
-          <%= submit_tag "Search", class: "btn btn-success" %>
-          <% end %>
+          <div class="list-group-item list-group-item-light p-3">
+            <h6>Deadline:</h6>
+            <p>1 week</p><input type="checkbox">
+            <p>2 week</p><input type="checkbox">
+            <p>3 week</p><input type="checkbox">
+          </div>
         </div>
-      <%@bounties.each do |bounty| %>
-      <div class="card text-dark" style="width: 70vw; height: 40vh">
-          <div class="card-infos d-flex justify-content-between">
-            <div class="card-info-left">
-              <h4> <%= bounty.title %></h4>
-              <p> Difficulty level: <%= bounty.difficulty_level %> </p>
-              <p> Problem: <%= bounty.content %> </p>
-              <p> Deadline: <%= bounty.deadline %></p>
-            </div>
-            <div class="card-info-right align-self-start">
-              <p class="text-end mb-0"> <i class="fa-brands fa-github"></i> avatar</p>
-              <p class="fs-14"> <a href=<%=bounty.github_repo%> class="btn btn-success"> <%= bounty.github_repo %> </a></p>
-              <p class="text-end"> Price:  <%= bounty.price_cents %> </p>
-            </div>
-          </div>
       </div>
-      <%end %>
-      <p class="text-center" >  <%= link_to "Create a new bounty", new_bounty_path ,:style=>'color: pink;'%></p>
+      <div class="container">
+        <div class="row">
+          <div class="col-4 offset-4 mb-2">
+            <%= form_with url: bounties_path, method: :get, class: "d-flex" do %>
+              <%= text_field_tag :query,
+                  params[:query],
+                  class: "form-control",
+                  placeholder: "Search for a problem"
+                  %>
+              <%= submit_tag "Search", class: "btn btn-success" %>
+            <% end %>
+          </div>
+          <ul>
+            <% @bounties.each do |bounty| %>
+                <%= link_to bounty_path(bounty) do %>
+                  <div class="card text-dark" style="width: 70vw;">
+                    <div class="card-infos d-flex justify-content-between">
+                      <div class="card-info-left">
+                        <h4><%= bounty.title %></h4>
+                        <p>Difficulty level: <%= bounty.difficulty_level %></p>
+                        <p>Problem: <%= bounty.content %></p>
+                        <p>Deadline: <%= bounty.deadline %></p>
+                      </div>
+                      <div class="card-info-right align-self-start">
+                        <p class="text-end mb-0"><i class="fa-brands fa-github"></i> avatar</p>
+                        <p> <%= bounty.github_repo %></p>
+                        <p class="text-end">Price: <%= bounty.price_cents %></p>
+                      </div>
+                    </div>
+                  </div>
+                <% end %>
+            <% end %>
+          </ul>
+        </div>
+      </div>
     </div>
-  </div>
 
-  </body>
+    <p class="text-center" ><%= link_to "Create a new bounty", new_bounty_path ,:style=>'color: pink;'%></p>
+</section>
