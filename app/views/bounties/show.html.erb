@@ -26,5 +26,9 @@
           <%= link_to "Edit this bounty", edit_bounty_path(@bounty) %> |
         <% end %>
 
-        <%= link_to "Propose a solution", new_bounty_solution(params[:bounty_id])  %>
+        <%= link_to "Propose a solution", new_bounty_solution_path(params[:id])  %>
+
+
+    <div class="solutions-list">
+    </div>
 </div>
