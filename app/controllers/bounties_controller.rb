@@ -34,7 +34,6 @@ class BountiesController < ApplicationController
     authorize @bounty
   end
 
-
   private
 
   def bounties_params
