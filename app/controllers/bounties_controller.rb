@@ -14,7 +14,7 @@ class BountiesController < ApplicationController
     @bounty.user = current_user
     authorize @bounty
     if @bounty.save
-      redirect_to bounties(@bounty)
+      redirect_to bounty_path(@bounty)
     else
       render "new", status: :unprocessable_entity
     end
