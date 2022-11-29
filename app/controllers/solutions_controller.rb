@@ -1,5 +1,5 @@
 class SolutionsController < ApplicationController
-  before_action :set_bounty, only: [:new, :create]
+  before_action :set_bounty, only: [:new, :create, :edit, :update]
   before_action :set_solution, only: [:edit, :update, :destroy]
 
   def new
@@ -20,11 +20,12 @@ class SolutionsController < ApplicationController
   end
 
   def edit
-
+    authorize @solution
   end
 
   def update
     @solution.update(solution_params)
+    authorize @solution
     if @solution.save
       redirect_to bounty_path(@bounty)
     else
@@ -34,6 +35,7 @@ class SolutionsController < ApplicationController
 
   def destroy
     @solution.destroy
+    authorize @solution
     redirect_to @bounty_path, status: :see_other
   end
 
@@ -44,7 +46,7 @@ class SolutionsController < ApplicationController
   end
 
   def set_bounty
-    @bounty = Bounty.find(params[:bounty_id])
+    @bounty = Bounty.find(params[:id])
   end
 
   def set_solution

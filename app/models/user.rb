@@ -5,7 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :bounties
-  has_many :solutions
   has_many :messages
-
+  has_many :solutions
 end
