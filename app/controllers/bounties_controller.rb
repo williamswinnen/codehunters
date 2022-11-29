@@ -26,7 +26,9 @@ class BountiesController < ApplicationController
   end
 
   def update
-    @bounty
+    @bounty.update(bounties_params)
+    authorize @bounty
+    redirect_to bounty_path(@bounty)
   end
 
   def edit
@@ -37,7 +39,7 @@ class BountiesController < ApplicationController
   private
 
   def bounties_params
-    params.require(:bounty).permit(:content, :price_cents, :github_repo, :deadline, :difficulty_level)
+    params.require(:bounty).permit(:title, :content, :price_cents, :github_repo, :deadline, :difficulty_level)
   end
 
   def set_bounty
