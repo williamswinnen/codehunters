@@ -2,6 +2,12 @@ class BountiesController < ApplicationController
   before_action :set_bounty, only: [:edit, :show, :update]
   def index
     @bounties = policy_scope(Bounty)
+    if params[:query].present?
+      sql_query = <<~SQL
+        bounties.title  ILIKE :query
+      SQL
+      @bounties = Bounty.where(sql_query, query: "%#{params[:query]}%")
+    end
   end
 
   def new
