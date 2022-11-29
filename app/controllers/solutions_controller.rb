@@ -1,6 +1,7 @@
 class SolutionsController < ApplicationController
-  before_action :set_bounty, only: [:new, :create, :edit, :update]
-  before_action :set_solution, only: [:show, :edit, :update, :destroy]
+
+  before_action :set_bounty, only: %i[edit update destroy]
+  before_action :set_solution, only: %i[edit update destroy]
 
   def show
     @solution = Solution.find(params[:id])
@@ -10,11 +11,13 @@ class SolutionsController < ApplicationController
 
   def new
     @solution = Solution.new
+    @bounty = Bounty.find(params[:bounty_id])
     authorize @solution
   end
 
   def create
     @solution = Solution.new(solution_params)
+    @bounty = Bounty.find(params[:bounty_id])
     authorize @solution
     @solution.bounty = @bounty
     @solution.user = current_user
@@ -42,7 +45,7 @@ class SolutionsController < ApplicationController
   def destroy
     @solution.destroy
     authorize @solution
-    redirect_to @bounty_path, status: :see_other
+    redirect_to bounty_path(@bounty), status: :see_other
   end
 
   private
@@ -57,6 +60,5 @@ class SolutionsController < ApplicationController
 
   def set_solution
     @solution = Solution.find(params[:id])
-
   end
 end
