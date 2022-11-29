@@ -1,6 +1,13 @@
 class SolutionsController < ApplicationController
+
   before_action :set_bounty, only: %i[edit update destroy]
   before_action :set_solution, only: %i[edit update destroy]
+
+  def show
+    @solution = Solution.find(params[:id])
+    @message = Message.new
+    authorize @solution
+  end
 
   def new
     @solution = Solution.new
@@ -53,6 +60,5 @@ class SolutionsController < ApplicationController
 
   def set_solution
     @solution = Solution.find(params[:id])
-
   end
 end
