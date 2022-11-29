@@ -1,5 +1,5 @@
 class BountiesController < ApplicationController
-  before_action :set_bounty, only: [:edit, :show]
+  before_action :set_bounty, only: [:edit, :show, :update]
   def index
     @bounties = policy_scope(Bounty)
   end
@@ -22,6 +22,11 @@ class BountiesController < ApplicationController
 
   def show
     authorize @bounty
+  end
+
+  def update
+    @bounty
+    raise
   end
 
   def edit

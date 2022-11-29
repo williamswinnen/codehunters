@@ -1,1 +1,12 @@
 <h1>Edit this shit (bounty)</h1>
+<div class="container">
+  <div class="col-4 offset-4 my-5 pb-5">
+    <h2 class="text-center">Edit a bounty </h2>
+    <%= simple_form_for(@bounty) do |f| %>
+      <%= f.input :title%>
+      <%= f.input :content, :placeholder => "What is your coding problem" %>
+      <%= f.input :difficulty_level %>
+      <%= f.submit class: 'btn btn-primary' %>
+     <% end %>
+  </div>
+</div>
