@@ -5,9 +5,9 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
-User.destroy_all
-Solution.destroy_all
 Bounty.destroy_all
+Solution.destroy_all
+User.destroy_all
 puts "destroying users & bounties"
 puts "creating users & bounties"
 user = User.create!(email: "default@default.com", password: "123456", username: "Michel", photo: "https://avatars.githubusercontent.com/u/115413024?v=4")
