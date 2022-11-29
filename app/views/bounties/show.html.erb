@@ -3,8 +3,8 @@
 <div class="container">
   <div class="card" style="width: 80vw">
       <div class="card-top">
-        <img src="..." class="card-img-top" alt="...">
-        <span>avatar</span>
+        <img src=<%=@bounty.user.photo%> class="card-img-top" alt="...">
+        <span><%=@bounty.user.username%></span>
         <h5 class="text-center"> <%= @bounty.title %> </h5>
       </div>
       <div class="card-body d-flex justify-content-between">
