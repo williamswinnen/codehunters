@@ -4,6 +4,7 @@ class MessagesController < ApplicationController
     @message = Message.new(message_params)
     @message.solution = @solution
     @message.user = current_user
+    authorize @message
     if @message.save
       ChatroomChannel.broadcast_to(
         @chatroom,
