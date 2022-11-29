@@ -22,6 +22,7 @@ class BountiesController < ApplicationController
 
   def show
     authorize @bounty
+    @solutions = policy_scope(Solution)
   end
 
   def update
