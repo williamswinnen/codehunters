@@ -5,15 +5,15 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+User.destroy_all
 Solution.destroy_all
 Bounty.destroy_all
-User.destroy_all
 puts "destroying users & bounties"
 puts "creating users & bounties"
-user = User.create!(email: "default@default.com", password: "123456", username: "Michel")
-user1 = User.create!(email: "default1@default.com", password: "123456", username: "Gwendolyne")
-user2 = User.create!(email: "default2@default.com", password: "123456", username: "Josianne")
-user3 = User.create!(email: "default2@default.com", password: "123456", username: "Bernard")
+user = User.create!(email: "default@default.com", password: "123456", username: "Michel", photo: "https://avatars.githubusercontent.com/u/115413024?v=4")
+user1 = User.create!(email: "default1@default.com", password: "123456", username: "Gwendolyne", photo: "https://avatars.githubusercontent.com/u/115413024?v=4")
+user2 = User.create!(email: "default2@default.com", password: "123456", username: "Josianne", photo: "https://avatars.githubusercontent.com/u/115413024?v=4")
+user3 = User.create!(email: "default3@default.com", password: "123456", username: "Bernard", photo: "https://avatars.githubusercontent.com/u/115413024?v=4")
 bounty1 = Bounty.create!(title: "variable", content: "I can't get my variable to display anything", price_cents: 1099, difficulty_level: 1, github_repo: "https://github.com/roMPrd/RubyHunters", user: user)
 bounty2 = Bounty.create!(title: "error 404", content: "can't find the proper html anchor", price_cents: 1500, difficulty_level: 1, github_repo: "https://github.com/lewagon/rails-watch-list", user: user)
 bounty3 = Bounty.create!(title: "db corrupted", content: "my junior dev Ahmadou broke my code !", price_cents: 10_500, difficulty_level: 3, github_repo: "https://github.com/lewagon/python-scraping-workshop", user: user)
