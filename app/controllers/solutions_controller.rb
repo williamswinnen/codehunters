@@ -3,11 +3,12 @@ class SolutionsController < ApplicationController
 
   def new
     @solution = Solution.new
-    @bounty
+    authorize @solution
   end
 
   def create
     @solution = Solution.new(solution_params)
+    authorizer @solution
     @solution.bounty = @bounty
     @solution.user = current_user
     if @solution.save

@@ -26,7 +26,6 @@ class BountiesController < ApplicationController
 
   def update
     @bounty
-    raise
   end
 
   def edit
