@@ -1,13 +1,13 @@
 <div>
   <div class="container">
     <div class="col-4 offset-4 my-5 pb-5">
-      <h2 class="text-center">Create a solution</h2>
+      <h2 class="text-center">Edit your solution</h2>
         <%= simple_form_for([@bounty, @solution]) do |f| %>
-          <%= f.input :title%>
           <%= f.input :content, :placeholder => "Detail your solution" %>
           <%= f.input :github_repo, :placeholder => "Link to your code"%>
           <%= f.submit "Create solution", class: 'btn btn-primary' %>
         <% end %>
+        <%= link_to "back to the bounty", bounty_path(@bounty) %>
     </div>
   </div>
 </div>

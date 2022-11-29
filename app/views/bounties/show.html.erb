@@ -32,10 +32,15 @@
     <div class="solutions-list">
       <ul>
         <% @solutions.each do |solution| %>
-          <li><%= solution.title %></li>
           <li><%= solution.content %></li>
           <li><%= solution.status %></li>
           <li><%= solution.github_repo %></li>
+          <% if policy(solution).edit? %>
+            <li><%= link_to "Edit your solution", edit_bounty_solution_path(solution) %></li>
+          <% end %>
+          <% if policy(solution).destroy? %>
+            <li><%= button_to "Destroy your solution", solution, method: :delete %></li>
+          <% end %>
           -------------------------------
         <% end %>
       </ul>
