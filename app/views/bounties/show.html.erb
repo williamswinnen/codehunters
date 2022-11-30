@@ -1,16 +1,16 @@
-<h1 class="text-center text-light mt-4">The <span class="green"> Bounty </span> Show</h1>
+<h1 class="text-center text-light mt-4 font-weight-bold">The <span class="green"> Bounty </span> Show</h1>
 
 <div class="container">
   <div class="card" style="width: 100vw">
       <div class="card-top">
         <img src=<%=@bounty.user.photo%> class="card-img-top" alt="...">
-        <span class="green"><%=@bounty.user.username%></span>
-        <h2 class="text-center green"> <%= @bounty.title %> </h2>
+        <span class="green font-weight-bold"><%=@bounty.user.username%></span>
+        <h2 class="text-center green font-weight-bold"> <%= @bounty.title %> </h2>
       </div>
       <div class="card-body d-flex justify-content-between">
         <div class="card-description">
             <p class="card-text mt-4"> Price: <%= @bounty.price_cents %></p>
-            <p class="card-text">Difficulty: <%= @bounty.difficulty_level %></p>
+            <p class="card-text font-weight-bold">Difficulty: <%= @bounty.difficulty_level %></p>
             <p class="card-text">Deadline: <%= @bounty.deadline %></p>
         </div>
       </div>
@@ -34,11 +34,11 @@
     <div class="d-flex flex-wrap">
       <div class="solutions-list offset-1">
         <% @solutions.each do |solution| %>
-        <div class="card" style="width: 76vw; height: 40vh;">
+        <div class="card" style="width: 76vw; height: 60vh;">
               <div class="solution-top d-flex justify-content-between">
                 <div class="solution-left-top d-flex">
                   <img style="width: 50px; height: 50px; border-radius: 50%;" src=<%=@bounty.user.photo%>  alt="...">
-                  <p class="align-self-start username green"><%= solution.user.username %></p>
+                  <p class="align-self-start username green font-weight-bold"><%= solution.user.username %></p>
                 </div>
                 <div class="solution-right-top">
                   <p><%= solution.user.email %></p>
