@@ -28,11 +28,10 @@
           <%= link_to "Edit this bounty", edit_bounty_path(@bounty), class: "btn-primary" %> |
         <% end %>
 
+
         <%= link_to "Propose a solution", new_bounty_solution_path(params[:id]), class: "btn-primary" %>  |
         <%= link_to "Back to the index fdp", bounties_path, class: "btn-primary" %>
       </div>
-      </div>
-
 
     <div class="solutions-list row">
         <% @solutions.each do |solution| %>
@@ -45,7 +44,7 @@
                 <li><%= link_to "Edit your solution", edit_bounty_solution_path(solution) %></li>
               <% end %>
               <% if policy(solution).destroy? %>
-                <li><%= button_to "Destroy your solution", solution, method: :delete %></li>
+                <%= link_to "Destroy your solution", solution_path(solution), data: { turbo_method: :delete } %>
               <% end %>
             </ul>
           </div>
