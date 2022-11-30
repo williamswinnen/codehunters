@@ -1,13 +1,17 @@
 <div>
   <div class="container">
-    <div class="col-4 offset-4 my-5 pb-5">
-      <h2 class="text-center">Create a solution</h2>
-        <%= simple_form_for([@bounty, @solution]) do |f| %>
-          <%= f.input :content, :placeholder => "Detail your solution" %>
-          <%= f.input :github_repo, :placeholder => "Link to your code"%>
-          <%= f.submit "Create solution", class: 'btn btn-primary' %>
-        <% end %>
-        <%= link_to "back to the bounty", bounty_path(@bounty) %>
-    </div>
+      <div class="col-4 offset-4">
+        <div class="card-form" style="height: 70vh; width: 50vw">
+          <img src="https://cdn.pixabay.com/photo/2015/12/04/14/05/code-1076536_1280.jpg" alt="" class="form-img">
+           <h2 class="text-center">Propose your <span class="green">solution</span></h2>
+          <div class="form">
+            <%= simple_form_for([@bounty, @solution]) do |f| %>
+              <%= f.input :content, :placeholder => "Detail your solution" %>
+              <%= f.input :github_repo, :placeholder => "Link to your code"%>
+              <%= f.submit "Create solution", class: 'btn green mt-2' %>
+            <% end %>
+          </div>
+        </div>
+      </div>
   </div>
 </div>
