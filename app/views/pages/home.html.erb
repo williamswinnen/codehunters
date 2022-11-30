@@ -1,1 +1,109 @@
-<h1>This is Home Page</h1>
+  <div id="home">
+    <div class="home-navbar">
+      <%= link_to "/index", class: "logo-navbar" do %>
+        <%= image_tag "Simple Circle Logo-4.png" %>
+      <% end %>
+      <%= link_to "Bounties", new_user_session_path %>
+      <%= link_to "Create a bounty", new_user_session_path %>
+      <%= link_to "Dashboard", new_user_session_path %>
+      <%= link_to "Login", new_user_session_path %>
+    </div>
+    <div class="banner-description">
+      <div class="home-pitch">
+        <h4>Become a <span class="green">Code Hunter</span></h4>
+        <h1> <span class="green">Solve bugs</span>, receive experience and get paid</h1>
+        <div class="d-flex flex-column" style="margin-top: 100px">
+          <div class="button">Launch app</div>
+        </div>
+        <h5>Why use <span class="green">Code Hunter?</span></h5>
+      </div>
+    </div>
+  </div>
+  <div class="d-flex flex-column" style="margin-top: 100px">
+    <div class="card card-3 card-3-left">
+      <div class="card__icon"><i class="fa-brands fa-ethereum"></i></div>
+        <h2 class="card__title">Earn up to $500/month</h2>
+        <p class="card__apply">
+          <a class="card__link" href="/index">Start earning<i class="fas fa-arrow-right"></i></a>
+        </p>
+    </div>
+
+    <div class="card card-3 card-3-right">
+      <div class="card__icon"><i class="fa-solid fa-stopwatch"></i></div>
+        <h2 class="card__title">+60% faster responses</h2>
+        <p class="card__apply">
+          <a class="card__link" href="/index">Fast bug fix<i class="fas fa-arrow-right"></i></a>
+        </p>
+    </div>
+
+    <div class="card card-3 card-3-left">
+      <div class="card__icon"><i class="fa-solid fa-bullseye"></i></div>
+        <h2 class="card__title">Average transaction fee of 0.001 $</h2>
+        <p class="card__apply">
+          <a class="card__link" href="/index">Put up a bounty<i class="fas fa-arrow-right"></i></a>
+        </p>
+    </div>
+  </div>
+
+
+  <div class="d-flex flex-column" style="margin-top: 100px">
+    <div class="button">Launch app</div>
+  </div>
+
+  <h6>How does it <span class="green">work?</span></h6>
+  <div class="d-flex justify-content-around">
+    <div class="container">
+      <div class="card1">
+          <div class="face face1">
+            <div class="content">
+              <h3>Step 1</h3>
+            </div>
+          </div>
+          <div class="face face2" style="padding-bottom: 0px !important; padding-top: 100px !important;">
+            <div class="content">
+              <p>Define your problem/bug with the coding language and difficulty</p>
+            </div>
+          </div>
+        </div>
+    </div>
+    <div class="container">
+      <div class="card1">
+          <div class="face face1">
+            <div class="content">
+              <h3>Step 2</h3>
+            </div>
+          </div>
+          <div class="face face2" style="padding-bottom: 0px !important; padding-top: 100px !important;">
+            <div class="content">
+              <p>Set the price that you're willing to pay for the solution</p>
+            </div>
+          </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="card1">
+          <div class="face face1">
+            <div class="content">
+              <h3>Step 3</h3>
+            </div>
+          </div>
+          <div class="face face2" style="padding-bottom: 0px !important; padding-top: 100px !important;">
+            <div class="content">
+              <p>Check the proposed solutions and pick the right solution</p>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+
+  <div id="infos">
+  <div id="infos-target">
+    <div class="info-wrapper">
+    <div class="container-bot">
+      <%= link_to "To top", "#home", class:"button" %>
+    </div>
+  </div>
+
+  <%# <div class="footer">
+  <p>Made with 💛 by the bug hunters team</p>
+  <%# <%= link_to "FAQ", new_user_session_path %>
