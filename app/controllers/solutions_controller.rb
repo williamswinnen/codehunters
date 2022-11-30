@@ -4,8 +4,9 @@ class SolutionsController < ApplicationController
   before_action :set_solution, only: %i[edit update destroy]
 
   def show
-    # @solution = Solution.find(params[:id])
+    @solution = Solution.find(params[:id])
     @message = Message.new
+    @bounty = @solution.bounty
     @other_user = current_user == @bounty.user ? @solution.user : @bounty.user
     authorize @solution
   end
@@ -44,6 +45,7 @@ class SolutionsController < ApplicationController
   end
 
   def destroy
+
     @solution.destroy
     authorize @solution
     redirect_to bounty_path(@solution.bounty), status: :see_other

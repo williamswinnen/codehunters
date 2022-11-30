@@ -44,7 +44,7 @@
                 <li><%= link_to "Edit your solution", edit_bounty_solution_path(solution) %></li>
               <% end %>
               <% if policy(solution).destroy? %>
-                <%= link_to "Destroy your solution", solution_path(solution), data: { turbo_method: :delete } %>
+              <%= link_to "Delete your solution, Proutman", solution_path(solution), data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'} %>
               <% end %>
             </ul>
           </div>
