@@ -4,8 +4,9 @@ class SolutionsController < ApplicationController
   before_action :set_solution, only: %i[edit update destroy]
 
   def show
-    @solution = Solution.find(params[:id])
+    # @solution = Solution.find(params[:id])
     @message = Message.new
+    @other_user = current_user == @bounty.user ? @solution.user : @bounty.user
     authorize @solution
   end
 

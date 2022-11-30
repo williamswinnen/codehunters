@@ -7,7 +7,7 @@ class MessagesController < ApplicationController
     authorize @message
     if @message.save
       ChatroomChannel.broadcast_to(
-        @chatroom,
+        @solution,
         render_to_string(partial: "message", locals: {message: @message})
       )
       head :ok
