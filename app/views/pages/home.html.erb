@@ -1,25 +1,15 @@
-  <div id="home">
-    <div class="home-navbar">
-      <%= link_to "/index", class: "logo-navbar" do %>
-        <%= image_tag "Simple Circle Logo-4.png" %>
-      <% end %>
-      <%= link_to "Bounties", new_user_session_path %>
-      <%= link_to "Create a bounty", new_user_session_path %>
-      <%= link_to "Dashboard", new_user_session_path %>
-      <%= link_to "Login", new_user_session_path %>
-    </div>
-    <div class="banner-description">
-      <div class="home-pitch">
-        <h4>Become a <span class="green">Code Hunter</span></h4>
-        <h1> <span class="green">Solve bugs</span>, receive experience and get paid</h1>
-        <div class="d-flex flex-column" style="margin-top: 100px">
-          <div class="button">Launch app</div>
-        </div>
-        <h5>Why use <span class="green">Code Hunter?</span></h5>
+<div id="home">
+  <div class="banner-description">
+    <div class="home-pitch">
+      <h4>Become a <span class="green">Code Hunter</span></h4>
+      <h1> <span class="green">Solve bugs</span>, receive experience and get paid</h1>
+      <div class="d-flex flex-column" style="margin-top: 100px">
+        <div class="button">Launch app</div>
       </div>
+      <h5>Why use <span class="green">Code Hunter?</span></h5>
     </div>
   </div>
-  <div class="d-flex flex-column" style="margin-top: 100px">
+  <div class="d-flex flex-column back" style="margin-top: 50px">
     <div class="card card-3 card-3-left">
       <div class="card__icon"><i class="fa-brands fa-ethereum"></i></div>
         <h2 class="card__title">Earn up to $500/month</h2>
@@ -46,7 +36,7 @@
   </div>
 
 
-  <div class="d-flex flex-column" style="margin-top: 100px">
+  <div class="d-flex flex-column" style="margin-top:100px">
     <div class="button">Launch app</div>
   </div>
 
@@ -96,13 +86,11 @@
     </div>
   </div>
 
-  <div id="infos">
-  <div id="infos-target">
-    <div class="info-wrapper">
-    <div class="container-bot">
-      <%= link_to "To top", "#home", class:"button" %>
-    </div>
+  <div class="container-bot">
+    <%= link_to "To top", "#home", class:"button" %>
   </div>
+</div>
+
 
   <%# <div class="footer">
   <p>Made with 💛 by the bug hunters team</p>
