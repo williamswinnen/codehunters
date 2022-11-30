@@ -30,11 +30,10 @@
         <p class="mx-5 text-decoration-none"> <%= link_to "Propose a solution", new_bounty_solution_path(params[:id]), class: "text-decoration-none link-solution-green" %> </p>
         <p> <%= link_to "Back to the index fdp", bounties_path, class: "text-decoration-none link-back-green"%> </p>
   </div>
-
     <div class="solutions-list">
+      <div class="d-flex flex-wrap">
         <% @solutions.each do |solution| %>
-
-          <div class="card" style="width: 80vw">
+        <div class="card" style="width: 76vw">
               <div class="solution-top d-flex justify-content-between">
                 <div class="solution-left-top d-flex">
                   <img style="width: 50px; height: 50px; border-radius: 50%;" src=<%=@bounty.user.photo%>  alt="...">
@@ -55,6 +54,7 @@
                   <%= link_to "Delete your solution, Proutman", solution_path(solution), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?'} %>
                 <% end %>
              </div>
+        </div>
           <% end %>
       </div>
     </div>
