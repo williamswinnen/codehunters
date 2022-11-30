@@ -33,6 +33,7 @@
 
     <div class="solutions-list">
         <% @solutions.each do |solution| %>
+
           <div class="card" style="width: 80vw">
               <div class="solution-top d-flex justify-content-between">
                 <div class="solution-left-top d-flex">
@@ -51,10 +52,9 @@
                 <%= link_to "Edit your solution", edit_bounty_solution_path(solution), class: "btn btn-primary card-text" %>
                 <% end %>
                 <% if policy(solution).destroy? %>
-                  <%= link_to "Destroy your solution", solution_path(solution), data: { turbo_method: :delete } %>
+                  <%= link_to "Delete your solution, Proutman", solution_path(solution), data: { turbo_method: :delete, , turbo_confirm: 'Are you sure?'} %>
                 <% end %>
-              </div>
-          </div>
-        <% end %>
+             </div>
+          <% end %>
+      </div>
     </div>
-</div>
