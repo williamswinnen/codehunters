@@ -31,7 +31,7 @@
         <p> <%= link_to "Back to the index fdp", bounties_path, class: "text-decoration-none link-back-green"%> </p>
   </div>
 
-    <div class="solutions-list">
+      <div class="solutions-list">
         <% @solutions.each do |solution| %>
 
           <div class="card" style="width: 80vw">
@@ -49,12 +49,14 @@
                 <p><%= solution.github_repo%></p>
                 <p><%= solution.status %></p>
                 <% if policy(solution).edit? %>
-                <%= link_to "Edit your solution", edit_bounty_solution_path(solution), class: "btn btn-primary card-text" %>
+                <%= link_to "Edit your solution", edit_bounty_solution_path(@bounty, solution), class: "btn btn-primary card-text" %>
                 <% end %>
                 <% if policy(solution).destroy? %>
                   <%= link_to "Delete your solution, Proutman", solution_path(solution), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?'} %>
                 <% end %>
-             </div>
-          <% end %>
+                <%= link_to "view the full solution and contact the bounty solver", solution_path(solution)  %>
+              </div>
+          </div>
+        <% end %>
       </div>
-    </div>
+</div>

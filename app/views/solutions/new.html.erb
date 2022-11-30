@@ -7,6 +7,7 @@
           <%= f.input :github_repo, :placeholder => "Link to your code"%>
           <%= f.submit "Create solution", class: 'btn btn-primary' %>
         <% end %>
+        <%= link_to "back to the bounty", bounty_path(@bounty) %>
     </div>
   </div>
 </div>

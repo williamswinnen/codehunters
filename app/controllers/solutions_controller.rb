@@ -1,10 +1,9 @@
 class SolutionsController < ApplicationController
 
-  before_action :set_bounty, only: %i[edit update]
-  before_action :set_solution, only: %i[edit update destroy]
+  before_action :set_bounty, only: %i[new edit update]
+  before_action :set_solution, only: %i[show edit destroy]
 
   def show
-    @solution = Solution.find(params[:id])
     @message = Message.new
     @bounty = @solution.bounty
     @other_user = current_user == @bounty.user ? @solution.user : @bounty.user
@@ -13,13 +12,11 @@ class SolutionsController < ApplicationController
 
   def new
     @solution = Solution.new
-    @bounty = Bounty.find(params[:bounty_id])
     authorize @solution
   end
 
   def create
     @solution = Solution.new(solution_params)
-    @bounty = Bounty.find(params[:bounty_id])
     authorize @solution
     @solution.bounty = @bounty
     @solution.user = current_user
@@ -31,10 +28,12 @@ class SolutionsController < ApplicationController
   end
 
   def edit
+    @solution = Solution.find(params[:id])
     authorize @solution
   end
 
   def update
+    @solution = Solution.find(params[:id])
     @solution.update(solution_params)
     authorize @solution
     if @solution.save
@@ -58,7 +57,7 @@ class SolutionsController < ApplicationController
   end
 
   def set_bounty
-    @bounty = Bounty.find(params[:id])
+    @bounty = Bounty.find(params[:bounty_id])
   end
 
   def set_solution
