@@ -1,6 +1,6 @@
 class SolutionsController < ApplicationController
 
-  before_action :set_bounty, only: %i[edit update destroy]
+  before_action :set_bounty, only: %i[edit update]
   before_action :set_solution, only: %i[edit update destroy]
 
   def show
@@ -45,7 +45,7 @@ class SolutionsController < ApplicationController
   def destroy
     @solution.destroy
     authorize @solution
-    redirect_to bounty_path(@bounty), status: :see_other
+    redirect_to bounty_path(@solution.bounty), status: :see_other
   end
 
   private
