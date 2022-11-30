@@ -4,9 +4,19 @@ class BountiesController < ApplicationController
     @bounties = policy_scope(Bounty)
     if params[:query].present?
       sql_query = <<~SQL
-        bounties.title  ILIKE :query
+        title  ILIKE :query
       SQL
-      @bounties = Bounty.where(sql_query, query: "%#{params[:query]}%")
+      @bounties = @bounties.where(sql_query, query: "%#{params[:query]}%")
+    end
+
+    if params[:min].present? || params[:max].present?
+      sql_query = <<~SQL
+        price_cents  BETWEEN :min_value AND :max_value
+      SQL
+      @bounties = @bounties.where(sql_query, min_value: params[:min].to_i || 0, max_value: params[:max].to_i||50000)
+    end
+    if params[:difficulty_level].present?
+      @bounties = @bounties.where(difficulty_level: params[:difficulty_level].to_i)
     end
   end
 

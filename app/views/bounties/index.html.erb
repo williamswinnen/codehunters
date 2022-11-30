@@ -5,20 +5,26 @@
         <div class="sidebar-heading border-bottom bg-light text-dark">Sidebar</div>
         <div class="list-group list-group-flush">
           <div class="list-group-item list-group-item-light p-3">
-            <h6>Language:</h6>
             <div class="filter-field">
               <div class="filter-element">
-                <p>C</p> <input type="checkbox">
-                <p>Ruby</p> <input type="checkbox">
-                <p>Python</p><input type="checkbox">
+                <%= form_with url: bounties_path, method: :get, html: { 'data-controller' => "range-input", "data-range-input-min-value" => params[:min]||0 , "data-range-input-max-value" => params[:max] || 50000} do %>
+                  <div data-range-input-target="range"></div>
+                  <%= number_field_tag :min, params[:min] || 0, 'data-range-input-target' => 'minInput', class: 'd-none' %>
+                  <%= number_field_tag :max, params[:max] || 50000, 'data-range-input-target' => 'maxInput', class: 'd-none' %>
+                  <div class="checkboxes">
+                    <% (0..4).each do |i|%>
+                      <input type="checkbox" name="difficulty_level" id="difficulty_level_<%= i+1%>" value="<%= i+1%>" class="tag-selector">
+                      <label for="difficulty_level_<%= i+1%>">level <%= i+1%></label>
+                    <% end %>
+                  </div>
+                  <%= submit_tag :ok %>
+                  <%= text_field_tag :query,
+                    params[:query],
+                    class: "d-none"
+                    %>
+                <% end %>
               </div>
             </div>
-          </div>
-          <div class="list-group-item list-group-item-light p-3">
-            <h6>Deadline:</h6>
-            <p>1 week</p><input type="checkbox">
-            <p>2 week</p><input type="checkbox">
-            <p>3 week</p><input type="checkbox">
           </div>
         </div>
       </div>
@@ -32,6 +38,8 @@
                   placeholder: "Search for a problem"
                   %>
               <%= submit_tag "Search", class: "btn btn-success" %>
+               <%= number_field_tag :min, params[:min] || 0, class: 'd-none' %>
+               <%= number_field_tag :max, params[:max] || 50000, class: 'd-none' %>
             <% end %>
           </div>
           <ul>

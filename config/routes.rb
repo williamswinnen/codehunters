@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: "pages#home"
+  resources :users, only: :show
+  get "/dashboard", to: "dashboard#dashboard"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-  resources :bounties, only: [:index, :new, :create, :update, :edit, :show] do
+  resources :bounties, except: :destroy do
     resources :solutions, only: [:show, :new, :create, :edit, :update]
   end
   resources :solutions, only: :destroy
@@ -13,6 +15,4 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
-  resources :users, only: :show
-  get "/dashboard", to: "dashboard#dashboard"
 end
