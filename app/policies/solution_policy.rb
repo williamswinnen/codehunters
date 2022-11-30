@@ -22,4 +22,8 @@ class SolutionPolicy < ApplicationPolicy
   def destroy?
     record.user == user
   end
+
+  def custom?
+    record.bounty.user = user
+  end
 end
