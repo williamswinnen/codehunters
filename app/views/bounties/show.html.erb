@@ -31,13 +31,10 @@
         <p> <%= link_to "Back to the index fdp", bounties_path, class: "text-decoration-none link-back-green"%> </p>
   </div>
 
-    <div class="solutions-list">
-      <div class="d-flex flex-wrap">
-
-
+    <div class="d-flex flex-wrap">
       <div class="solutions-list">
         <% @solutions.each do |solution| %>
-        <div class="card" style="width: 76vw">
+        <div class="card" style="width: 76vw; height: 30vh;">
               <div class="solution-top d-flex justify-content-between">
                 <div class="solution-left-top d-flex">
                   <img style="width: 50px; height: 50px; border-radius: 50%;" src=<%=@bounty.user.photo%>  alt="...">
@@ -48,8 +45,11 @@
                 </div>
               </div>
               <div class="solution-content mt-5">
-                <p><%= solution.content %></p>
-                <p><%= solution.github_repo%></p>
+                <span class="green">Comment:</span>
+                <p> <%= solution.content %></p>
+                <span class="green"> See more:</span>
+                <p class="mb-0"><%= link_to solution.github_repo, solution.github_repo , class:"text-decoration-none " %></p>
+                <p> <%= link_to "view the full solution and contact the bounty solver", solution_path(solution), class:"text-decoration-none"  %></p>
                 <p><%= solution.status %></p>
                 <% if policy(solution).edit? %>
                 <%= link_to "Edit your solution", edit_bounty_solution_path(@bounty, solution), class: "btn btn-primary card-text" %>
@@ -59,9 +59,7 @@
                 <% end %>
              </div>
         </div>
-          <%= link_to "view the full solution and contact the bounty solver", solution_path(solution)  %>
           <% end %>
-              </div>
-          </div>
+        </div>
       </div>
-</div>
+   </div>
