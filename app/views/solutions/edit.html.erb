@@ -5,7 +5,7 @@
         <%= simple_form_for([@bounty, @solution]) do |f| %>
           <%= f.input :content, :placeholder => "Detail your solution" %>
           <%= f.input :github_repo, :placeholder => "Link to your code"%>
-          <%= f.submit "Create solution", class: 'btn btn-primary' %>
+          <%= f.submit "Edit your solution", class: 'btn btn-primary' %>
         <% end %>
         <%= link_to "back to the bounty", bounty_path(@bounty) %>
     </div>

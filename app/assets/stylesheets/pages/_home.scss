@@ -25,31 +25,6 @@ body {
   // justify-content: center;
 }
 
-
-.home-navbar {
-  z-index: 3;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 70%;
-  margin-top: 3rem;
-  // margin-bottom: 4rem;
-
-  .logo-navbar img{
-    height: 100px;
-    width: auto;
-  }
-
-  a {
-    text-decoration: none;
-    color: white;
-    font-size: 18px;
-  }
-  a:hover {
-    color: #02BE6E;
-  }
-}
-
 .banner-description{
   z-index: 3;
   width: 70%;
@@ -224,7 +199,7 @@ h6 {
 
 .card:hover {
   box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.4);
-  transform: scale(1.01);
+  transform: scale(1.1);
 }
 
 .card__link,
@@ -275,11 +250,15 @@ h6 {
 }
 
 .card-3-left {
-  margin-left: 100px;
+  margin-left: -75px;
 }
 
 .card-3-right {
-  margin-right: 100px;
+  margin-right: -75px;
+}
+
+.back {
+  width: 1000px;
 }
 
 /* RESPONSIVE */
@@ -304,6 +283,7 @@ h6 {
   filter: drop-shadow(0 0 15px #7101FF) drop-shadow(0 0 50px #7101FF) contrast(2) brightness(2);
   transition: .5s;
   margin: auto;
+  text-decoration: none;
 }
 
 .button:hover {
