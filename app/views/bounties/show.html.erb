@@ -41,11 +41,12 @@
               <li><%= solution.status %></li>
               <li><%= solution.github_repo %></li>
               <% if policy(solution).edit? %>
-                <li><%= link_to "Edit your solution", edit_bounty_solution_path(solution) %></li>
+                <li><%= link_to "Edit your solution", edit_bounty_solution_path(@bounty, solution) %></li>
               <% end %>
               <% if policy(solution).destroy? %>
               <%= link_to "Delete your solution, Proutman", solution_path(solution), data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'} %>
               <% end %>
+              <%= link_to "view the full solution and contact the bounty solver", solution_path(solution)  %>
             </ul>
           </div>
         <% end %>
