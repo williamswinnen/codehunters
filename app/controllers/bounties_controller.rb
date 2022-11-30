@@ -39,7 +39,6 @@ class BountiesController < ApplicationController
   def show
     @solutions = @bounty.user == current_user ? Solution.where(bounty: @bounty) : current_user.solutions.where(bounty: @bounty)
     authorize @bounty
-
   end
 
   def update

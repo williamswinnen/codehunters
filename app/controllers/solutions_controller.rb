@@ -1,24 +1,22 @@
 class SolutionsController < ApplicationController
 
-  before_action :set_bounty, only: %i[edit update destroy show]
-  before_action :set_solution, only: %i[edit update destroy show]
+  before_action :set_bounty, only: %i[new edit update]
+  before_action :set_solution, only: %i[show edit destroy custom]
 
   def show
-    # @solution = Solution.find(params[:id])
     @message = Message.new
+    @bounty = @solution.bounty
     @other_user = current_user == @bounty.user ? @solution.user : @bounty.user
     authorize @solution
   end
 
   def new
     @solution = Solution.new
-    @bounty = Bounty.find(params[:bounty_id])
     authorize @solution
   end
 
   def create
     @solution = Solution.new(solution_params)
-    @bounty = Bounty.find(params[:bounty_id])
     authorize @solution
     @solution.bounty = @bounty
     @solution.user = current_user
@@ -30,10 +28,12 @@ class SolutionsController < ApplicationController
   end
 
   def edit
+    @solution = Solution.find(params[:id])
     authorize @solution
   end
 
   def update
+    @solution = Solution.find(params[:id])
     @solution.update(solution_params)
     authorize @solution
     if @solution.save
@@ -46,7 +46,27 @@ class SolutionsController < ApplicationController
   def destroy
     @solution.destroy
     authorize @solution
-    redirect_to bounty_path(@bounty), status: :see_other
+    redirect_to bounty_path(@solution.bounty), status: :see_other
+  end
+
+  def custom
+
+    # @bounty = @solution.bounty
+    # @bounty.user = current_user
+    authorize @solution
+    @solution.bounty.solutions.each do |solution|
+      unless @solution == solution
+        solution.status = "denied"
+        solution.save
+      end
+    end
+
+    @solution.status = "accepted"
+    @solution.save
+
+    redirect_to bounty_path(@solution.bounty)
+
+    # if current_user = @solution.bounty.user
   end
 
   private

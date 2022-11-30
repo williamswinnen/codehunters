@@ -2,7 +2,9 @@
   data-controller="chatroom-subscription"
   data-chatroom-subscription-solution-id-value="<%= @solution.id %>"
   >
-  <h1>#Solution id: <%= @solution.id %></h1>
+  <h1>#Solution id: <%= @solution.id %> </h1>
+
+  <h2>Solution status: <%= @solution.status %></h2>
 
   <div class="messages" data-chatroom-subscription-target="messages">
     <% @solution.messages.each do |message| %>
@@ -16,9 +18,13 @@
   %>
     <%= f.input :content,
       label: false,
-      placeholder: "Message ##{@other_user.username}",
+      # placeholder: "Message ##{@other_user.username}",
       wrapper_html: {class: "flex-grow-1"}
     %>
     <%= f.submit "Send", class: "btn btn-primary mb-3" %>
+  <% end %>
+
+  <% if @solution.bounty.user == current_user && @solution.status == nil || @solution.status == "pending" %>
+    <%= link_to "Validate this solution", validate_solution_path(@solution), class: "btn btn-primary", data: {turbo_method: :patch, turbo_confirm: 'Are you sure you want to confirm this solution?'} %>
   <% end %>
 </div>
