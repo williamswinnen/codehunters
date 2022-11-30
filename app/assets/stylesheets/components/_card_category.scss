@@ -60,3 +60,38 @@
 .card-index .card-index-infos {
   padding: 16px;
 }
+
+
+.overview {
+  margin-top: 100px;
+}
+
+.card .username {
+  margin-top: 10px;
+  margin-left: 2px;
+}
+
+
+.link-back-green:hover{
+  color: #02BE6E
+}
+.link-solution-green:hover{
+  color: #02BE6E
+}
+.link-edit-green:hover{
+  color: #02BE6E
+}
+
+
+.card {
+  background-image: radial-gradient(rgb(113, 1, 255), rgb(199, 156, 255));
+  color: white;
+}
+
+.card a:hover {
+  color: #02BE6E
+}
+
+.card-github:hover {
+  color: #02BE6E
+}

@@ -1,52 +1,59 @@
-<h1 class="text-center">The bounty show </h1>
+<h1 class="text-center text-light mt-4">The <span class="green"> Bounty </span> Show</h1>
 
 <div class="container">
-  <div class="card" style="width: 80vw">
+  <div class="card" style="width: 100vw">
       <div class="card-top">
         <img src=<%=@bounty.user.photo%> class="card-img-top" alt="...">
-        <span><%=@bounty.user.username%></span>
-        <h5 class="text-center"> <%= @bounty.title %> </h5>
+        <span class="green"><%=@bounty.user.username%></span>
+        <h2 class="text-center green"> <%= @bounty.title %> </h2>
       </div>
       <div class="card-body d-flex justify-content-between">
         <div class="card-description">
-            <p class="card-text"> Price: <%= @bounty.price_cents %></p>
+            <p class="card-text mt-4"> Price: <%= @bounty.price_cents %></p>
             <p class="card-text">Difficulty: <%= @bounty.difficulty_level %></p>
             <p class="card-text">Deadline: <%= @bounty.deadline %></p>
         </div>
-        <div class="link-github align-self-center">
-          <a href=<%=@bounty.github_repo%> class="btn btn-primary card-text"> <%= @bounty.github_repo %> </a>
-        </div>
       </div>
       <div class="overview">
-        <p class="card-text text-center">Description:</p>
-        <p> <%= @bounty.content %> "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"</p>
+        <p class="card-text text-center green">Description:</p>
+        <p class="description-text"> <%= @bounty.content %> "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"</p>
+      </div>
+      <div class="link-github align-self-center">
+        <a href=<%=@bounty.github_repo%> class="card-text text-dark text-decoration-none card-github text-white"> <%= @bounty.github_repo %> </a>
       </div>
   </div>
-  <div class="card-product-edit d-flex justify-content-between my-3">
-          <div>
+
+  <div class="d-flex justify-content-evenly" style="width: 100vw">
         <% if policy(@bounty).edit? %>
-          <%= link_to "Edit this bounty", edit_bounty_path(@bounty), class: "btn-primary" %> |
+        <p class="text-decoration-none"><%= link_to "Edit this bounty", edit_bounty_path(@bounty), class: "text-decoration-none link-edit-green" %> </p>
         <% end %>
+        <p class="mx-5 text-decoration-none"> <%= link_to "Propose a solution", new_bounty_solution_path(params[:id]), class: "text-decoration-none link-solution-green" %> </p>
+        <p> <%= link_to "Back to the index fdp", bounties_path, class: "text-decoration-none link-back-green"%> </p>
+  </div>
 
-
-        <%= link_to "Propose a solution", new_bounty_solution_path(params[:id]), class: "btn-primary" %>  |
-        <%= link_to "Back to the index fdp", bounties_path, class: "btn-primary" %>
-      </div>
-
-    <div class="solutions-list row">
+    <div class="solutions-list">
         <% @solutions.each do |solution| %>
-          <div class="card col-6">
-            <ul>
-              <li><%= solution.content %></li>
-              <li><%= solution.status %></li>
-              <li><%= solution.github_repo %></li>
-              <% if policy(solution).edit? %>
-                <li><%= link_to "Edit your solution", edit_bounty_solution_path(solution) %></li>
-              <% end %>
-              <% if policy(solution).destroy? %>
-                <%= link_to "Destroy your solution", solution_path(solution), data: { turbo_method: :delete } %>
-              <% end %>
-            </ul>
+          <div class="card" style="width: 80vw">
+              <div class="solution-top d-flex justify-content-between">
+                <div class="solution-left-top d-flex">
+                  <img style="width: 50px; height: 50px; border-radius: 50%;" src=<%=@bounty.user.photo%>  alt="...">
+                  <p class="align-self-start username green"><%= solution.user.username %></p>
+                </div>
+                <div class="solution-right-top">
+                  <p><%= solution.user.email %></p>
+                </div>
+              </div>
+              <div class="solution-content mt-5">
+                <p><%= solution.content %></p>
+                <p><%= solution.github_repo%></p>
+                <p><%= solution.status %></p>
+                <% if policy(solution).edit? %>
+                <%= link_to "Edit your solution", edit_bounty_solution_path(solution), class: "btn btn-primary card-text" %>
+                <% end %>
+                <% if policy(solution).destroy? %>
+                  <%= link_to "Destroy your solution", solution_path(solution), data: { turbo_method: :delete } %>
+                <% end %>
+              </div>
           </div>
         <% end %>
     </div>
