@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :messages
   has_many :solutions
 
+
   def update_ranking
     self.ranking = 0
     solutions.each do |solution|
