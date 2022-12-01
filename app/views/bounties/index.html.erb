@@ -30,7 +30,7 @@
       </div>
       <div class="container">
         <div class="row">
-          <div class="col-4 offset-4 mb-2">
+          <div class="col-4 offset-4 mb-2 ">
             <%= form_with url: bounties_path, method: :get, class: "d-flex" do %>
               <%= text_field_tag :query,
                   params[:query],
@@ -42,10 +42,10 @@
                <%= number_field_tag :max, params[:max] || 50000, class: 'd-none' %>
             <% end %>
           </div>
-          <ul>
+          <ul  style="width: 70vw;">
             <% @bounties.each do |bounty| %>
                 <%= link_to bounty_path(bounty) do %>
-                  <div class="card text-dark" style="width: 70vw;">
+                  <div class="card text-dark" style="width:100%">
                     <div class="card-infos d-flex justify-content-between">
                       <div class="card-info-left">
                         <h4><%= bounty.title %></h4>
