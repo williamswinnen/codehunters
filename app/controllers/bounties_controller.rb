@@ -40,6 +40,7 @@ class BountiesController < ApplicationController
   def show
     @message = Message.new
     # @other_user = current_user == @bounty.user ? @solution.user : @bounty.user
+    @solution = Solution.new
     @solutions = @bounty.user == current_user ? Solution.where(bounty: @bounty) : current_user.solutions.where(bounty: @bounty)
     authorize @bounty
   end

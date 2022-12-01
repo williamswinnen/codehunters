@@ -12,3 +12,6 @@ application.register("hello", HelloController)
 
 import RangeInputController from "./range_input_controller"
 application.register("range-input", RangeInputController)
+
+import TabController from "./tab_controller"
+application.register("tab", TabController)
