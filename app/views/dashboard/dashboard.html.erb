@@ -1,27 +1,36 @@
-<h1>Dashboard#dashboard</h1>
-<p>Find me in app/views/dashboard/dashboard.html.erb</p>
-<div class="row">
-  <div class="col-4">
-    <h2>My solved bounties</h2>
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+  <li class="nav-item" role="presentation">
+    <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">My Solved Bounties</button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">My pending Bounties</button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="messages-tab" data-bs-toggle="tab" data-bs-target="#messages" type="button" role="tab" aria-controls="messages" aria-selected="false">My Validated Solutions</button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="settings-tab" data-bs-toggle="tab" data-bs-target="#settings" type="button" role="tab" aria-controls="settings" aria-selected="false">Pornhub</button>
+  </li>
+</ul>
+<div class="tab-content">
+  <div class="tab-pane active" id="home" role="tabpanel" aria-labelledby="home-tab"><h2>My solved bounties</h2>
     <% @solved_bounties.each do |bounty| %>
-      <div>
         <p><%= bounty.title %></p>
         <p><%= bounty.content %></p>
-        -------------------------------
-      </div>
-    <% end %>
+        <% end %>
+  </div>
+  <div class="tab-pane" id="profile" role="tabpanel" aria-labelledby="profile-tab"><h2>My pending bounties</h2>
+    <% @pending_bounties.each do |bounty| %>
+      <p><%= bounty.title %></p>
+      <p><%= bounty.content %></p>
+      <% end %>
+    </div>
+  <div class="tab-pane" id="messages" role="tabpanel" aria-labelledby="messages-tab">
+  <% @user.solutions.where(status: "pending").each do |t| %>
+  <%= t.content%>
+  <% end %>
   </div>
 
-  <div class="col-4">
-    <h2>My pending bounties</h2>
-    <% @pending_bounties.each do |bounty| %>
-      <div>
-        <p><%= bounty.title %></p>
-        <p><%= bounty.content %></p>
-        ------------------------------
-      </div>
-    <% end %>
-  </div>
 
   <div class="col-4">
     <h2>My homeworks</h2>
@@ -34,4 +43,8 @@
       -------------------------
     <% end %>
   </div>
+
+  <div class="tab-pane" id="settings" role="tabpanel" aria-labelledby="settings-tab">...</div>
+</div>
+
 </div>
