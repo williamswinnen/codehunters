@@ -1,2 +1,25 @@
 <h1>Dashboard#dashboard</h1>
 <p>Find me in app/views/dashboard/dashboard.html.erb</p>
+<div class="row">
+  <div class="col-4">
+    <h2>My solved bounties</h2>
+    <% @solved_bounties.each do |bounty| %>
+      <div>
+        <p><%= bounty.title %></p>
+        <p><%= bounty.content %></p>
+        -------------------------------
+      </div>
+    <% end %>
+  </div>
+
+  <div class="col-4">
+    <h2>My pending bounties</h2>
+    <% @pending_bounties.each do |bounty| %>
+      <div>
+        <p><%= bounty.title %></p>
+        <p><%= bounty.content %></p>
+        ------------------------------
+      </div>
+    <% end %>
+  </div>
+</div>

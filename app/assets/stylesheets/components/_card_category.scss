@@ -83,10 +83,14 @@
 }
 
 
-.card {
-  background-image: radial-gradient(#7101FF, #C79CFF);
+.card-show {
+  background-image: radial-gradient(circle, rgba(113,1,255,0.1) 0%, rgba(199,156,255,0.1) 100%);
   color: white;
-  font-weight: bold
+  background-color: #110951;
+  margin: 30px auto;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 
@@ -111,6 +115,7 @@
   transition: .5s;
   margin: 40px;
   text-decoration: none;
+  background-color: white;
 }
 
 .button2:hover {
@@ -128,7 +133,6 @@ h5 {
 
 .formfont {
   font-size: 20px;
-  font-weight: bold;
   margin-bottom: 0;
   color: white;
   margin:20px
