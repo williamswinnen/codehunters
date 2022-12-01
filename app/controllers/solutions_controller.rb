@@ -1,6 +1,6 @@
 class SolutionsController < ApplicationController
 
-  before_action :set_bounty, only: %i[new edit update]
+  before_action :set_bounty, only: %i[new edit update create]
   before_action :set_solution, only: %i[show edit destroy custom]
 
   def show
