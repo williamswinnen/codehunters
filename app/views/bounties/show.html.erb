@@ -1,3 +1,26 @@
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content card-show">
+      <div class="modal-header">
+        <h2 class="text-center mt-5 mb-4">Propose your <span class="green">solution</span></h2>
+      </div>
+      <div class="modal-body">
+                  <%= simple_form_for([@bounty, @solution]) do |f| %>
+                  <%= f.input :content, :label => "Solution Overview", :placeholder => "Detail your solution" %>
+                  <%= f.input :github_repo, :placeholder => "Link to your code"%>
+                  <%= f.submit "Create solution", class: 'btn green mt-2' %>
+                <% end %>
+      </div>
+      <div class="modal-footer">
+        <a type="button" class="text-decoration-none link-back-green" data-bs-dismiss="modal">Close</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 <h1 class="text-center text-light mt-4 font-weight-bold">The <span class="green"> Bounty </span> Show</h1>
 
 <div class="container" style="width: 100vw">
@@ -27,7 +50,7 @@
         <% if policy(@bounty).edit? %>
         <p class="text-decoration-none"><%= link_to "Edit this bounty", edit_bounty_path(@bounty), class: "text-decoration-none link-edit-green" %> </p>
         <% end %>
-        <p class="mx-5 text-decoration-none"> <%= link_to "Propose a solution", new_bounty_solution_path(params[:id]), class: "button2" %> </p>
+        <p class="mx-5 text-decoration-none"> <%= link_to "Propose a solution", new_bounty_solution_path(params[:id]), class: "button2", data: { bs_toggle: "modal", bs_target:"#exampleModal"} %> </p>
         <p> <%= link_to "Back to the index fdp", bounties_path, class: "text-decoration-none link-back-green"%> </p>
   </div>
 
