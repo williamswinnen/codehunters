@@ -8,7 +8,14 @@ class User < ApplicationRecord
   has_many :messages
   has_many :solutions
 
-  def ranking
-    
+
+  def update_ranking
+    self.ranking = 0
+    solutions.each do |solution|
+      if solution.status == "validated"
+        self.ranking += solution.bounty.difficulty_level
+      end
+    end
+    self.save
   end
 end
