@@ -7,4 +7,8 @@ class User < ApplicationRecord
   has_many :bounties
   has_many :messages
   has_many :solutions
+
+  def ranking
+    
+  end
 end

@@ -1,6 +1,6 @@
 class SolutionsController < ApplicationController
 
-  before_action :set_bounty, only: %i[new edit update]
+  before_action :set_bounty, only: %i[new edit update create]
   before_action :set_solution, only: %i[show edit destroy custom]
 
   def show
@@ -50,9 +50,6 @@ class SolutionsController < ApplicationController
   end
 
   def custom
-
-    # @bounty = @solution.bounty
-    # @bounty.user = current_user
     authorize @solution
     @solution.bounty.solutions.each do |solution|
       unless @solution == solution
@@ -60,13 +57,11 @@ class SolutionsController < ApplicationController
         solution.save
       end
     end
-
     @solution.status = "accepted"
     @solution.save
-
+    @solution.bounty.status = "solved"
+    @solution.bounty.save
     redirect_to bounty_path(@solution.bounty)
-
-    # if current_user = @solution.bounty.user
   end
 
   private
