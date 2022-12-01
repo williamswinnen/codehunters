@@ -2,18 +2,19 @@
 <section class="bg-dark p-2 text-white bg-opacity-2">
     <div class="d-flex" id="sidebar">
       <div class="border-end bg-white" id="sidebar-wrapper" style="width: 20vw">
-        <div class="sidebar-heading border-bottom bg-light text-dark">Sidebar</div>
-        <div class="list-group list-group-flush">
-          <div class="list-group-item list-group-item-light p-3">
+        <div class="sidebar-heading border-bottom "><h1>Price range</h1><br></div>
             <div class="filter-field">
               <div class="filter-element">
                 <%= form_with url: bounties_path, method: :get, html: { 'data-controller' => "range-input", "data-range-input-min-value" => params[:min]||0 , "data-range-input-max-value" => params[:max] || 50000} do %>
                   <div data-range-input-target="range"></div>
                   <%= number_field_tag :min, params[:min] || 0, 'data-range-input-target' => 'minInput', class: 'd-none' %>
                   <%= number_field_tag :max, params[:max] || 50000, 'data-range-input-target' => 'maxInput', class: 'd-none' %>
-                  <div class="checkboxes">
+                  </div>
+                  <br>
+                  <h1>Difficulty level</h1>
+                  <div class="tag-item">
                     <% (0..4).each do |i|%>
-                      <input type="checkbox" name="difficulty_level" id="difficulty_level_<%= i+1%>" value="<%= i+1%>" class="tag-selector">
+                      <input type="checkbox" name="difficulty_level" id="difficulty_level_<%= i+1%>" value="<%= i+1%>" class="tag-selector" >
                       <label for="difficulty_level_<%= i+1%>">level <%= i+1%></label>
                     <% end %>
                   </div>
@@ -23,9 +24,6 @@
                     class: "d-none"
                     %>
                 <% end %>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
       <div class="container">

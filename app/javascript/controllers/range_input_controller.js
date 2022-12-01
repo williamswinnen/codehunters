@@ -3,13 +3,12 @@ import noUiSlider     from 'nouislider';
 import wNumb          from 'wnumb';
 
 export default class extends Controller {
-  static targets = [ 'range', 'minInput', 'maxInput' ]
+  static targets = [ 'range', 'minInput', 'maxInput']
   static values = {
     min: Number,
     max: Number
   }
   connect() {
-    console.log("slt")
     noUiSlider.create(this.rangeTarget, {
       start: [this.minValue, this.maxValue],
       connect: true,
