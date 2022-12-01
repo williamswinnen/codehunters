@@ -1,11 +1,10 @@
-
-
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content card-show">
       <div class="modal-header">
         <h2 class="text-center mt-5 mb-4">Propose your <span class="green">solution</span></h2>
       </div>
+
       <div class="modal-body">
                   <%= simple_form_for([@bounty, @solution]) do |f| %>
                   <%= f.input :content, :label => "Solution Overview", :placeholder => "Detail your solution" %>
@@ -21,9 +20,35 @@
 </div>
 
 
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content card-show">
+      <div class="modal-header">
+        <h2 class="text-center mt-5 mb-4">Propose your <span class="green">solution</span></h2>
+      </div>
+
+      <div class="modal-body">
+          <%= simple_form_for([@bounty, @solution]) do |f| %>
+            <%= f.input :content, :placeholder => "Detail your solution" %>
+            <%= f.input :github_repo, :placeholder => "Link to your code"%>
+            <%= f.submit "Edit your solution", class: 'btn green mt-2' %>
+          <% end %>
+      </div>
+      <div class="modal-footer">
+        <a type="button" class="text-decoration-none link-back-green" data-bs-dismiss="modal">Close</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
 <h1 class="text-center text-light mt-4 font-weight-bold">The <span class="green"> Bounty </span> Show</h1>
 
+
+
 <div class="container" style="width: 100vw">
+<%= link_to "back to the bounty", bounties_path, class: "text-decoration-none link-back-green"%>
   <div class="card-show">
       <div class="card-top">
         <h2 class="text-center green font-weight-bold"> <%= @bounty.title %> </h2>
@@ -48,9 +73,9 @@
 
   <div class="bounty-btn-space d-flex justify-content-evenly mt-5 mb-4" style="width: 100vw; height: 28vh">
         <% if policy(@bounty).edit? %>
-        <p class="text-decoration-none"><%= link_to "Edit this bounty", edit_bounty_path(@bounty), class: "text-decoration-none link-edit-green" %> </p>
+        <p class="text-decoration-none"><%= link_to "Edit this bounty", edit_bounty_path(@bounty), class: "text-decoration-none link-edit-green",  data: { bs_toggle: "modal", bs_target:"#editModal"}%> </p>
         <% end %>
-        <p class="mx-5 text-decoration-none"> <%= link_to "Propose a solution", new_bounty_solution_path(params[:id]), class: "button2", data: { bs_toggle: "modal", bs_target:"#exampleModal"} %> </p>
+        <p class="mx-5 text-decoration-none"> <%= link_to "Propose a solution", new_bounty_solution_path(params[:id]), class: "button2", data: { bs_toggle: "modal", bs_target:"#createModal"} %> </p>
         <p> <%= link_to "Back to the index fdp", bounties_path, class: "text-decoration-none link-back-green"%> </p>
   </div>
 
