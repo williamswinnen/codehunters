@@ -1,5 +1,6 @@
 class BountiesController < ApplicationController
   before_action :set_bounty, only: [:edit, :show, :update]
+
   def index
     @bounties = policy_scope(Bounty)
     if params[:query].present?
@@ -37,6 +38,8 @@ class BountiesController < ApplicationController
   end
 
   def show
+    @message = Message.new
+    # @other_user = current_user == @bounty.user ? @solution.user : @bounty.user
     @solutions = @bounty.user == current_user ? Solution.where(bounty: @bounty) : current_user.solutions.where(bounty: @bounty)
     authorize @bounty
   end
