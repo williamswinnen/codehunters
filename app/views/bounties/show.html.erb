@@ -21,6 +21,11 @@
       <p class="align-self-center  card-github">
         <%= link_to @bounty.github_repo, @bounty.github_repo, class: "card-text text-decoration-none text-white link-github" %>
       </p>
+      <% if current_user.homeworks.where(bounty: @bounty).empty? %>
+        <%= link_to "Add to my homework", bounty_homeworks_path(@bounty, @homework), data: {turbo_method: :post} %>
+      <% else %>
+        <p>already in your homeworks</p>
+      <% end %>
   </div>
 
   <div class="bounty-btn-space d-flex justify-content-evenly mt-5 mb-4" style="width: 100vw; height: 28vh">

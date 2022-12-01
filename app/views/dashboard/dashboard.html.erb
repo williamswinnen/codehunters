@@ -22,4 +22,16 @@
       </div>
     <% end %>
   </div>
+
+  <div class="col-4">
+    <h2>My homeworks</h2>
+    <% @homeworks.each do |homework| %>
+      <p><%= homework.bounty.title %></p>
+      <p><%= homework.bounty.content %></p>
+      <p><%= homework.bounty.github_repo %></p>
+      <%= link_to "remove from your homeworks", bounty_homework_path(homework.bounty, homework), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+      <br>
+      -------------------------
+    <% end %>
+  </div>
 </div>

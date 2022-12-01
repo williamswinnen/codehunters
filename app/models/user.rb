@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :bounties
   has_many :messages
   has_many :solutions
+  has_many :homeworks
 
 
   def update_ranking
