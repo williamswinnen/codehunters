@@ -45,11 +45,9 @@
 
 <h1 class="text-center text-light mt-4 font-weight-bold">The <span class="green"> Bounty </span> Show</h1>
 
-
-
-<div class="container" style="width: 100vw">
-<%= link_to "back to the bounties", bounties_path, class: "text-decoration-none link-back-green"%>
-  <div class="card-show">
+<div class="back-container">
+  <div class="container" style="width: 100vw">
+    <div class="card-show">
       <div class="card-top">
         <h2 class="text-center green font-weight-bold"> <%= @bounty.title %> </h2>
         <img src=<%=@bounty.user.photo%> class="card-img-top" alt="...">
@@ -76,54 +74,98 @@
       <% end %>
   </div>
 
-  <div class="bounty-btn-space d-flex justify-content-evenly mt-5 mb-4" style="width: 100vw; height: 28vh">
-        <% if policy(@bounty).edit? %>
-        <p class="text-decoration-none"><%= link_to "Edit this bounty", edit_bounty_path(@bounty), class: "text-decoration-none link-edit-green",  data: { bs_toggle: "modal", bs_target:"#editModal"}%> </p>
-        <% end %>
-        <p class="mx-5 text-decoration-none"> <%= link_to "Propose a solution", new_bounty_solution_path(params[:id]), class: "button2", data: { bs_toggle: "modal", bs_target:"#createModal"} %> </p>
-        <p> <%= link_to "Back to the index fdp", bounties_path, class: "text-decoration-none link-back-green"%> </p>
-  </div>
-
-
-
-
+    <div class="bounty-btn-space d-flex justify-content-evenly mt-5 mb-4" style="width: 100vw; height: 28vh">
+          <% if policy(@bounty).edit? %>
+          <p class="text-decoration-none"><%= link_to "Edit this bounty", edit_bounty_path(@bounty), class: "text-decoration-none link-edit-green",  data: { bs_toggle: "modal", bs_target:"#editModal"}%> </p>
+          <% end %>
+          <p class="mx-5 text-decoration-none"> <%= link_to "Propose a solution", new_bounty_solution_path(params[:id]), class: "button2", data: { bs_toggle: "modal", bs_target:"#createModal"} %> </p>
+          <p> <%= link_to "Back to the index fdp", bounties_path, class: "text-decoration-none link-back-green"%> </p>
+    </div>
     <div class="d-flex flex-wrap">
       <div class="solutions-list" style="width: 90vw">
-      <h2 class="text-light mb-5 mt-2 font-weight-bold">All  <span class="green">solutions</span>:</h2>
+        <h2 class="text-light mb-5 mt-2 font-weight-bold">All  <span class="green">solutions</span>:</h2>
         <% @solutions.each do |solution| %>
-        <div class="card-show"">
-              <div class="solution-top d-flex justify-content-between">
-                <div class="solution-left-top d-flex">
-                  <img style="width: 50px; height: 50px; border-radius: 50%;" src=<%=solution.user.photo%>  alt="...">
-                  <p class="align-self-start username green font-weight-bold"><%= solution.user.username %></p>
-                </div>
-                <div class="solution-right-top">
-                  <p><%= solution.user.email %></p>
-                </div>
+          <div class="card-show">
+            <div class="solution-top d-flex justify-content-between">
+              <div class="solution-left-top d-flex">
+                <img style="width: 50px; height: 50px; border-radius: 50%;" src=<%=solution.user.photo%>  alt="...">
+                <p class="align-self-start username green font-weight-bold"><%= solution.user.username %></p>
               </div>
-              <div class="solution-content mt-4">
-                <span class="green">Comment:</span>
-                <p> <%= solution.content %></p>
-                <span class="green"> See more:</span>
-                <p class="mb-0"><%= link_to solution.github_repo, solution.github_repo , class:"text-decoration-none " %></p>
-                <p> <%= link_to "view the full solution and contact the bounty solver", solution_path(solution), class:"text-decoration-none"  %></p>
-                <p>  <span class="green">Status:</span> <%= solution.status %></p>
-                <div class="solutions-btn-style justify-content-evenly">
-                  <% if policy(solution).edit? %>
-                  <p>
-                  <%= link_to "Edit your solution", edit_bounty_solution_path(@bounty, solution), class: "text-decoration-none link-back-green"%>
-                  </p>
-                  <% end %>
-                  <% if policy(solution).destroy? %>
-                  <p>
-                    <%= link_to "Delete your solution, Proutman", solution_path(solution), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?'}, class: "text-decoration-none link-back-green" %>
-                  </p>
-                  <% end %>
-                </div>
-             </div>
-        </div>
-          <% end %>
+              <div class="solution-right-top">
+                <p><%= solution.user.email %></p>
+              </div>
+            </div>
+            <div class="solution-content mt-4">
+              <span class="green">Comment:</span>
+              <p> <%= solution.content %></p>
+              <span class="green"> See more:</span>
+              <div>
+                <p>
+                  <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample<%=solution.id%>" aria-expanded="false" aria-controls="collapseExample<%=solution.id%>">
+                    Chat
+                  </button>
+                </p>
+              </div>
+              <p class="mb-0"><%= link_to solution.github_repo, solution.github_repo , class:"text-decoration-none " %></p>
+              <p> <%= link_to "view the full solution and contact the bounty solver", solution_path(solution), class:"text-decoration-none"  %></p>
+              <p>  <span class="green">Status:</span> <%= solution.status %></p>
+              <div class="solutions-btn-style justify-content-evenly">
+                <% if policy(solution).edit? %>
+                <p>
+                <%= link_to "Edit your solution", edit_bounty_solution_path(@bounty, solution), class: "text-decoration-none link-back-green"%>
+                </p>
+                <% end %>
+                <% if policy(solution).destroy? %>
+                <p>
+                  <%= link_to "Delete your solution, Proutman", solution_path(solution), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?'}, class: "text-decoration-none link-back-green" %>
+                </p>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="front-container">
+  <% @solutions.each do |solution| %>
+    <div class="collapse" id="collapseExample<%=solution.id%>">
+      <div class="card-chatroom">
+        <div class="container-chatroom"
+          data-controller="chatroom-subscription"
+          data-chatroom-subscription-solution-id-value="<%= solution.id %>"
+          >
+          <div class="d-flex justify-content-between">
+            <h1>#Solution id: <%= solution.id %> </h1>
+            <button class="btn btn-flat" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample<%=solution.id%>" aria-expanded="false" aria-controls="collapseExample<%=solution.id%>">
+                  X
+            </button>
+          </div>
+
+          <div class="messages" data-chatroom-subscription-target="messages">
+            <% solution.messages.each do |message| %>
+              <div id="message-<%= message.id %>">
+                <%= render "messages/message", message: message %>
+              </div>
+            <% end %>
+          </div>
+          <div class="form-messages">
+            <%= simple_form_for [solution, @message],
+              html: { data: { action: "turbo:submit-end->chatroom-subscription#resetForm" }, class: "d-flex" } do |f|
+              %>
+              <%= f.input :content,
+                label: false,
+                placeholder: "Type your message...",
+                # placeholder: "Message ##{@other_user.username}",
+                wrapper_html: {class: "flex-grow-1"}
+              %>
+              <%= f.submit "Send", class: "btn btn-flat" %>
+            <% end %>
+          </div>
         </div>
       </div>
-   </div>
+    </div>
+  <% end %>
 </div>
