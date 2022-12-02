@@ -1,0 +1,47 @@
+.bounty-card {
+  display: flex;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 10px;
+  padding: 1em;
+  margin-top: 12px;
+  height: fit-content;
+  margin-right: 20px;
+  justify-content: space-around;
+}
+
+.bounty-item{
+  padding: 1em;
+}
+
+
+.bounty-item-title {
+  font-weight: 700;
+  color: white;
+}
+
+.fa-brands {
+  font-size: 40px;
+  color: white;
+}
+
+
+.fa-solid .fa-filter {
+  font-size: 20px;
+}
+
+.fa-solid .fa-arrow-right {
+  font-size: 40px;
+}
+
+
+.fa-brands:hover {
+  color:
+  #AC01FF;
+
+}
+
+.fa-solid:hover {
+  color:
+  #AC01FF;
+
+}

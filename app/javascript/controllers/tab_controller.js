@@ -3,7 +3,7 @@ import { Controller } from "@hotwired/stimulus"
 // Connects to data-controller="tab"
 export default class extends Controller {
   connect() {
-    console.log("nique ta mère")
+    console.log("test")
   }
    openPage(pageName, elmnt, color) {
     // Hide all elements with class="tabcontent" by default */
@@ -24,8 +24,8 @@ export default class extends Controller {
 
     // Add the specific color to the button used to open the tab content
     elmnt.style.backgroundColor = color;
+    document.getElementById("defaultOpen").click();
   }
 
   // Get the element with id="defaultOpen" and click on it
-  document.getElementById("defaultOpen").click();
 }

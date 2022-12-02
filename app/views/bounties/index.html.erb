@@ -1,69 +1,82 @@
-<h1 class="text-center m-4">Welcome to the first view, the index of the fucking final project</h1>
-<section class="bg-dark p-2 text-white bg-opacity-2">
-    <div class="d-flex" id="sidebar">
-      <div class="border-end bg-white" id="sidebar-wrapper" style="width: 20vw">
-        <div class="sidebar-heading border-bottom "><h1>Price range</h1><br></div>
-            <div class="filter-field">
-              <div class="filter-element">
-                <%= form_with url: bounties_path, method: :get, html: { 'data-controller' => "range-input", "data-range-input-min-value" => params[:min]||0 , "data-range-input-max-value" => params[:max] || 50000} do %>
-                  <div data-range-input-target="range"></div>
-                  <%= number_field_tag :min, params[:min] || 0, 'data-range-input-target' => 'minInput', class: 'd-none' %>
-                  <%= number_field_tag :max, params[:max] || 50000, 'data-range-input-target' => 'maxInput', class: 'd-none' %>
-                  </div>
-                  <br>
-                  <h1>Difficulty level</h1>
-                  <div class="tag-item">
-                    <% (0..4).each do |i|%>
-                      <input type="checkbox" name="difficulty_level" id="difficulty_level_<%= i+1%>" value="<%= i+1%>" class="tag-selector" >
-                      <label for="difficulty_level_<%= i+1%>">level <%= i+1%></label>
-                    <% end %>
-                  </div>
-                  <%= submit_tag :ok %>
-                  <%= text_field_tag :query,
-                    params[:query],
-                    class: "d-none"
-                    %>
-                <% end %>
-        </div>
+<div class="index-container">
+  <div class="filter-container">
+    <%= form_with url: bounties_path, method: :get, html: { 'data-controller' => "range-input", "data-range-input-min-value" => params[:min]||0 , "data-range-input-max-value" => params[:max] || 50000} do %>
+      <h4>Price range</h4>
+      <div data-range-input-target="range">
+        <%= number_field_tag :min, params[:min] || 0, 'data-range-input-target' => 'minInput', class: 'd-none' %>
+        <%= number_field_tag :max, params[:max] || 50000, 'data-range-input-target' => 'maxInput', class: 'd-none' %>
       </div>
-      <div class="container">
-        <div class="row">
-          <div class="col-4 offset-4 mb-2 ">
-            <%= form_with url: bounties_path, method: :get, class: "d-flex" do %>
-              <%= text_field_tag :query,
-                  params[:query],
-                  class: "form-control",
-                  placeholder: "Search for a problem"
-                  %>
-              <%= submit_tag "Search", class: "btn btn-success" %>
-               <%= number_field_tag :min, params[:min] || 0, class: 'd-none' %>
-               <%= number_field_tag :max, params[:max] || 50000, class: 'd-none' %>
+      <h4>Difficulty level</h4>
+      <div class="tag-item">
+        <% (0..4).each do |i|%>
+          <input type="checkbox" name="difficulty_level" id="difficulty_level_<%= i+1%>" value="<%= i+1%>" class="tag-selector" >
+          <label for="difficulty_level_<%= i+1%>">level <%= i+1%></label>
+        <% end %>
+      </div>
+      <%= submit_tag :ok, class: 'btn btn-primary' %>
+      <%= text_field_tag :query,
+        params[:query],
+        class: "d-none"
+      %>
+    <% end %>
+  </div>
+  <div class="bounty-container">
+    <h2 class="text-center">All <span class="green">open</span> bounties</h2>
+    <div class="input-group rounded">
+      <%= form_with url: bounties_path, method: :get do %>
+        <%= text_field_tag :query,
+            params[:query],
+            class: "",
+            placeholder: "🔎 Search for a problem"
+            %>
+        <%#= submit_tag "".html_safe %>
+        <%= button_tag do %>
+          <i class='fa-solid fa-filter'></i>
+        <% end %>
+
+
+        <%= number_field_tag :min, params[:min] || 0, class: 'd-none' %>
+        <%= number_field_tag :max, params[:max] || 50000, class: 'd-none' %>
+      <% end %>
+      <%# <%= link_to "Create a new bounty", new_bounty_path ,class: 'button-create' %>
+    </div>
+    <div class="bounties-card">
+      <% @bounties.each do |bounty| %>
+        <div class="bounty-card">
+          <div class="bounty-item">
+            <p>Difficulty level: </p>
+            <h5><%= bounty.difficulty_level %></h5>
+          </div>
+          <div class="bounty-item">
+            <p>Deadline: </p>
+            <h5><%= bounty.deadline %></h5>
+          </div>
+          <div class="bounty-item">
+            <p>Price: </p>
+            <h5><%= bounty.price_cents %></h5>
+          </div>
+          <div class="bounty-item-title">
+            <h5><%= bounty.title %></h5>
+          </div>
+          <div class="bounty-item">
+            <%= link_to bounty.github_repo do %>
+              <i class="fa-brands fa-github"></i>
             <% end %>
           </div>
-          <ul  style="width: 70vw;">
-            <% @bounties.each do |bounty| %>
-                <%= link_to bounty_path(bounty) do %>
-                  <div class="card text-white" style="width: 70vw;">
-                    <div class="card-infos d-flex justify-content-between">
-                      <div class="card-info-left">
-                        <h4><%= bounty.title %></h4>
-                        <p>Difficulty level: <%= bounty.difficulty_level %></p>
-                        <p>Problem: <%= bounty.content %></p>
-                        <p>Deadline: <%= bounty.deadline %></p>
-                      </div>
-                      <div class="card-info-right align-self-start">
-                        <p class="text-end mb-0"><i class="fa-brands fa-github"></i> avatar</p>
-                        <p> <%= bounty.github_repo %></p>
-                        <p class="text-end">Price: <%= bounty.price_cents %></p>
-                      </div>
-                    </div>
-                  </div>
-                <% end %>
+          <div class="bounty-item-avatar">
+            <% if bounty.user.photo.attached? %>
+              <%= cl_image_tag bounty.user.photo.key, class:"avatar" %>
+            <% else %>
+              <%= image_tag("blank-profile.png")%>
             <% end %>
-          </ul>
+          </div>
+          <div class="bounty-item">
+            <%= link_to bounty_path(bounty) do %>
+              <i class="fa-solid fa-arrow-right"></i>
+            <% end %>
+          </div>
         </div>
-      </div>
+      <% end %>
     </div>
-
-    <p class="text-center" ><%= link_to "Create a new bounty", new_bounty_path ,:style=>'color: pink;'%></p>
-</section>
+  </div>
+</div>

@@ -64,4 +64,26 @@
         </div>
 </div>
 <div class="tab-pane" id="settings" role="tabpanel" aria-labelledby="settings-tab">...</div>
+  <% @user.solutions.where(status: "accepted").each do |t| %>
+  <%= t.content%>
+  <% end %>
+  </div>
+
+  <p>My ranking is: <%= current_user.update_ranking %></p>
+  <p>My prize money is: <%= current_user.prize_money/100 %>$</p>
+  <div class="col-4">
+    <h2>My homeworks</h2>
+    <% @homeworks.each do |homework| %>
+      <p><%= homework.bounty.title %></p>
+      <p><%= homework.bounty.content %></p>
+      <p><%= homework.bounty.github_repo %></p>
+      <%= link_to "remove from your homeworks", bounty_homework_path(homework.bounty, homework), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+      <br>
+      -------------------------
+    <% end %>
+  </div>
+
+  <div class="tab-pane" id="settings" role="tabpanel" aria-labelledby="settings-tab">...</div>
+</div>
+
 </div>

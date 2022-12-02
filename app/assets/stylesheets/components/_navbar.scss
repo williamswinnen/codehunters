@@ -38,7 +38,6 @@ body::-webkit-scrollbar {
     text-decoration: none;
     color: white;
     font-size: 20px;
-    font-weight: bold;
   }
   .nav-link:hover {
     color: #02BE6E;
@@ -62,4 +61,18 @@ body::-webkit-scrollbar {
   padding: 10px;
   margin-top: 15px;
   margin-right: 20px;
+}
+
+.green-create {
+  background-color: #06BE6D;
+  padding: 10px 15px;
+  border-radius: 4px;
+  color: white;
+  font-size: 20px;
+  margin-top: 10px;
+}
+
+.green-create:hover {
+  opacity: 0.8;
+  color: white;
 }
