@@ -20,12 +20,50 @@
         <% end %>
   </div>
   <div class="tab-pane" id="profile" role="tabpanel" aria-labelledby="profile-tab"><h2>My pending bounties</h2>
+  <div class="d-flex flex-wrap">
+      <div class="solutions-list" style="width: 90vw">
+      <h2 class="text-light mb-5 mt-2 font-weight-bold">All  <span class="green">solutions</span>:</h2>
+        <% @user.solutions.where(status: "pending").each do |t| %>
+        <div class="card-show">
+          <div class="solution-top d-flex justify-content-between">
+            <div class="solution-left-top d-flex">
+              <img style="width: 50px; height: 50px; border-radius: 50%;" src=<%=t.bounty.user.photo%>  alt="...">
+              <p class="align-self-start username green font-weight-bold"><%= t.bounty.user.username %></p>
+            </div>
+          <div class="solution-right-top">
+            <p><%= t.bounty.user.email %></p>
+          </div>
+        </div>
+          <%= t.content%>
+          <% end %>
+        </div>
     <% @pending_bounties.each do |bounty| %>
       <p><%= bounty.title %></p>
       <p><%= bounty.content %></p>
       <% end %>
     </div>
+    </div>
+    </div>
   <div class="tab-pane" id="messages" role="tabpanel" aria-labelledby="messages-tab">
+  <div class="d-flex flex-wrap">
+      <div class="solutions-list" style="width: 90vw">
+      <h2 class="text-light mb-5 mt-2 font-weight-bold">All  <span class="green">solutions</span>:</h2>
+        <% @user.solutions.where(status: "pending").each do |t| %>
+        <div class="card-show">
+          <div class="solution-top d-flex justify-content-between">
+            <div class="solution-left-top d-flex">
+              <img style="width: 50px; height: 50px; border-radius: 50%;" src=<%=t.bounty.user.photo%>  alt="...">
+              <p class="align-self-start username green font-weight-bold"><%= t.bounty.user.username %></p>
+            </div>
+          <div class="solution-right-top">
+            <p><%= t.bounty.user.email %></p>
+          </div>
+        </div>
+          <%= t.content%>
+          <% end %>
+        </div>
+</div>
+<div class="tab-pane" id="settings" role="tabpanel" aria-labelledby="settings-tab">...</div>
   <% @user.solutions.where(status: "accepted").each do |t| %>
   <%= t.content%>
   <% end %>
