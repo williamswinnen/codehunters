@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_many :solutions, dependent: :destroy
   has_many :homeworks, dependent: :destroy
 
+  has_one_attached :photo
 
   def update_ranking
     self.ranking = 0
