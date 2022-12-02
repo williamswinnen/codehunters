@@ -13,9 +13,6 @@
   padding: 1em;
 }
 
-.bounty-item-avatar {
-
-}
 
 .bounty-item-title {
   font-weight: 700;
@@ -27,17 +24,24 @@
   color: white;
 }
 
-.fa-solid {
-  font-size: 40px;
-  color: white;
+
+.fa-solid .fa-filter {
+  font-size: 20px;
 }
 
+.fa-solid .fa-arrow-right {
+  font-size: 40px;
+}
+
+
 .fa-brands:hover {
-  color: pink;
+  color:
+  #AC01FF;
 
 }
 
 .fa-solid:hover {
-  color: pink;
+  color:
+  #AC01FF;
 
 }

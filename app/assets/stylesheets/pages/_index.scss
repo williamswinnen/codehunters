@@ -11,7 +11,7 @@
   background: rgba(255, 255, 255, 0.04);
   border-radius: 0px 110px 0px 0px;
   padding: 3em;
-  margin-right: 1em;
+  margin-right: 3em;
 }
 
 .bounty-container{
@@ -24,6 +24,7 @@ h2 {
   font-weight: 700;
   color: #E4E0DE;
   margin-top: 50px;
+  margin-bottom: 40px;
 }
 
 .searchbar {
@@ -67,9 +68,21 @@ h6 {
 
 p {
   color:#D3D3D3;
+  font-size: 18px;
 }
 
 h5 {
   color: white;
-  font-size: 15px;
+  font-size: 18px;
+}
+
+.button-create {
+  color: white;
+  font-size: 20px;
+  border: 2px solid #4CAF50;
+  border-radius: 8px;
+  padding: 10px 24px;
+  text-align: center;
+  text-decoration: none;
+
 }
