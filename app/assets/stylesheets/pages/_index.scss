@@ -1,2 +1,75 @@
 // Import page-specific CSS files here.
 @import "home";
+
+.index-container {
+  display: flex;
+}
+
+.filter-container {
+  flex: 0 0 20vw;
+  margin-top: 3em;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 0px 110px 0px 0px;
+  padding: 3em;
+  margin-right: 1em;
+}
+
+.bounty-container{
+  flex-grow: 1;
+}
+
+
+h2 {
+  font-size: 45px;
+  font-weight: 700;
+  color: #E4E0DE;
+  margin-top: 50px;
+}
+
+.searchbar {
+  justify-content: center;
+  align-items: center;
+  margin:auto;
+}
+
+.bounties-card {
+
+}
+
+.tag-item {
+  margin: 0.5em;
+}
+
+.card-info-center {
+  color:white;
+  font-size: 10px;
+  text-decoration: none;
+}
+
+.icongit {
+  color: white;
+  font-size: 20px;
+  margin-right: 10px;
+}
+
+
+h4 {
+  color: white;
+  font-size: 25px;
+  font-weight: 700;
+  padding: 1em;
+}
+
+h6 {
+  color: white;
+  font-size: 18px;
+}
+
+p {
+  color:#D3D3D3;
+}
+
+h5 {
+  color: white;
+  font-size: 15px;
+}
