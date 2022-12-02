@@ -65,4 +65,4 @@ solution13 = Solution.create!(content: "the surface covered by the area is corre
 solution14 = Solution.create!(content: "the algebraical results validate the tests", bounty: bounty10, user: user3, github_repo:"https://github.com/roMPrd/RubyHunters")
 solution15 = Solution.create!(content: "you forgot an end on your loop", bounty: bounty11, user: user3, github_repo:"https://github.com/heartcombo/devise")
 solution15 = Solution.create!(content: "added proper routes to make your pile of garbage work !", bounty: bounty12, user: user, github_repo:"https://github.com/heartcombo/devise")
-puts "BOUNTIES & USERS SUCCESSFULLY CREATED MOTHERFUCKS"
+puts "BOUNTIES & USERS SUCCESSFULLY CREATED"
