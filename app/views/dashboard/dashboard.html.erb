@@ -9,72 +9,61 @@
     <button class="nav-link" id="messages-tab" data-bs-toggle="tab" data-bs-target="#messages" type="button" role="tab" aria-controls="messages" aria-selected="false">My Validated Solutions</button>
   </li>
   <li class="nav-item" role="presentation">
-    <button class="nav-link" id="settings-tab" data-bs-toggle="tab" data-bs-target="#settings" type="button" role="tab" aria-controls="settings" aria-selected="false">Pornhub</button>
+    <button class="nav-link" id="settings-tab" data-bs-toggle="tab" data-bs-target="#settings" type="button" role="tab" aria-controls="settings" aria-selected="false">My Homework</button>
   </li>
 </ul>
 <div class="tab-content">
-  <div class="tab-pane active" id="home" role="tabpanel" aria-labelledby="home-tab"><h2>My solved bounties</h2>
-    <% @solved_bounties.each do |bounty| %>
-        <p><%= bounty.title %></p>
-        <p><%= bounty.content %></p>
-        <% end %>
-  </div>
-  <div class="tab-pane" id="profile" role="tabpanel" aria-labelledby="profile-tab"><h2>My pending bounties</h2>
-  <div class="d-flex flex-wrap">
-      <div class="solutions-list" style="width: 90vw">
-      <h2 class="text-light mb-5 mt-2 font-weight-bold">All  <span class="green">solutions</span>:</h2>
-        <% @user.solutions.where(status: "pending").each do |t| %>
-        <div class="card-show">
-          <div class="solution-top d-flex justify-content-between">
-            <div class="solution-left-top d-flex">
-              <img style="width: 50px; height: 50px; border-radius: 50%;" src=<%=t.bounty.user.photo%>  alt="...">
-              <p class="align-self-start username green font-weight-bold"><%= t.bounty.user.username %></p>
-            </div>
-          <div class="solution-right-top">
-            <p><%= t.bounty.user.email %></p>
-          </div>
-        </div>
-          <%= t.content%>
-          <% end %>
-        </div>
-    <% @pending_bounties.each do |bounty| %>
-      <p><%= bounty.title %></p>
-      <p><%= bounty.content %></p>
-      <% end %>
-    </div>
-    </div>
-    </div>
-  <div class="tab-pane" id="messages" role="tabpanel" aria-labelledby="messages-tab">
-  <div class="d-flex flex-wrap">
-      <div class="solutions-list" style="width: 90vw">
-      <h2 class="text-light mb-5 mt-2 font-weight-bold">All  <span class="green">solutions</span>:</h2>
-        <% @user.solutions.where(status: "pending").each do |t| %>
-        <div class="card-show">
-          <div class="solution-top d-flex justify-content-between">
-            <div class="solution-left-top d-flex">
-              <img style="width: 50px; height: 50px; border-radius: 50%;" src=<%=t.bounty.user.photo%>  alt="...">
-              <p class="align-self-start username green font-weight-bold"><%= t.bounty.user.username %></p>
-            </div>
-          <div class="solution-right-top">
-            <p><%= t.bounty.user.email %></p>
-          </div>
-        </div>
-          <%= t.content%>
-          <% end %>
-        </div>
-</div>
-<div class="tab-pane" id="settings" role="tabpanel" aria-labelledby="settings-tab">...</div>
-  <% @user.solutions.where(status: "accepted").each do |t| %>
-  <%= t.content%>
-  <% end %>
-  </div>
+<div class="tab-pane active" id="home" role="tabpanel" aria-labelledby="home-tab">Pouet</div>
 
-  <p>My ranking is: <%= current_user.update_ranking %></p>
-  <p>My prize money is: <%= current_user.prize_money/100 %>$</p>
-  <div class="col-4">
+<div class="tab-pane" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+  <div class="bounty-container">
+    <h2 class="text-center">All <span class="green">my pending</span>   bounties</h2>
+    <div class="bounties-card">
+      <% @pending_bounties.each do |bounty| %>
+      <div class="bounty-card">
+        <div class="bounty-item">
+          <p>Difficulty level: </p>
+          <h5><%= bounty.difficulty_level %></h5>
+        </div>
+        <div class="bounty-item">
+          <p>Deadline: </p>
+          <h5><%= bounty.deadline %></h5>
+        </div>
+        <div class="bounty-item">
+          <p>Price: </p>
+          <h5><%= bounty.price_cents %></h5>
+        </div>
+        <div class="bounty-item-title">
+          <h5><%= bounty.title %></h5>
+        </div>
+        <div class="bounty-item">
+          <%= link_to bounty.github_repo do %>
+            <i class="fa-brands fa-github"></i>
+            <% end %>
+          </div>
+          <div class="bounty-item-avatar">
+            <% if bounty.user.photo.attached? %>
+              <%= cl_image_tag bounty.user.photo.key, class:"avatar" %>
+            <% else %>
+              <%= image_tag("blank-profile.png")%>
+            <% end %>
+          </div>
+          <div class="bounty-item">
+            <%= link_to bounty_path(bounty) do %>
+              <i class="fa-solid fa-arrow-right"></i>
+            <% end %>
+          </div>
+        </div>
+           <% end %>
+        </div>
+        </div>
+        </div>
+<div class="tab-pane" id="messages" role="tabpanel" aria-labelledby="messages-tab">validated solutions</div>
+
+     <div class="tab-pane" id="settings" role="tabpanel" aria-labelledby="settings-tab">
     <h2>My homeworks</h2>
     <% @homeworks.each do |homework| %>
-      <p><%= homework.bounty.title %></p>
+      <p><%= link_to homework.bounty.title %></p>
       <p><%= homework.bounty.content %></p>
       <p><%= homework.bounty.github_repo %></p>
       <%= link_to "remove from your homeworks", bounty_homework_path(homework.bounty, homework), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
@@ -82,8 +71,4 @@
       -------------------------
     <% end %>
   </div>
-
-  <div class="tab-pane" id="settings" role="tabpanel" aria-labelledby="settings-tab">...</div>
-</div>
-
-</div>
+  </div>
