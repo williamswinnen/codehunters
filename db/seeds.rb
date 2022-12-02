@@ -5,17 +5,38 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+require "open-uri"
+
 Bounty.destroy_all
 Solution.destroy_all
 User.destroy_all
 puts "destroying users & bounties"
 puts "creating users & bounties"
-user = User.create!(email: "default@default.com", password: "123456", username: "Michel", photo: "https://avatars.githubusercontent.com/u/115413024?v=4")
-user1 = User.create!(email: "default1@default.com", password: "123456", username: "Gwendolyne", photo: "https://avatars.githubusercontent.com/u/96949079?v=4")
-user2 = User.create!(email: "default2@default.com", password: "123456", username: "Josianne", photo: "https://avatars.githubusercontent.com/u/106176972?v=4")
-user3 = User.create!(email: "default3@default.com", password: "123456", username: "Bernard", photo: "https://avatars.githubusercontent.com/u/115095838?v=4")
-user4 = User.create!(email: "default4@default.com", password: "123456", username: "Superliver", photo: "https://avatars.githubusercontent.com/u/115033783?v=4")
-user5 = User.create!(email: "default5@default.com", password: "123456", username: "Tocard", photo: "https://avatars.githubusercontent.com/u/115413668?v=4")
+
+user = User.create!(email: "default@default.com", password: "123456", username: "Michel")
+user.photo.attach(io: URI.open("https://avatars.githubusercontent.com/u/115413024?v=4"), filename: "michel.png", content_type: "image/png")
+user.save!
+
+user1 = User.create!(email: "default1@default.com", password: "123456", username: "Gwendolyne")
+user1.photo.attach(io: URI.open("https://avatars.githubusercontent.com/u/96949079?v=4"), filename: "Gwendolyne.png", content_type: "image/png")
+user1.save!
+
+user2 = User.create!(email: "default2@default.com", password: "123456", username: "Josianne")
+user2.photo.attach(io: URI.open("https://avatars.githubusercontent.com/u/106176972?v=4"), filename: "Josianne.png", content_type: "image/png")
+user2.save!
+
+user3 = User.create!(email: "default3@default.com", password: "123456", username: "Bernard")
+user3.photo.attach(io: URI.open("https://avatars.githubusercontent.com/u/115095838?v=4"), filename: "Bernard.png", content_type: "image/png")
+user3.save!
+
+user4 = User.create!(email: "default4@default.com", password: "123456", username: "Superliver")
+user4.photo.attach(io: URI.open("https://avatars.githubusercontent.com/u/115033783?v=4"), filename: "Superliver.png", content_type: "image/png")
+user4.save!
+
+user5 = User.create!(email: "default5@default.com", password: "123456", username: "Tocard")
+user5.photo.attach(io: URI.open("https://avatars.githubusercontent.com/u/115413668?v=4"), filename: "Tocard.png", content_type: "image/png")
+user5.save!
+
 bounty1 = Bounty.create!(title: "variable", content: "I can't get my variable to display anything", price_cents: 1_099, difficulty_level: 1, github_repo: "https://github.com/roMPrd/RubyHunters", user: user)
 bounty2 = Bounty.create!(title: "error 404", content: "can't find the proper html anchor", price_cents: 1_500, difficulty_level: 1, github_repo: "https://github.com/lewagon/rails-watch-list", user: user)
 bounty12 = Bounty.create!(title: "meatball", content: "my poorly designed cheap webapp isn't working", price_cents: 1_500, difficulty_level: 1, github_repo: "https://github.com/lewagon/rails-watch-list", user: user5)
