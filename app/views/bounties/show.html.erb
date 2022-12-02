@@ -50,7 +50,11 @@
     <div class="card-show">
       <div class="card-top">
         <h2 class="text-center green font-weight-bold"> <%= @bounty.title %> </h2>
-        <img src=<%=@bounty.user.photo%> class="card-img-top" alt="...">
+        <% if @bounty.user.photo.attached? %>
+          <%= cl_image_tag @bounty.user.photo.key, class:"card-img-top", alt:"..."%>
+        <% else %>
+          <%= image_tag("blank-profile.png")%>
+        <% end %>
         <span class="green font-weight-bold"><%=@bounty.user.username%></span>
       </div>
       <div class="card-body d-flex justify-content-between">
@@ -88,7 +92,12 @@
           <div class="card-show">
             <div class="solution-top d-flex justify-content-between">
               <div class="solution-left-top d-flex">
-                <img style="width: 50px; height: 50px; border-radius: 50%;" src=<%=solution.user.photo%>  alt="...">
+                <%# <img style="width: 50px; height: 50px; border-radius: 50%;" src=<%=solution.user.photo  %>
+                <% if solution.user.photo.attached? %>
+                  <%= cl_image_tag solution.user.photo.key, style:"width: 50px; height: 50px; border-radius: 50%;" %>
+                <% else %>
+                  <%= image_tag("blank-profile.png")%>
+                <% end %>
                 <p class="align-self-start username green font-weight-bold"><%= solution.user.username %></p>
               </div>
               <div class="solution-right-top">
