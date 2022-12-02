@@ -51,23 +51,27 @@
       <div class="col-8 mx-3">
         <p> <%= link_to "Back to the index fdp", bounties_path, class: "text-decoration-none link-back-green"%> </p>
         <div class="card-show">
-          <div class="card-top">
-            <h2 class=" text-white font-weight-bold"> <%= @bounty.title %> </h2>
-            <% if @bounty.user.photo.attached? %>
-              <%= cl_image_tag @bounty.user.photo.key, class:"card-img-top", alt:"..."%>
-            <% else %>
-              <%= image_tag("blank-profile.png")%>
-            <% end %>
-            <span class="green font-weight-bold"><%=@bounty.user.username%></span>
+          <div class="card-top d-flex justify-content-between">
+            <div class="card-title">
+              <h2 class=" text-white font-weight-bold"> <%= @bounty.title %> </h2>
+            </div>
+            <div class="card-photo">
+              <% if @bounty.user.photo.attached? %>
+                <%= cl_image_tag @bounty.user.photo.key, class:"card-img-top", alt:"..."%>
+              <% else %>
+                <%= image_tag("blank-profile.png")%>
+              <% end %>
+              <span class="green font-weight-bold"><%=@bounty.user.username%></span>
+            </div>
           </div>
-          <div class="overview mt-0">
+          <div class="overview mt-3 mb-3">
             <p class="description-text grey"> <%= @bounty.content %> "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"</p>
           </div>
           <p class="align-self-center  card-github">
             <%= link_to @bounty.github_repo, @bounty.github_repo, class: "card-text text-decoration-none text-white link-github" %>
           </p>
           <div class="ending-links-card d-flex justify-content-between">
-            <div class="link-homework-card">
+            <div class="link-homework-card mt-3">
               <% if current_user.homeworks.where(bounty: @bounty).empty? %>
                 <%= link_to "Add to my homework", bounty_homeworks_path(@bounty, @homework), data: {turbo_method: :post}, class: "text-decoration-none link-edit-green" %>
               <% else %>
@@ -102,13 +106,18 @@
                         <span class="grey"> See more:</span>
                         <div>
                           <p>
-                            <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample<%=solution.id%>" aria-expanded="false" aria-controls="collapseExample<%=solution.id%>">
+                            <button class="btn mb-4 mt-3 chat-btn" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample<%=solution.id%>" aria-expanded="false" aria-controls="collapseExample<%=solution.id%>">
                               Chat
                             </button>
                           </p>
                         </div>
-                        <p class="mb-0"><%= link_to solution.github_repo, solution.github_repo , class:"text-decoration-none " %></p>
-                        <p> <%= link_to "view the full solution and contact the bounty solver", solution_path(solution), class:"text-decoration-none"  %></p>
+
+                        <p>
+                          <%= link_to @bounty.github_repo,  class: "card-text text-decoration-none text-white link-github" do %>
+                            <%= @bounty.github_repo%>
+                          <%end %>
+                        </p>
+                        <p class="mt-5"> <%= link_to "view the full solution and contact the bounty solver", solution_path(solution), class:"text-decoration-none"  %></p>
                         <p>  <span class="grey">Status:</span> <%= solution.status %></p>
                         <div class="solutions-btn-style justify-content-evenly">
                           <% if policy(solution).edit? %>
@@ -132,7 +141,7 @@
         </div>
       </div>
       <div class="col-4 mx-1">
-          <div class="call-to-action-purple" >
+          <div class="call-to-action-purple position-sticky top-0" >
             <div class="card-body">
               <div class="card-description d-flex justify-content-evenly mb-3">
                   <p class="card-text price-card mx-2 p-4"> Price <span class="light-price"><%= @bounty.price_cents %></p>
