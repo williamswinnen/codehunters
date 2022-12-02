@@ -1,6 +1,6 @@
 class Bounty < ApplicationRecord
   belongs_to :user
-  has_many :homeworks
+  has_many :homeworks, dependent: :destroy
   has_many :solutions, dependent: :destroy
 
 

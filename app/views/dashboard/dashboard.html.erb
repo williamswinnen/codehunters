@@ -26,12 +26,13 @@
       <% end %>
     </div>
   <div class="tab-pane" id="messages" role="tabpanel" aria-labelledby="messages-tab">
-  <% @user.solutions.where(status: "pending").each do |t| %>
+  <% @user.solutions.where(status: "accepted").each do |t| %>
   <%= t.content%>
   <% end %>
   </div>
 
-
+  <p>My ranking is: <%= current_user.update_ranking %></p>
+  <p>My prize money is: <%= current_user.prize_money/100 %>$</p>
   <div class="col-4">
     <h2>My homeworks</h2>
     <% @homeworks.each do |homework| %>
