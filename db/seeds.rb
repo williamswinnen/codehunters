@@ -5,8 +5,6 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
-Bounty.destroy_all
-Solution.destroy_all
 User.destroy_all
 puts "destroying users & bounties"
 puts "creating users & bounties"
