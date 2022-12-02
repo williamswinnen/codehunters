@@ -158,7 +158,7 @@ h5 {
 
 
 .button-purple {
-  color: #7101FF;
+  color:  rgba(255, 255, 255, 0.9);
   border: 3px solid #7101FF;
   border-radius:10px;
   padding: 15px 75px;
@@ -167,8 +167,15 @@ h5 {
   filter: drop-shadow(0 0 15px #7101FF) drop-shadow(0 0 50px #7101FF) contrast(2) brightness(2);
   transition: .5s;
   text-decoration: none;
-  background-color: white;
-  width: 10vw;
+  background-color: #AC01FF;
+  width: 7vw;
+  height: 7vh;
+}
+
+.button-purple:hover {
+  color: #eaeaea;
+  background-color: #110951;
+  filter: drop-shadow(0 0 20px #7101FF) contrast(2) brightness(2);
 }
 
 .price-card {

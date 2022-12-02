@@ -49,7 +49,7 @@
   <div class="container ml-1">
     <div class="d-flex ">
       <div class="col-8 mx-3">
-        <p> <%= link_to "Back to the index fdp", bounties_path, class: "text-decoration-none link-back-green"%> </p>
+        <p> <%= link_to "Back to the index fdp", bounties_path, class: "button-create text-decoration-none link-back-green"%> </p>
         <div class="card-show">
           <div class="card-top d-flex justify-content-between">
             <div class="card-title">
@@ -73,14 +73,14 @@
           <div class="ending-links-card d-flex justify-content-between">
             <div class="link-homework-card mt-3">
               <% if current_user.homeworks.where(bounty: @bounty).empty? %>
-                <%= link_to "Add to my homework", bounty_homeworks_path(@bounty, @homework), data: {turbo_method: :post}, class: "text-decoration-none link-edit-green" %>
+                <%= link_to "Add to my homework", bounty_homeworks_path(@bounty, @homework), data: {turbo_method: :post}, class: "button-create text-decoration-none link-edit-green" %>
               <% else %>
                 <p>already in your homeworks</p>
               <% end %>
             </div>
             <div class="link-edit-card">
               <% if policy(@bounty).edit? %>
-              <p class="text-decoration-none"><%= link_to "Edit this bounty", edit_bounty_path(@bounty), class: "text-decoration-none link-edit-green",  data: { bs_toggle: "modal", bs_target:"#editModal"}%> </p>
+              <p class="text-decoration-none"><%= link_to "Edit this bounty", edit_bounty_path(@bounty), class: "button-create text-decoration-none link-edit-green",  data: { bs_toggle: "modal", bs_target:"#editModal"}%> </p>
               <% end %>
             </div>
           </div>
