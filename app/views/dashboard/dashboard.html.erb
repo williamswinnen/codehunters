@@ -63,7 +63,7 @@
      <div class="tab-pane" id="settings" role="tabpanel" aria-labelledby="settings-tab">
     <h2>My homeworks</h2>
     <% @homeworks.each do |homework| %>
-      <p><%= link_to homework.bounty.title %></p>
+      <p><%= link_to homework.bounty.title, bounty_path(homework.bounty) %></p>
       <p><%= homework.bounty.content %></p>
       <p><%= homework.bounty.github_repo %></p>
       <%= link_to "remove from your homeworks", bounty_homework_path(homework.bounty, homework), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
