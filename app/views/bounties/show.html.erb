@@ -49,7 +49,7 @@
   <div class="container ml-1">
     <div class="d-flex ">
       <div class="col-8 mx-3">
-        <p> <%= link_to "Back to the index fdp", bounties_path, class: "button-create text-decoration-none link-back-green"%> </p>
+        <p> <%= link_to "Back to the index", bounties_path, class: "button-create text-decoration-none link-back-green"%> </p>
         <div class="card-show">
           <div class="card-top d-flex justify-content-between">
             <div class="card-title">
@@ -117,8 +117,11 @@
                             <%= @bounty.github_repo%>
                           <%end %>
                         </p>
-                        <p class="mt-5"> <%= link_to "view the full solution and contact the bounty solver", solution_path(solution), class:"text-decoration-none"  %></p>
-                        <p>  <span class="grey">Status:</span> <%= solution.status %></p>
+
+                        <% if solution.bounty.user == current_user && solution.status == nil || solution.status == "pending" %>
+                          <%= link_to "Validate this solution", validate_solution_path(solution), class: "btn chat-btn mb-2 mt-3", data: {turbo_method: :patch, turbo_confirm: 'Are you sure you want to confirm this solution?'} %>
+                        <% end %>
+                        <p class="mt-4">  <span class="grey">Status:</span> <%= solution.status %></p>
                         <div class="solutions-btn-style justify-content-evenly">
                           <% if policy(solution).edit? %>
                           <p>
