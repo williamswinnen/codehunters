@@ -98,6 +98,14 @@
   color: #02BE6E
 }
 
+
+.link-github{
+  border: solid;
+  padding: 20px;
+  margin: 100px auto;
+  border-radius: 10px;
+}
+
 .link-github:hover {
   color: #02BE6E
 }
@@ -153,7 +161,6 @@ h5 {
   color: #7101FF;
   border: 3px solid #7101FF;
   border-radius:10px;
-  letter-spacing:5px;
   padding: 15px 75px;
   cursor: pointer;
   font-weight: bold;
@@ -161,6 +168,7 @@ h5 {
   transition: .5s;
   text-decoration: none;
   background-color: white;
+  width: 10vw;
 }
 
 .price-card {
@@ -212,7 +220,9 @@ h5 {
   padding-top: 20px;
 }
 
-
+.card-github {
+  margin-top: 40px;
+}
 
 
 .card-show-solutions {
@@ -229,4 +239,9 @@ h5 {
 
 .grey {
   color: #A7A5BF
+}
+
+
+.link-github:hover {
+  opacity:0.7;
 }
