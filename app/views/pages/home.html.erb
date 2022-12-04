@@ -1,40 +1,74 @@
 <div id="home">
-  <div class="banner-description">
-    <div class="home-pitch">
-      <h4>Become a <span class="green">Code Hunter</span></h4>
-      <h1> <span class="green">Solve bugs</span>, receive experience and get paid</h1>
-      <div class="d-flex flex-column" style="margin-top: 100px">
-        <a href="/bounties" class="button">Launch app</a>
+  <div class="banner-video">
+    <video autoplay="autoplay" muted="muted" loop="loop" class="banner-video">
+      <source src="https://static.videezy.com/system/resources/previews/000/044/460/original/Comp_1_6_1.mp4">
+    </video>
+  </div>
+  <div class="home-pitch">
+    <h4 class="text-center mb-3">Become a <span class="green">Code Hunter</span></h4>
+    <div class="pitch">
+      <div class="pitch-text">
+        <h1 class="mb-3"> <span class="green">Solve bugs</span>, receive experience and get paid</h1>
+        <h5 class="">Why use <span class="green">Code Hunter?</span></h5>
       </div>
-      <h5>Why use <span class="green">Code Hunter?</span></h5>
+      <div class="pitch-button">
+        <a href="/bounties" class="button text-center mt-3">Launch app</a>
+        <a href="#" class="button-white text-center mt-3">Learn more</a>
+      </div>
     </div>
   </div>
-  <div class="d-flex flex-column backback" style="margin-top: 50px">
-    <div class="card card-3 card-3-left">
-      <div class="card__icon"><i class="fa-brands fa-ethereum"></i></div>
+</div>
+
+
+
+<div class="moving-card">
+
+  <div class="card-height" data-controller="scroll-reveal" data-scroll-reveal-threshold-value="0.5">
+    <div class="d-flex flex-column">
+      <div data-scroll-reveal-target="item" class="card-pink left reveal">
+        <div class="card_icon">
+          <i class="fa-brands fa-ethereum"></i>
+        </div>
         <h2 class="card__title">Earn up to $500/month</h2>
-        <p class="card__apply">
-          <a class="card__link" href="/bounties">Start earning<i class="fas fa-arrow-right"></i></a>
-        </p>
-    </div>
-
-    <div class="card card-3 card-3-right">
-      <div class="card__icon"><i class="fa-solid fa-stopwatch"></i></div>
-        <h2 class="card__title">+60% faster responses</h2>
-        <p class="card__apply">
-          <a class="card__link" href="/bounties">Fast bug fix<i class="fas fa-arrow-right"></i></a>
-        </p>
-    </div>
-
-    <div class="card card-3 card-3-left">
-      <div class="card__icon"><i class="fa-solid fa-bullseye"></i></div>
-        <h2 class="card__title">Average transaction fee of 0.001 $</h2>
-        <p class="card__apply">
-          <a class="card__link" href="/bounties">Put up a bounty<i class="fas fa-arrow-right"></i></a>
-        </p>
+        <div class="d-flex justify-content-center card__apply">
+          <a class="card_link" href="/bounties">Start earning<i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
     </div>
   </div>
 
+  <div class="card-height justify-content-end" data-controller="scroll-reveal" data-scroll-reveal-threshold-value="0.5">
+    <div class="d-flex flex-column backback" style="margin-top: 50px">
+      <div  data-scroll-reveal-target="item" class="card-pink right reveal">
+        <div class="card_icon">
+          <i class="fa-solid fa-stopwatch"></i>
+        </div>
+        <h2 class="card__title">+60% faster responses</h2>
+        <p class="d-flex justify-content-center card__apply">
+        <a class="card_link" href="/bounties">Fast bug fix <i class="fas fa-arrow-right"></i></a>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-height" data-controller="scroll-reveal" data-scroll-reveal-threshold-value="0.5">
+    <div class="d-flex flex-column backback" style="margin-top: 50px">
+      <div data-scroll-reveal-target="item" class="card-pink left reveal">
+        <div class="card_icon">
+          <i class="fa-solid fa-bullseye"></i>
+        </div>
+        <h2 class="card_title">Average transaction fee of 0.001 $</h2>
+        <p class="d-flex justify-content-center card__apply">
+          <a class="card_link" href="/bounties">Put up a bounty<i class="fas fa-arrow-right"></i></a>
+        </p>
+      </div>
+    </div>
+  </div>
+
+</div>
+<div id="home-will">
+  <div class="banner-description">
+  </div>
 
   <div class="d-flex flex-column" style="margin-top:100px">
     <a href="/bounties" class="button">Launch app</a>
