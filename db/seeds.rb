@@ -39,7 +39,6 @@ user5.save!
 
 bounty1 = Bounty.create!(title: "variable", content: "I can't get my variable to display anything", price_cents: 1_099, difficulty_level: 1, github_repo: "https://github.com/roMPrd/RubyHunters", user: user)
 bounty2 = Bounty.create!(title: "error 404", content: "can't find the proper html anchor", price_cents: 1_500, difficulty_level: 1, github_repo: "https://github.com/lewagon/rails-watch-list", user: user)
-bounty12 = Bounty.create!(title: "meatball", content: "my poorly designed cheap webapp isn't working", price_cents: 1_500, difficulty_level: 1, github_repo: "https://github.com/lewagon/rails-watch-list", user: user5)
 bounty3 = Bounty.create!(title: "db corrupted", content: "my junior dev Ahmadou broke my code !", price_cents: 10_500, difficulty_level: 3, github_repo: "https://github.com/lewagon/python-scraping-workshop", user: user)
 bounty4 = Bounty.create!(title: "iteration on array", content: "I can't iterate properly", price_cents: 4_500, difficulty_level: 2, github_repo: "https://github.com/lucasgday/cryptozombies", user: user)
 bounty5 = Bounty.create!(title: "localize the barycenter of a triangle", content: "need to localize the barycenter or centroid of a triangle", price_cents: 45000, difficulty_level: 4, github_repo: "https://github.com/dmilon/osteopathe-orlienas", user: user1)
@@ -49,6 +48,10 @@ bounty8 = Bounty.create!(title: "is it a palindrome?", content: "need a full cas
 bounty9 = Bounty.create!(title: "surface covered", content: " write a function which calculates the area covered by a union of rectangles.", price_cents: 12500, difficulty_level: 3, github_repo: "https://github.com/sarahlafer/blog-prep-288", user: user1)
 bounty10 = Bounty.create!(title: "binomial expansion", content: "write a program that can do some algebra", price_cents: 20_500, difficulty_level: 4, github_repo: "https://github.com/quynpham/adoptme", user: user1)
 bounty11 = Bounty.create!(title: "How many arguments", content: "can't get my function that takes a random number of arguments to work", price_cents: 10_500, difficulty_level: 2, github_repo: "https://github.com/quynpham/adoptme", user: user)
+bounty12 = Bounty.create!(title: "meatball", content: "my poorly designed cheap webapp isn't working", price_cents: 1_500, difficulty_level: 1, github_repo: "https://github.com/lewagon/rails-watch-list", user: user5)
+bounty13 = Bounty.create!(title: "Currency conversion in JavaScript", content: "Convert between different currencies using JavaScript", price_cents: 11_500, difficulty_level: 4, github_repo: "https://github.com/lewagon/food-delivery", user: user1)
+bounty14 = Bounty.create!(title: "Add React Components", content: "Add React components to the application", price_cents: 12_800, difficulty_level: 4, github_repo: "https://github.com/user/react-components", user: user1)
+bounty15 = Bounty.create!(title: 'Fixing the Database', content: 'Incorrectly querying the database', price_cents: 900, difficulty_level: 2, github_repo: 'https://github.com/lewagon/dribbble-card-solution', user: user)
 solution1 = Solution.create!(content: "you forgot to wrap your string with '' !", bounty: bounty1, user: user3, github_repo:"https://github.com/heartcombo/devise")
 solution2 = Solution.create!(content: "this is an <a href> issue.", bounty: bounty2, user: user4, github_repo:"https://github.com/roMPrd/RubyHunters")
 solution3 = Solution.create!(content: "in this case <%=link_to%> could be appropriate", bounty: bounty2, user: user2, github_repo:"https://github.com/roMPrd/RubyHunters")
@@ -65,4 +68,6 @@ solution13 = Solution.create!(content: "the surface covered by the area is corre
 solution14 = Solution.create!(content: "the algebraical results validate the tests", bounty: bounty10, user: user3, github_repo:"https://github.com/roMPrd/RubyHunters")
 solution15 = Solution.create!(content: "you forgot an end on your loop", bounty: bounty11, user: user3, github_repo:"https://github.com/heartcombo/devise")
 solution15 = Solution.create!(content: "added proper routes to make your pile of garbage work !", bounty: bounty12, user: user, github_repo:"https://github.com/heartcombo/devise")
+solution16 = Solution.create!(content: "implemented the currency conversion feature using the JavaScript library 'Money.js", bounty: bounty13, user: user, github_repo:"https://github.com/lewagon/food-delivery")
+solution17 = Solution.create!(content: "created React components for the application using the 'create-react-app' library", bounty: bounty14, user: user, github_repo:"https://github.com/heartcombo/devise")
 puts "BOUNTIES & USERS SUCCESSFULLY CREATED"
