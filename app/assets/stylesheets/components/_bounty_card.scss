@@ -22,7 +22,7 @@
     }
   }
   .bounty-card:hover {
-    background: linear-gradient(90deg, #6f42c1,#100952);
+    // background: linear-gradient(90deg, #6f42c1,#100952);
   }
 
   .bounty-info {
@@ -48,7 +48,7 @@
   }
 
   .bounty-price {
-    width: 20%;
+    width: 10%;
     padding-right: 1rem;
     display: flex;
     flex-direction: column;
@@ -56,8 +56,8 @@
   }
 
   .bounty-title {
-    width: 40%;
-    max-width: 40%;
+    width: 50%;
+    // max-width: 40%;
     padding-right: 1rem;
     padding-left: 1rem;
     display: flex;
@@ -104,10 +104,11 @@
   .bounty-links {
     display: flex;
     flex-grow: 0;
+    width: 10vw;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding-right: 2rem;
+    padding-right: 1rem;
 
     .fa-brands {
       // height: 3rem;
@@ -118,7 +119,7 @@
     }
 
     .avatar-bounty {
-      height: 3rem;
+      height: 30px;
       width: auto;
       border-radius: 50%;
 

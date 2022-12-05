@@ -2,7 +2,10 @@
 @import "home";
 
 .index-container {
+  margin-top: 2rem;
   display: flex;
+  width: 90vw;
+  margin: auto;
 }
 
 .bounty-container{
@@ -13,30 +16,51 @@
   // flex: 0 0 20vw;
   position: sticky;
   top: 15vh;
-  width: 20vw;
+  width: 15vw;
   height: 70vh;
   // margin-top: 3em;
-  // background: rgba(255, 255, 255, 0.04);
-  // border-radius: 0px 1rem 1em 0px;
+  background: #6f42c1;
+  border-radius: 8px;
   border-right: #7101ff solid 1px;
-  padding: 2rem;
-  margin-right: 3rem;
-  margin-left: 2rem;
-
-  .filter-box {
-    background-color: #CB2A27;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin-right: 1.5rem;
+  // margin-left: 2rem;
+  p {
+    margin: 0;
+    font-size: 0.7rem;
     color: white;
-    border-radius: 3rem;
+  }
+  .filter-box {
+    // background-color: #CB2A27;
+    // color: white;
+    // border-radius: 3rem;
+
+  }
+  .difficulty-box {
+    display: flex;
+    flex-direction: column;
+    border: #4CAF50 solid 1px;
+    border-radius: 8px;
+    align-items: center;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+
+  .difficulty-level {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .btn-filter {
+    display: flex;
+    // flex-wrap: wrap;
+    justify-content: center;
   }
 }
-
-// h2 {
-//   font-size: 45px;
-//   font-weight: 700;
-//   color: #E4E0DE;
-//   margin-top: 50px;
-//   margin-bottom: 40px;
-// }
 
 .searchbar {
   justify-content: center;
@@ -63,29 +87,6 @@
   font-size: 20px;
   margin-right: 10px;
 }
-
-
-// h4 {
-//   color: white;
-//   font-size: 25px;
-//   font-weight: 700;
-//   padding: 1em;
-// }
-
-// h6 {
-//   color: white;
-//   font-size: 18px;
-// }
-
-// p {
-//   color:#D3D3D3;
-//   font-size: 18px;
-// }
-
-// h5 {
-//   color: white;
-//   font-size: 18px;
-// }
 
 .button-create {
   color: white;

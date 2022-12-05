@@ -1,56 +1,56 @@
- <ul class="nav nav-tabs" id="myTab" role="tablist">
-  <li class="nav-item" role="presentation">
-    <button class="nav-link active" id="bounties-tab" data-bs-toggle="tab" data-bs-target="#bounties-tab-pane" type="button" role="tab" aria-controls="bounties" aria-selected="true">My Bounties</button>
-  </li>
-  <li class="nav-item" role="presentation">
-    <button class="nav-link" id="solutions-tab" data-bs-toggle="tab" data-bs-target="#solutions-tab-pane" type="button" role="tab" aria-controls="solutions" aria-selected="false">My Validated Solutions</button>
-  </li>
-  <li class="nav-item" role="presentation">
-    <button class="nav-link" id="homework-tab" data-bs-toggle="tab" data-bs-target="#homework-tab-pane" type="button" role="tab" aria-controls="homework" aria-selected="false">My Homework </button>
-  </li>
+<div class="navbar-dashboard">
+  <ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item" role="presentation">
+      <button class="nav-link active" id="bounties-tab" data-bs-toggle="tab" data-bs-target="#bounties-tab-pane" type="button" role="tab" aria-controls="bounties" aria-selected="true">My Bounties</button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="solutions-tab" data-bs-toggle="tab" data-bs-target="#solutions-tab-pane" type="button" role="tab" aria-controls="solutions" aria-selected="false">My Validated Solutions</button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="homework-tab" data-bs-toggle="tab" data-bs-target="#homework-tab-pane" type="button" role="tab" aria-controls="homework" aria-selected="false">My Homework </button>
+    </li>
 </ul>
-
+</div>
 <div class="tab-content" id="myTabContent">
   <div class="tab-pane fade show active" id="bounties-tab-pane" role="tabpanel" aria-labelledby="bounties-tab" tabindex="0">
-      <h2 class="text-light mb-5 mt-3 font-weight-bold">All my  <span class="green">bounties</span>:</h2>
-    <div class="bounty-container">
+    <div class="bounty-dashboard-container">
+      <h2 class="title-dashboard">All my <span class="green">bounties</span>:</h2>
       <div class="bounties-card">
         <% @user.bounties.each do |bounty| %>
-
           <div class="bounty-card">
-            <div class="bounty-item">
-              <p>Difficulty level:</p>
-              <h5><%= bounty.difficulty_level %></h5>
-            </div>
-            <div class="bounty-item">
-              <p>Deadline: </p>
-              <h5><%= bounty.deadline %></h5>
-            </div>
-            <div class="bounty-item">
-              <p>Price: </p>
-
-              <h5><%= bounty.price_cents %>$</h5>
-
-            </div>
-            <div class="bounty-item-title">
-              <h5><%= bounty.title %></h5>
-            </div>
-            <div class="bounty-item">
-              <%= link_to bounty.github_repo do %>
-              <i class="fa-brands fa-github"></i>
+            <%= link_to bounty_path(bounty), class:"flex-grow-1 text-decoration-none" do %>
+              <div class="bounty-info">
+                <div class="bounty-title">
+                  <p class="title-title">Title </p>
+                  <p class="content-title"><%= bounty.title %></p>
+                </div>
+                <div class="bounty-deadline">
+                  <p class="title">Deadline </p>
+                  <p class="content">
+                    <% if bounty.deadline == nil %>
+                      <%= "none" %>
+                    <% else %>
+                      <%= bounty.deadline %>
+                    <% end %>
+                  </p>
+                </div>
+                <div class="bounty-price">
+                  <p class="title">Price </p>
+                  <p class="content"><%= bounty.price_cents %> $</p>
+                </div>
+                <div class="bounty-difficulty">
+                  <p class="title">Difficulty level </p>
+                  <p class="content"><%= bounty.difficulty_level %></p>
+                </div>
+              </div>
+            <% end %>
+            <div class="bounty-links">
+              <% if bounty.user.photo.attached? %>
+                <%= cl_image_tag bounty.user.photo.key, class:"avatar-bounty" %>
+              <% else %>
+                <%= image_tag("blank-profile.png") %>
               <% end %>
-            </div>
-            <div class="bounty-item-avatar">
-                <% if bounty.user.photo.attached? %>
-                  <%= cl_image_tag bounty.user.photo.key, class:"avatar" %>
-                <% else %>
-                  <%= image_tag("blank-profile.png")%>
-                <% end %>
-            </div>
-            <div class="bounty-item">
-              <%= link_to bounty_path(bounty) do %>
-                <i class="fa-solid fa-arrow-right"></i>
-              <% end %>
+              <p class="title"><%= bounty.user.username %></p>
             </div>
           </div>
         <% end %>

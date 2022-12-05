@@ -6,19 +6,6 @@ body::-webkit-scrollbar {
   display: none;  /* Safari and Chrome */
 }
 
-
-// #home {
-//   z-index: 1;
-//   position: relative;
-//   height: max-content;
-//   display: flex;
-//   align-items: center;
-//   flex-direction: column;
-//   color: #100952;
-//   // text-align: center;
-//   // justify-content: center;
-// }
-
 .navbar-container {
   width: 100vw;
   display: flex;
@@ -32,60 +19,39 @@ body::-webkit-scrollbar {
   justify-content: space-between;
   align-items: center;
   text-align: center;
-  width: 70%;
+  width: 80%;
   height: 10vh;
-  // width: 100vw;
-  // margin-bottom: 4rem;
-  // flex-grow: 0;
 
   ul {
     margin: 0;
   }
 
   .logo-navbar img{
-    // height: 100px;
     height: 8vh;
     width: auto;
-    // margin: 10px;
   }
 
   .nav-link {
     text-decoration: none;
     color: white;
-    font-size: 1rem;
+    font-size: 0.8rem;
   }
   .nav-link:hover {
     color: #02BE6E;
   }
 }
 
-// .navbar-lewagon {
-//   justify-content: space-between;
-//   background: white;
-// }
-
-// .navbar-lewagon .navbar-collapse {
-//   flex-grow: 0;
-// }
-
-// .navbar-lewagon .navbar-brand img {
-//   width: 40px;
-// }
-
 .nav-item {
   padding-right: 1rem;
-  // margin-top: 15px;
-  // margin-right: 20px;
 }
 
 .green-create {
   background-color: #06BE6D;
-  padding: 1rem 1rem;
-  border-radius: 15px;
+  padding: 0.5rem 0.5rem;
+  border-radius: 8px;
   color: white;
-  font-size: 1rem;
+  font-size: 0.7rem;
   margin-bottom: 0rem;
-  // margin-top: 10px;
 }
 
 .green-create:hover {
