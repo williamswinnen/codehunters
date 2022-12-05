@@ -138,3 +138,16 @@ a:hover {
 .solutions-btn-style {
   text-decoration: none;
 }
+
+.overview {
+  code{
+    white-space: pre-wrap;
+  }
+
+  .coding-lines {
+    height: 200px;
+    overflow: hidden;
+    overflow-y: scroll;
+    border-radius: 4px;
+  }
+}
