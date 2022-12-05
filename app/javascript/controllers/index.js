@@ -13,6 +13,9 @@ application.register("flatpickr", FlatpickrController)
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
+import InsertCodeController from "./insert_code_controller"
+application.register("insert-code", InsertCodeController)
+
 import RangeInputController from "./range_input_controller"
 application.register("range-input", RangeInputController)
 

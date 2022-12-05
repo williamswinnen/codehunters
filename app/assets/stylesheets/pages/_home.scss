@@ -408,22 +408,22 @@ body {
     // justify-content: space-between;
 
 
-  h6 {
-    top: 10%;
-    margin-top: 4rem;
-    margin-bottom: 2rem;
-    font-size: 30px;
+    h6 {
+      top: 10%;
+      margin-top: 4rem;
+      margin-bottom: 2rem;
+      font-size: 30px;
+    }
+    p {
+      color: rgba(255, 255, 255, 0.5);
+      width: 70%;
+      font-family: 'Roboto Mono', monospace;
+      font-style: italic;
+      font-size: 17px;
+      margin-bottom: 4rem;
+      text-align: center;
+    }
   }
-  p {
-    color: rgba(255, 255, 255, 0.5);
-    width: 70%;
-    font-family: 'Roboto Mono', monospace;
-    font-style: italic;
-    font-size: 17px;
-    margin-bottom: 4rem;
-    text-align: center;
-  }
-}
 
 
 }

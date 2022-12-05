@@ -1,13 +1,161 @@
-.bounty-card {
+.bounties-card {
   display: flex;
-  background: rgba(255, 255, 255, 0.04);
-  border-radius: 10px;
-  padding: 1em;
-  margin-top: 12px;
-  height: fit-content;
-  margin-right: 20px;
-  justify-content: space-around;
+  flex-direction: column;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+
+  .bounty-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 10vh;
+    border: #6f42c1;
+    background-color: #6f42c1;
+    border-radius: 8px;
+    margin-top: 1em;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    vertical-align: middle;
+    // border-top: 1px solid #CB2A27;
+    // justify-content: center;
+    // transition: all ease 1s;
+  }
+  .bounty-card:hover {
+    background: linear-gradient(90deg, #6f42c1,#100952);
+  }
+
+  .bounty-info {
+    // flex-grow: 1;
+    display: flex;
+    // width: fit-content;
+    // flex-wrap: wrap;
+    // border-radius: 10px;
+    // padding: 1em;
+    // margin-top: 1em;
+    // padding-top: 0.5rem;
+    // padding-bottom: 0.5rem;
+    // margin-top: 12px;
+    // height: fit-content;
+    // margin-right: 20px;
+    // justify-content: center;
+    // border: #6f42c1;
+    // background-color: #6f42c1;
+    // border-radius: 8px;
+    // text-align: center;
+  }
+
+  .bounty-difficulty{
+    width: 20%;
+    padding-right: 1rem;
+  }
+
+
+  .bounty-deadline {
+    width: 20%;
+    padding-right: 1rem;
+  }
+
+  .bounty-price {
+    width: 20%;
+  }
+
+  .bounty-title {
+    width: 40%;
+    max-width: 40%;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    // align-items: center;
+  }
+
+  .title-title {
+    font-style: italic;
+    color: rgb(200, 200, 200);
+    height: 40%;
+    margin-bottom: 0.5rem;
+    text-align: start;
+
+    p {
+      font-size: 0.8rem;
+    }
+  }
+
+  .title {
+    font-style: italic;
+    color: rgb(200, 200, 200);
+    height: 40%;
+    margin-bottom: 0.5rem;
+    text-align: center;
+
+    p {
+      font-size: 0.8rem;
+    }
+  }
+
+  .content {
+    text-align: center;
+    color: white;
+    height: 60%;
+
+    p {
+      font-size: 0.8rem;
+      // text-align: center;
+    }
+  }
+
+  .content-title {
+    text-align: start;
+    color: white;
+    display:inline-block;
+    white-space: nowrap;
+    overflow:hidden !important;
+    text-overflow: ellipsis;
+    width: 100%;
+    height: 60%;
+
+    p {
+      font-size: 0.8rem;
+      // text-align: start;
+    }
+  }
+
+  .bounty-links {
+    display: flex;
+    flex-grow: 0;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-right: 2rem;
+
+    .fa-brands {
+      // height: 3rem;
+      font-size: 2rem;
+      width: auto;
+      color: white;
+      padding-bottom: 1rem;
+    }
+
+    .avatar-bounty {
+      height: 3rem;
+      width: auto;
+      border-radius: 50%;
+      padding-bottom: 1rem;
+    }
+  }
 }
+
+// .bounty-card {
+//   display: flex;
+//   background: rgba(255, 255, 255, 0.04);
+//   border-radius: 10px;
+//   padding: 1em;
+//   margin-top: 12px;
+//   height: fit-content;
+//   margin-right: 20px;
+//   justify-content: space-around;
+// }
 
 .bounty-item{
   padding: 1em;
