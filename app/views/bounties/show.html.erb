@@ -1,4 +1,4 @@
-<div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-controller="open-modal">
   <div class="modal-dialog" role="document">
     <div class="modal-content card-show">
       <div class="modal-header">
@@ -24,15 +24,15 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content card-show">
       <div class="modal-header">
-        <h2 class="text-center mt-5 mb-4">Propose your <span class="green">solution</span></h2>
+        <h2 class="text-center mt-5 mb-4">Edit your <span class="green">solution</span></h2>
       </div>
 
       <div class="modal-body">
-          <%= simple_form_for([@bounty, @solution]) do |f| %>
-            <%= f.input :content, :placeholder => "Detail your solution" %>
-            <%= f.input :github_repo, :placeholder => "Link to your code"%>
-            <%= f.submit "Edit your solution", class: 'btn green mt-2' %>
-          <% end %>
+        <%= simple_form_for([@bounty, @solution]) do |f| %>
+          <%= f.input :content, :placeholder => "Detail your solution" %>
+          <%= f.input :github_repo, :placeholder => "Link to your code"%>
+          <%= f.submit "Edit your solution", class: 'btn green mt-2' %>
+        <% end %>
       </div>
       <div class="modal-footer">
         <a type="button" class="text-decoration-none link-back-green" data-bs-dismiss="modal">Close</a>
@@ -135,7 +135,7 @@
                         <div class="solutions-btn-style justify-content-evenly">
                           <% if policy(solution).edit? %>
                           <p>
-                          <%= link_to "Edit your solution", edit_bounty_solution_path(@bounty, solution), class: "text-decoration-none link-back-green"%>
+                          <%= link_to "Edit your solution", "#", class: "text-decoration-none link-back-green", data: { bs_toggle: "modal", bs_target:"#editModal"}%>
                           </p>
                           <% end %>
                           <% if policy(solution).destroy? %>
@@ -166,7 +166,7 @@
                   <%end %>
               </div>
             </div>
-            <p class="text-center text-decoration-none"> <%= link_to "Propose a solution", new_bounty_solution_path(params[:id]), class: "button-purple", data: { bs_toggle: "modal", bs_target:"#createModal"} %> </p>
+            <p class="text-center text-decoration-none"> <%= link_to "Propose a solution", "#", class: "button-purple", data: { bs_toggle: "modal", bs_target:"#createModal"} %> </p>
           </div>
       </div>
     </div>

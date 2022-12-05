@@ -23,7 +23,9 @@ class SolutionsController < ApplicationController
     if @solution.save
       redirect_to bounty_path(@bounty)
     else
-      render :new, status: :unprocessable_entity
+      @solutions = @bounty.user == current_user ? Solution.where(bounty: @bounty) : current_user.solutions.where(bounty: @bounty)
+      @message = Message.new
+      render "bounties/show", status: :unprocessable_entity
     end
   end
 
