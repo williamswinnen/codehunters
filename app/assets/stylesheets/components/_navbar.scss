@@ -7,16 +7,23 @@ body::-webkit-scrollbar {
 }
 
 
-#home {
-  z-index: 1;
-  position: relative;
-  height: max-content;
+// #home {
+//   z-index: 1;
+//   position: relative;
+//   height: max-content;
+//   display: flex;
+//   align-items: center;
+//   flex-direction: column;
+//   color: #100952;
+//   // text-align: center;
+//   // justify-content: center;
+// }
+
+.navbar-container {
+  width: 100vw;
   display: flex;
-  align-items: center;
-  flex-direction: column;
-  color: #100952;
-  // text-align: center;
-  // justify-content: center;
+  justify-content: center;
+  top: 2rem;
 }
 
 .home-navbar {
@@ -24,52 +31,61 @@ body::-webkit-scrollbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100vw;
+  text-align: center;
+  width: 70%;
+  height: 10vh;
+  // width: 100vw;
   // margin-bottom: 4rem;
-  flex-grow: 0;
+  // flex-grow: 0;
+
+  ul {
+    margin: 0;
+  }
 
   .logo-navbar img{
-    height: 100px;
+    // height: 100px;
+    height: 8vh;
     width: auto;
-    margin: 10px;
+    // margin: 10px;
   }
 
   .nav-link {
     text-decoration: none;
     color: white;
-    font-size: 20px;
+    font-size: 1rem;
   }
   .nav-link:hover {
     color: #02BE6E;
   }
 }
 
-.navbar-lewagon {
-  justify-content: space-between;
-  background: white;
-}
+// .navbar-lewagon {
+//   justify-content: space-between;
+//   background: white;
+// }
 
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
-}
+// .navbar-lewagon .navbar-collapse {
+//   flex-grow: 0;
+// }
 
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
-}
+// .navbar-lewagon .navbar-brand img {
+//   width: 40px;
+// }
 
 .nav-item {
-  padding: 10px;
-  margin-top: 15px;
-  margin-right: 20px;
+  padding-right: 1rem;
+  // margin-top: 15px;
+  // margin-right: 20px;
 }
 
 .green-create {
   background-color: #06BE6D;
-  padding: 10px 15px;
-  border-radius: 4px;
+  padding: 1rem 1rem;
+  border-radius: 15px;
   color: white;
-  font-size: 20px;
-  margin-top: 10px;
+  font-size: 1rem;
+  margin-bottom: 0rem;
+  // margin-top: 10px;
 }
 
 .green-create:hover {
