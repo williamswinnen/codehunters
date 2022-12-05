@@ -16,7 +16,7 @@ export default class extends Controller {
       step: 1,
       range: {
         'min': 0,
-        'max': 50000
+        'max': 1000
       },
       tooltips: [
         wNumb({decimals: 1}),
