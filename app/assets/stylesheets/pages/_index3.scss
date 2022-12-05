@@ -1,0 +1,28 @@
+.index-container {
+  display: flex;
+}
+
+.bounty-container{
+  width: 70vw;
+}
+
+.filter-container {
+  // flex: 0 0 20vw;
+  position: sticky;
+  top: 15vh;
+  width: 20vw;
+  height: 70vh;
+  // margin-top: 3em;
+  // background: rgba(255, 255, 255, 0.04);
+  border-radius: 0px 1rem 1em 0px;
+  border-right: #CB2A27 solid 1px;
+  padding: 2rem;
+  margin-right: 3rem;
+  margin-left: 2rem;
+
+  .filter-box {
+    background-color: #CB2A27;
+    color: white;
+    border-radius: 3rem;
+  }
+}

@@ -46,7 +46,7 @@
 <h1 class="text-center text-light mt-4 font-weight-bold">The <span class="green"> Bounty </span> Show</h1>
 
 <div class="back-container">
-  <div class="container ml-1">
+  <div class="container ml-1" data-controller="insert-code">
     <div class="d-flex ">
       <div class="col-8 mx-3">
         <p> <%= link_to "Back to the index ↩", bounties_path, class: "text-decoration-none link-back-green"%> </p>
@@ -64,11 +64,21 @@
               <span class="green font-weight-bold"><%=@bounty.user.username%></span>
             </div>
           </div>
-          <div class="overview mt-3 mb-3">
-            <p class="description-text grey"> <%= @bounty.content %> "I have been trying to post data to controller action in RAILS application development. When i post data through form, POST data reaches specific controller action defined in routes.rb. But it gives back with 404 error."</p>
+          <div class="overview mt-1" >
+            <p class="d-none" data-insert-code-target="owner"> <%= @github_name%></p>
+            <p class="d-none" data-insert-code-target="repo"> <%= @repo_name%></p>
+            <p data-insert-code-target ="url" class="d-none"><%= "https://api.github.com/users/#{@github_name}/repos" %></p>
+            <p class="description-text text-white"><%=@bounty.content%></p>
+            <div class="coding-lines bg-dark">
+
+              <code data-insert-code-target="code" data-github-token="<%= ENV["GITHUB_TOKEN"] %>" ></code>
+            </div>
           </div>
           <p class="align-self-center  card-github">
-            <%= link_to @bounty.github_repo, @bounty.github_repo, class: "card-text text-decoration-none text-white link-github" %>
+            <%= link_to "github", @bounty.github_repo, class: "card-text text-decoration-none text-white link-github", data: {
+            insert_code_target: "url",
+            action: "click->insert-code#collect"
+            }%>
           </p>
           <div class="ending-links-card d-flex justify-content-between">
             <div class="link-homework-card mt-3">
@@ -147,7 +157,7 @@
           <div class="call-to-action-purple position-sticky top-0" >
             <div class="card-body">
               <div class="card-description d-flex justify-content-evenly mb-3">
-                  <p class="card-text price-card mx-2 p-4"> Price <span class="light-price"><%= @bounty.price_cents %></p>
+                  <p class="card-text price-card mx-2 p-4"> Price <span class="light-price"><%= @bounty.price_cents %>$</p>
                   <p class="card-text difficulty-card p-4 mx-2">Difficulty <span class="light-price"><%= @bounty.difficulty_level %></span></p>
                   <%if @bounty.deadline.nil?%>
                     <p class="card-text deadline-card mb-3 p-4 mx-2">Deadline <span class="light-price"> Not defined</span></p>
