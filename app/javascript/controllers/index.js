@@ -10,6 +10,9 @@ application.register("chatroom-subscription", ChatroomSubscriptionController)
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
+import InsertCodeController from "./insert_code_controller"
+application.register("insert-code", InsertCodeController)
+
 import RangeInputController from "./range_input_controller"
 application.register("range-input", RangeInputController)
 
@@ -18,6 +21,3 @@ application.register("scroll-reveal", ScrollRevealController)
 
 import TabController from "./tab_controller"
 application.register("tab", TabController)
-
-import ScrollReveal from 'stimulus-scroll-reveal'
-application.register('scroll-reveal', ScrollReveal)
