@@ -13,7 +13,9 @@
           <label for="difficulty_level_<%= i+1%>">level <%= i+1%></label>
         <% end %>
       </div>
-      <%= submit_tag :ok, class: 'btn btn-primary d-flex align-items-center' %>
+
+      <%= submit_tag :Apply, class: "btn chat-btn mb-2 mt-3" %>
+
       <%= text_field_tag :query,
         params[:query],
         class: "d-none"
