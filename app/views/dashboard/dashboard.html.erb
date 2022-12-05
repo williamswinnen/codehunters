@@ -8,16 +8,12 @@
   <li class="nav-item" role="presentation">
     <button class="nav-link" id="homework-tab" data-bs-toggle="tab" data-bs-target="#homework-tab-pane" type="button" role="tab" aria-controls="homework" aria-selected="false">My Homework </button>
   </li>
-
 </ul>
-
-
-
 
 <div class="tab-content" id="myTabContent">
   <div class="tab-pane fade show active" id="bounties-tab-pane" role="tabpanel" aria-labelledby="bounties-tab" tabindex="0">
+      <h2 class="text-light mb-5 mt-3 font-weight-bold">All my  <span class="green">bounties</span>:</h2>
     <div class="bounty-container">
-      <h2 class="text-center">All <span class="green">my bounties</span></h2>
       <div class="bounties-card">
         <% @user.bounties.each do |bounty| %>
 
@@ -62,7 +58,7 @@
     </div>
   </div>
   <div class="tab-pane fade" id="solutions-tab-pane" role="tabpanel" aria-labelledby="solutions-tab" tabindex="0">
-  <h2 class="text-center">All my <span class="green">accepted solutions</span></h2>
+          <h2 class="text-light mb-5 mt-3 font-weight-bold">All my  <span class="green">accepted solutions</span>:</h2>
     <% @user.solutions.where(status:"accepted").each do |solution| %>
       <div class="col-8 offset-2">
       <div class="card-show">
@@ -87,11 +83,9 @@
           </p>
           <div class="ending-links-card d-flex justify-content-between">
           </div>
-          <div class="solutions">
-            <div class="solutions-list">
-
+            <div class="solutions">
               <h2 class="text-light mb-5 mt-3 font-weight-bold">My <span class="green">solution</span>:</h2>
-
+              <div class="solutions-list">
                 <div class="card-show-solutions">
                   <div class="solution-top d-flex">
                     <div class="solution-left-top d-flex mx-4">
@@ -129,8 +123,8 @@
   </div>
   <div class="tab-pane fade" id="homework-tab-pane" role="tabpanel" aria-labelledby="homework-tab" tabindex="0">
     <div class="solutions">
-      <div class="solutions-list">
         <h2 class="text-light mb-5 mt-3 font-weight-bold">My  <span class="green">homeworks</span>:</h2>
+      <div class="solutions-list">
         <% @homeworks.each do |homework| %>
           <div class="card-show-solutions">
             <div class="solution-top d-flex">
@@ -158,5 +152,4 @@
       </div>
     </div>
   </div>
-
 </div>
