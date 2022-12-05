@@ -147,7 +147,7 @@
           <div class="call-to-action-purple position-sticky top-0" >
             <div class="card-body">
               <div class="card-description d-flex justify-content-evenly mb-3">
-                  <p class="card-text price-card mx-2 p-4"> Price <span class="light-price"><%= @bounty.price_cents %></p>
+                  <p class="card-text price-card mx-2 p-4"> Price <span class="light-price"><%= @bounty.price_cents %>$</p>
                   <p class="card-text difficulty-card p-4 mx-2">Difficulty <span class="light-price"><%= @bounty.difficulty_level %></span></p>
                   <%if @bounty.deadline.nil?%>
                     <p class="card-text deadline-card mb-3 p-4 mx-2">Deadline <span class="light-price"> Not defined</span></p>

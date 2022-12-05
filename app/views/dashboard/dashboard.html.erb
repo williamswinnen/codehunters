@@ -19,7 +19,8 @@
     <div class="bounty-container">
       <h2 class="text-center">All <span class="green">my bounties</span></h2>
       <div class="bounties-card">
-        <% @pending_bounties.each do |bounty| %>
+        <% @user.bounties.each do |bounty| %>
+
           <div class="bounty-card">
             <div class="bounty-item">
               <p>Difficulty level:</p>
@@ -31,7 +32,9 @@
             </div>
             <div class="bounty-item">
               <p>Price: </p>
-              <h5><%= bounty.price_cents %></h5>
+
+              <h5><%= bounty.price_cents %>$</h5>
+
             </div>
             <div class="bounty-item-title">
               <h5><%= bounty.title %></h5>
@@ -86,7 +89,9 @@
           </div>
           <div class="solutions">
             <div class="solutions-list">
-              <h2 class="text-light mb-5 mt-3 font-weight-bold">My  <span class="green">solution</span>:</h2>
+
+              <h2 class="text-light mb-5 mt-3 font-weight-bold">My <span class="green">solution</span>:</h2>
+
                 <div class="card-show-solutions">
                   <div class="solution-top d-flex">
                     <div class="solution-left-top d-flex mx-4">
