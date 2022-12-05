@@ -1,25 +1,28 @@
 <div class="index-container">
   <div class="filter-container d-flex flex-column justify-content-center">
     <%= form_with url: bounties_path, method: :get, html: { 'data-controller' => "range-input", "data-range-input-min-value" => params[:min]||0 , "data-range-input-max-value" => params[:max] || 50000} do %>
-      <h4 class="mb-4 text-center">Price range</h4>
-      <div data-range-input-target="range">
+      <div class="price-box" data-range-input-target="range">
         <%= number_field_tag :min, params[:min] || 0, 'data-range-input-target' => 'minInput', class: 'd-none' %>
         <%= number_field_tag :max, params[:max] || 50000, 'data-range-input-target' => 'maxInput', class: 'd-none' %>
       </div>
-      <h4 class="mb-3 text-center">Difficulty level</h4>
-      <div class="tag-item mb-3">
-        <% (0..4).each do |i|%>
-          <input type="checkbox" name="difficulty_level" id="difficulty_level_<%= i+1%>" value="<%= i+1%>" class="tag-selector" >
-          <label for="difficulty_level_<%= i+1%>">level <%= i+1%></label>
-        <% end %>
+      <p class="text-center">Price range</p>
+      <div class="tag-item difficulty-box">
+        <p class="mb-3 text-center mt-3">Difficulty level</p>
+        <div class="difficulty-level">
+          <% (0..4).each do |i|%>
+            <input type="checkbox" name="difficulty_level" id="difficulty_level_<%= i+1%>" value="<%= i+1%>" class="tag-selector" >
+            <label for="difficulty_level_<%= i+1%>">level <%= i+1%></label>
+          <% end %>
+        </div>
       </div>
+      <div class="btn-filter">
+        <%= submit_tag :Apply, class: "btn chat-btn mb-2 mt-3" %>
 
-      <%= submit_tag :Apply, class: "btn chat-btn mb-2 mt-3" %>
-
-      <%= text_field_tag :query,
-        params[:query],
-        class: "d-none"
-      %>
+        <%= text_field_tag :query,
+          params[:query],
+          class: "d-none"
+        %>
+      </div>
     <% end %>
   </div>
   <div class="bounty-container mb-3">
@@ -53,11 +56,17 @@
               </div>
               <div class="bounty-deadline">
                 <p class="title">Deadline </p>
-                <p class="content"><%= bounty.deadline %></p>
+                <p class="content">
+                  <% if bounty.deadline == nil %>
+                    <%= "none" %>
+                  <% else %>
+                    <%= bounty.deadline %>
+                  <% end %>
+                </p>
               </div>
               <div class="bounty-price">
                 <p class="title">Price </p>
-                <p class="content"><%= bounty.price_cents %></p>
+                <p class="content"><%= bounty.price_cents %> $</p>
               </div>
               <div class="bounty-difficulty">
                 <p class="title">Difficulty level </p>
@@ -69,11 +78,9 @@
             <% if bounty.user.photo.attached? %>
               <%= cl_image_tag bounty.user.photo.key, class:"avatar-bounty" %>
             <% else %>
-              <%= image_tag("blank-profile.png"), class:"avatar-bounty" %>
+              <%= image_tag("blank-profile.png") %>
             <% end %>
-            <%= link_to bounty.github_repo do %>
-              <i class="fa-brands fa-github"></i>
-            <% end %>
+            <p class="title"><%= bounty.user.username %></p>
           </div>
         </div>
       <% end %>
