@@ -13,5 +13,11 @@ application.register("hello", HelloController)
 import RangeInputController from "./range_input_controller"
 application.register("range-input", RangeInputController)
 
+import ScrollRevealController from "./scroll_reveal_controller"
+application.register("scroll-reveal", ScrollRevealController)
+
 import TabController from "./tab_controller"
 application.register("tab", TabController)
+
+import ScrollReveal from 'stimulus-scroll-reveal'
+application.register('scroll-reveal', ScrollReveal)
