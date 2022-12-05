@@ -13,6 +13,9 @@ application.register("flatpickr", FlatpickrController)
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
+import OpenModalController from "./open_modal_controller"
+application.register("open-modal", OpenModalController)
+
 import RangeInputController from "./range_input_controller"
 application.register("range-input", RangeInputController)
 
