@@ -67,7 +67,7 @@ solution12 = Solution.create!(content: "the function i wrote works on palindrome
 solution13 = Solution.create!(content: "the surface covered by the area is correctly calculated, see the tests", bounty: bounty9, user: user4, github_repo:"https://github.com/roMPrd/RubyHunters")
 solution14 = Solution.create!(content: "the algebraical results validate the tests", bounty: bounty10, user: user3, github_repo:"https://github.com/roMPrd/RubyHunters")
 solution15 = Solution.create!(content: "you forgot an end on your loop", bounty: bounty11, user: user3, github_repo:"https://github.com/heartcombo/devise")
-solution15 = Solution.create!(content: "added proper routes to make your pile of garbage work !", bounty: bounty12, user: user, github_repo:"https://github.com/heartcombo/devise")
+solution15 = Solution.create!(content: "added proper routes to make your pile of garbage work !", bounty: bounty12, user: user, github_repo:"https://github.com/heartcombo/devise", status:"accepted")
 solution16 = Solution.create!(content: "implemented the currency conversion feature using the JavaScript library 'Money.js", bounty: bounty13, user: user, github_repo:"https://github.com/lewagon/food-delivery")
 solution17 = Solution.create!(content: "created React components for the application using the 'create-react-app' library", bounty: bounty14, user: user, github_repo:"https://github.com/heartcombo/devise")
 puts "BOUNTIES & USERS SUCCESSFULLY CREATED MOTHERFUCKS"
