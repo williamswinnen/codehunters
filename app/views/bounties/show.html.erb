@@ -71,7 +71,7 @@
             <p class="description-text text-white"><%=@bounty.content%></p>
             <div class="coding-lines bg-dark">
 
-              <code data-insert-code-target="code"></code>
+              <code data-insert-code-target="code" data-github-token="<%= ENV["GITHUB_TOKEN"] %>" ></code>
             </div>
           </div>
           <p class="align-self-center  card-github">
