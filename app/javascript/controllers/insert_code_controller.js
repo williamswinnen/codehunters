@@ -11,9 +11,11 @@ export default class extends Controller {
     const path = "app/controllers/bounties_controller.rb"
     const owner = this.ownerTarget.innerText.replace(/\s/g, "");
     const repo = this.repoTarget.innerText.replace(/\s/g, "");
-    const sha_url = `https://api.github.com/repos/${owner}/${repo}/contents/${path}`!
+    const githubToken = this.codeTarget.dataset.githubToken;
+    console.log(githubToken)
+    const sha_url = `https://api.github.com/repos/${owner}/${repo}/contents/${path}`
     const headers = {
-      "Authorization": `Bearer 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`
+      "Authorization": `Bearer ${githubToken}`
     }
     fetch(sha_url, {
       headers: headers
@@ -21,8 +23,10 @@ export default class extends Controller {
       .then(response => response.json())
       .then(data => {
         const sha = data.sha
-        const url =  `https://api.github.com/repos/${owner}/${repo}/git/blobs/${sha}`
-        fetch(url)
+        const url = `https://api.github.com/repos/${owner}/${repo}/git/blobs/${sha}`
+        fetch(url, {
+          headers: headers
+        })
           .then (d => d.json ())
           .then (d => {
             const new_content = (window.atob(d.content))
