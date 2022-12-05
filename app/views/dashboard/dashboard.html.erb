@@ -1,91 +1,157 @@
-<ul class="nav nav-tabs" id="myTab" role="tablist">
+ <ul class="nav nav-tabs" id="myTab" role="tablist">
   <li class="nav-item" role="presentation">
-    <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">My Solved Bounties</button>
+    <button class="nav-link active" id="bounties-tab" data-bs-toggle="tab" data-bs-target="#bounties-tab-pane" type="button" role="tab" aria-controls="bounties" aria-selected="true">My Bounties</button>
   </li>
   <li class="nav-item" role="presentation">
-    <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">My pending Bounties</button>
+    <button class="nav-link" id="solutions-tab" data-bs-toggle="tab" data-bs-target="#solutions-tab-pane" type="button" role="tab" aria-controls="solutions" aria-selected="false">My Validated Solutions</button>
   </li>
   <li class="nav-item" role="presentation">
-    <button class="nav-link" id="messages-tab" data-bs-toggle="tab" data-bs-target="#messages" type="button" role="tab" aria-controls="messages" aria-selected="false">My Validated Solutions</button>
+    <button class="nav-link" id="homework-tab" data-bs-toggle="tab" data-bs-target="#homework-tab-pane" type="button" role="tab" aria-controls="homework" aria-selected="false">My Homework </button>
   </li>
-  <li class="nav-item" role="presentation">
-    <button class="nav-link" id="settings-tab" data-bs-toggle="tab" data-bs-target="#settings" type="button" role="tab" aria-controls="settings" aria-selected="false">My Homework</button>
-  </li>
-</ul>
-<div class="tab-content">
-<div class="tab-pane active" id="home" role="tabpanel" aria-labelledby="home-tab">Pouet</div>
 
-<div class="tab-pane" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-  <div class="bounty-container">
-    <h2 class="text-center">All <span class="green">my pending</span>   bounties</h2>
-    <div class="bounties-card">
-      <% @pending_bounties.each do |bounty| %>
-      <div class="bounty-card">
-        <div class="bounty-item">
-          <p>Difficulty level: </p>
-          <h5><%= bounty.difficulty_level %></h5>
-        </div>
-        <div class="bounty-item">
-          <p>Deadline: </p>
-          <h5><%= bounty.deadline %></h5>
-        </div>
-        <div class="bounty-item">
-          <p>Price: </p>
-          <h5><%= bounty.price_cents %></h5>
-        </div>
-        <div class="bounty-item-title">
-          <h5><%= bounty.title %></h5>
-        </div>
-        <div class="bounty-item">
-          <%= link_to bounty.github_repo do %>
-            <i class="fa-brands fa-github"></i>
-            <% end %>
+</ul>
+
+
+
+
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade show active" id="bounties-tab-pane" role="tabpanel" aria-labelledby="bounties-tab" tabindex="0">
+    <div class="bounty-container">
+      <h2 class="text-center">All <span class="green">my bounties</span></h2>
+      <div class="bounties-card">
+        <% @pending_bounties.each do |bounty| %>
+          <div class="bounty-card">
+            <div class="bounty-item">
+              <p>Difficulty level:</p>
+              <h5><%= bounty.difficulty_level %></h5>
+            </div>
+            <div class="bounty-item">
+              <p>Deadline: </p>
+              <h5><%= bounty.deadline %></h5>
+            </div>
+            <div class="bounty-item">
+              <p>Price: </p>
+              <h5><%= bounty.price_cents %></h5>
+            </div>
+            <div class="bounty-item-title">
+              <h5><%= bounty.title %></h5>
+            </div>
+            <div class="bounty-item">
+              <%= link_to bounty.github_repo do %>
+              <i class="fa-brands fa-github"></i>
+              <% end %>
+            </div>
+            <div class="bounty-item-avatar">
+                <% if bounty.user.photo.attached? %>
+                  <%= cl_image_tag bounty.user.photo.key, class:"avatar" %>
+                <% else %>
+                  <%= image_tag("blank-profile.png")%>
+                <% end %>
+            </div>
+            <div class="bounty-item">
+              <%= link_to bounty_path(bounty) do %>
+                <i class="fa-solid fa-arrow-right"></i>
+              <% end %>
+            </div>
           </div>
-          <div class="bounty-item-avatar">
-            <% if bounty.user.photo.attached? %>
-              <%= cl_image_tag bounty.user.photo.key, class:"avatar" %>
-            <% else %>
-              <%= image_tag("blank-profile.png")%>
-            <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="tab-pane fade" id="solutions-tab-pane" role="tabpanel" aria-labelledby="solutions-tab" tabindex="0">
+  <h2 class="text-center">All my <span class="green">accepted solutions</span></h2>
+    <% @user.solutions.where(status:"accepted").each do |solution| %>
+      <div class="col-8 offset-2">
+      <div class="card-show">
+        <div class="card-top d-flex justify-content-between">
+          <div class="card-title">
+            <h2 class=" text-white font-weight-bold"> <%= solution.bounty.title %> </h2>
+            </div>
+            <div class="card-photo">
+              <% if solution.bounty.user.photo.attached? %>
+                <%= cl_image_tag solution.bounty.user.photo.key, class:"card-img-top", alt:"..."%>
+              <% else %>
+                <%= image_tag("blank-profile.png")%>
+              <% end %>
+              <span class="green font-weight-bold"><%=solution.bounty.user.username%></span>
+            </div>
           </div>
-          <div class="bounty-item">
-            <%= link_to bounty_path(bounty) do %>
-              <i class="fa-solid fa-arrow-right"></i>
-            <% end %>
+          <div class="overview mt-3 mb-3">
+            <p class="description-text grey"> <%= solution.bounty.content %> "I have been trying to post data to controller action in RAILS application development. When i post data through form, POST data reaches specific controller action defined in routes.rb. But it gives back with 404 error."</p>
           </div>
-        </div>
-           <% end %>
-        </div>
-        </div>
-        </div>
-<div class="tab-pane" id="messages" role="tabpanel" aria-labelledby="messages-tab">validated solutions</div>
-     <div class="tab-pane" id="settings" role="tabpanel" aria-labelledby="settings-tab">
-        <div class="solutions-list">
-          <h2 class="text-light mb-5 mt-3 font-weight-bold">My  <span class="green">homeworks</span>:</h2>
-          <% @homeworks.each do |homework| %>
-            <div class="card-show-solutions">
-              <div class="solution-top d-flex">
-                <div class="solution-left-top d-flex mx-4">
-                  <% if homework.bounty.user.photo.attached? %>
-                    <%= cl_image_tag homework.bounty.user.photo.key, style:"width: 50px; height: 50px; border-radius: 50%;" %>
-                    <% else %>
-                      <%= image_tag("blank-profile.png")%>
-                    <% end %>
-                  </div>
-                    <div class="solution-right-top">
-                      <p class="align-self-start username green font-weight-bold"><%= homework.bounty.user.username %></p>
-                      <p><%= homework.bounty.user.email %></p>
-                        <div class="solution-content mt-4">
-                          <span class="grey">Title:</span>
-                          <p><%= link_to homework.bounty.title, bounty_path(homework.bounty) %></p>
-                          <span class="grey"> Overview:</span>
-                          <p> <%= homework.bounty.content %></p>
-                          <%= link_to "remove from your homeworks", bounty_homework_path(homework.bounty, homework), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "button-create text-decoration-none link-edit-green" %>
-                        </div>
-                      </div>
+          <p class="align-self-center  card-github">
+            <%= link_to solution.bounty.github_repo, solution.bounty.github_repo, class: "card-text text-decoration-none text-white link-github" %>
+          </p>
+          <div class="ending-links-card d-flex justify-content-between">
+          </div>
+          <div class="solutions">
+            <div class="solutions-list">
+              <h2 class="text-light mb-5 mt-3 font-weight-bold">My  <span class="green">solution</span>:</h2>
+                <div class="card-show-solutions">
+                  <div class="solution-top d-flex">
+                    <div class="solution-left-top d-flex mx-4">
+                      <% if solution.user.photo.attached? %>
+                        <%= cl_image_tag solution.user.photo.key, style:"width: 50px; height: 50px; border-radius: 50%;" %>
+                      <% else %>
+                        <%= image_tag("blank-profile.png")%>
+                      <% end %>
                     </div>
+                    <div class="solution-right-top">
+                      <p class="align-self-start username green font-weight-bold"><%= solution.user.username %></p>
+                      <p><%= solution.user.email %></p>
+                      <div class="solution-content mt-4">
+                        <span class="grey">Comment:</span>
+                        <p> <%= solution.content %></p>
+                        <span class="grey"> See more:</span>
+                        <div>
+                          <p>
+                          </p>
+                        </div>
+                        <p>
+                          <%= link_to solution.bounty.github_repo,  class: "card-text text-decoration-none text-white link-github" do %>
+                            <%= solution.bounty.github_repo%>
+                          <%end %>
+                        </p>
                   </div>
+                  </div>
+                </div>
               <% end %>
             </div>
           </div>
         </div>
+      </div>
+      </div>
+  </div>
+  <div class="tab-pane fade" id="homework-tab-pane" role="tabpanel" aria-labelledby="homework-tab" tabindex="0">
+    <div class="solutions">
+      <div class="solutions-list">
+        <h2 class="text-light mb-5 mt-3 font-weight-bold">My  <span class="green">homeworks</span>:</h2>
+        <% @homeworks.each do |homework| %>
+          <div class="card-show-solutions">
+            <div class="solution-top d-flex">
+              <div class="solution-left-top d-flex mx-4">
+                <% if homework.bounty.user.photo.attached? %>
+                  <%= cl_image_tag homework.bounty.user.photo.key, style:"width: 50px; height: 50px; border-radius: 50%;" %>
+                <% else %>
+                  <%= image_tag("blank-profile.png")%>
+                <% end %>
+              </div>
+              <div class="solution-right-top">
+                <p class="align-self-start username green font-weight-bold"><%= homework.bounty.user.username %></p>
+                <p><%= homework.bounty.user.email %></p>
+                <div class="solution-content mt-4">
+                  <span class="grey">Title:</span>
+                  <p><%= link_to homework.bounty.title, bounty_path(homework.bounty) %></p>
+                  <span class="grey"> Overview:</span>
+                  <p> <%= homework.bounty.content %></p>
+                  <%= link_to "remove from your homeworks", bounty_homework_path(homework.bounty, homework), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "button-create text-decoration-none link-edit-green" %>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+</div>
