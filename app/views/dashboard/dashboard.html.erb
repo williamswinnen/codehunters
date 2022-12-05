@@ -58,7 +58,7 @@
     </div>
   </div>
   <div class="tab-pane fade" id="solutions-tab-pane" role="tabpanel" aria-labelledby="solutions-tab" tabindex="0">
-          <h2 class="text-light mb-5 mt-3 font-weight-bold">All my  <span class="green">accepted solutions</span>:</h2>
+    <h2 class="text-light mb-5 mt-3 font-weight-bold">All my  <span class="green">accepted solutions</span>:</h2>
     <% @user.solutions.where(status:"accepted").each do |solution| %>
       <div class="col-8 offset-2">
       <div class="card-show">
@@ -122,7 +122,6 @@
       </div>
   </div>
   <div class="tab-pane fade" id="homework-tab-pane" role="tabpanel" aria-labelledby="homework-tab" tabindex="0">
-    <div class="solutions">
         <h2 class="text-light mb-5 mt-3 font-weight-bold">My  <span class="green">homeworks</span>:</h2>
       <div class="solutions-list">
         <% @homeworks.each do |homework| %>
