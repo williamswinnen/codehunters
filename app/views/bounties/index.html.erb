@@ -48,36 +48,20 @@
           <%= link_to bounty_path(bounty), class:"flex-grow-1 text-decoration-none" do %>
             <div class="bounty-info">
               <div class="bounty-title">
-                <div class="title-title">
-                  <p>Title: </p>
-                </div>
-                <div class="content-title">
-                  <p><%= bounty.title %></p>
-                </div>
+                <p class="title-title">Title </p>
+                <p class="content-title"><%= bounty.title %></p>
               </div>
               <div class="bounty-deadline">
-                <div class="title">
-                  <p>Deadline: </p>
-                </div>
-                <div class="content">
-                  <p><%= bounty.deadline %></p>
-                </div>
+                <p class="title">Deadline </p>
+                <p class="content"><%= bounty.deadline %></p>
               </div>
               <div class="bounty-price">
-                <div class="title">
-                  <p>Price: </p>
-                </div>
-                <div class="content">
-                  <p><%= bounty.price_cents %></p>
-                </div>
+                <p class="title">Price </p>
+                <p class="content"><%= bounty.price_cents %></p>
               </div>
               <div class="bounty-difficulty">
-                <div class="title">
-                  <p>Difficulty level: </p>
-                </div>
-                <div class="content">
-                  <p><%= bounty.difficulty_level %></p>
-                </div>
+                <p class="title">Difficulty level </p>
+                <p class="content"><%= bounty.difficulty_level %></p>
               </div>
             </div>
           <% end %>
@@ -85,7 +69,7 @@
             <% if bounty.user.photo.attached? %>
               <%= cl_image_tag bounty.user.photo.key, class:"avatar-bounty" %>
             <% else %>
-              <%= image_tag("blank-profile.png")%>
+              <%= image_tag("blank-profile.png"), class:"avatar-bounty" %>
             <% end %>
             <%= link_to bounty.github_repo do %>
               <i class="fa-brands fa-github"></i>
