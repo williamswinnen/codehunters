@@ -9,60 +9,66 @@
     <div class="pitch">
       <div class="pitch-text">
         <h1 class="mb-3"> <span class="green">Solve bugs</span>, receive experience and get paid</h1>
-        <h5 class="">Why use <span class="green">Code Hunter?</span></h5>
       </div>
       <div class="pitch-button">
         <a href="/bounties" class="button text-center mt-3">Launch app</a>
-        <a href="#" class="button-white text-center mt-3">Learn more</a>
       </div>
+    </div>
+    <div class="learn-more">
+      <h5 class="">Why use <span class="green">Code Hunter?</span></h5>
+      <%= link_to "#moving-card", class:"button-white text-center" do %>
+      <%# <a href="#" class="button-white text-center">Learn more</a> %>
+        <p class="button-white text-center">Learn more</p>
+        <div class="card_icon">
+          <i class="fa-solid fa-chevrons-down"></i>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
 
 
 
-<div class="moving-card">
+<div id="moving-card"  data-controller="scroll-reveal">
 
-  <div class="card-height" data-controller="scroll-reveal" data-scroll-reveal-threshold-value="0.5">
+  <div class="card-height">
+
     <div class="d-flex flex-column">
-      <div data-scroll-reveal-target="item" class="card-pink left reveal">
+      <div data-scroll-reveal-target="item" class="card-pink card-down reveal" data-delay="250ms">
         <div class="card_icon">
           <i class="fa-brands fa-ethereum"></i>
         </div>
-        <h2 class="card__title">Earn up to $500/month</h2>
+        <h2 class="card_title">Earn up to $500/month</h2>
         <div class="d-flex justify-content-center card__apply">
           <a class="card_link" href="/bounties">Start earning<i class="fas fa-arrow-right"></i></a>
         </div>
       </div>
     </div>
-  </div>
 
-  <div class="card-height justify-content-end" data-controller="scroll-reveal" data-scroll-reveal-threshold-value="0.5">
-    <div class="d-flex flex-column backback" style="margin-top: 50px">
-      <div  data-scroll-reveal-target="item" class="card-pink right reveal">
+    <div class="d-flex flex-column">
+      <div  data-scroll-reveal-target="item" class="card-pink card-down reveal" data-delay="2.5s">
         <div class="card_icon">
           <i class="fa-solid fa-stopwatch"></i>
         </div>
-        <h2 class="card__title">+60% faster responses</h2>
+        <h2 class="card_title">+60% faster responses</h2>
         <p class="d-flex justify-content-center card__apply">
         <a class="card_link" href="/bounties">Fast bug fix <i class="fas fa-arrow-right"></i></a>
         </p>
       </div>
     </div>
-  </div>
 
-  <div class="card-height" data-controller="scroll-reveal" data-scroll-reveal-threshold-value="0.5">
-    <div class="d-flex flex-column backback" style="margin-top: 50px">
-      <div data-scroll-reveal-target="item" class="card-pink left reveal">
+    <div class="d-flex flex-column">
+      <div data-scroll-reveal-target="item" class="card-pink card-down reveal" data-delay="5s">
         <div class="card_icon">
           <i class="fa-solid fa-bullseye"></i>
         </div>
         <h2 class="card_title">Average transaction fee of 0.001 $</h2>
         <p class="d-flex justify-content-center card__apply">
-          <a class="card_link" href="/bounties">Put up a bounty<i class="fas fa-arrow-right"></i></a>
+        <a class="card_link" href="/bounties">Put up a bounty<i class="fas fa-arrow-right"></i></a>
         </p>
       </div>
     </div>
+
   </div>
 
 </div>
@@ -70,9 +76,9 @@
   <div class="banner-description">
   </div>
 
-  <div class="d-flex flex-column" style="margin-top:100px">
+  <%# <div class="d-flex flex-column" style="margin-top:100px">
     <a href="/bounties" class="button">Launch app</a>
-  </div>
+  </div> %>
 
   <h5>How does it <span class="green">work?</span></h5>
   <div class="d-flex justify-content-around">
@@ -121,7 +127,7 @@
   </div>
 
   <div class="container-bot">
-    <%= link_to "To top", "#", class:"button" %>
+    <%= link_to "To top", "#", class:"button-white" %>
   </div>
 </div>
 
