@@ -41,8 +41,9 @@ class BountiesController < ApplicationController
     @solution = Solution.new
     @solutions = @bounty.user == current_user ? Solution.where(bounty: @bounty) : current_user.solutions.where(bounty: @bounty)
     authorize @bounty
-    @github_name = @bounty.github_repo.split("/")[-2]
-    @repo_name = @bounty.github_repo.split("/")[-1]
+    @github_path = @bounty.github_repo.split("/")[-3..].join("/")
+    @github_name = @bounty.github_repo.split("/")[3]
+    @repo_name = @bounty.github_repo.split("/")[4]
     @homework = Homework.new
   end
 
