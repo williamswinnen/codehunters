@@ -15,6 +15,7 @@ export default class extends Controller {
     const repo = this.repoTarget.innerText.replace(/\s/g, "");
     const githubToken = this.codeTarget.dataset.githubToken;
     const sha_url = `https://api.github.com/repos/${owner}/${repo}/contents/${path}`
+    console.log(sha_url)
     const headers = {
       "Authorization": `Bearer ${githubToken}`
     }
@@ -31,7 +32,6 @@ export default class extends Controller {
       .then (d => d.json ())
       .then (d => {
         let new_content = (window.atob(d.content))
-        console.log(new_content)
         this.codeTarget.insertAdjacentText("beforeend" , new_content)
       })
     })

@@ -45,6 +45,7 @@
             </div>
           </div>
           <div class="overview mt-1">
+             <%= puts @bounty.github_repo.split("/")[4] == "rubyHunters"%>
             <p class="d-none" data-insert-code-target="owner"> <%= @github_name%></p>
             <p class="d-none" data-insert-code-target="path">  <%= @github_path %></p>
             <p class="d-none" data-insert-code-target="repo"> <%= @repo_name%></p>
