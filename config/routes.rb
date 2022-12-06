@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 
   end
 
-  resources :solutions, only: :show do
+  resources :solutions, only: [:show] do
     resources :messages, only: :create
   end
   # patch 'solutions/:id', to: 'solutions#custom', as: 'validate_solution'

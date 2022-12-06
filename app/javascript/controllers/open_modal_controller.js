@@ -5,6 +5,7 @@ import { Modal } from "bootstrap"
 export default class extends Controller {
   connect() {
     console.log(this.element)
+    console.log("coucou")
     // check if errors
     if (document.querySelector(".invalid-feedback")) {
       this.modal = new Modal(this.element)
