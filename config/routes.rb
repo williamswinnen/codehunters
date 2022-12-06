@@ -14,11 +14,11 @@ Rails.application.routes.draw do
   resources :solutions, only: :show do
     resources :messages, only: :create
   end
-  patch 'solutions/:id', to: 'solutions#custom', as: 'validate_solution'
+  # patch 'solutions/:id', to: 'solutions#custom', as: 'validate_solution'
   # get 'bounty/:id', to: 'dashboard#homework', as: 'add_bounty'
 
 
-  resources :solutions, only: :destroy
+  resources :solutions, only: [:destroy]
   #delete 'solutions/:id', to: 'solutions#destroy', as: 'destroy_solution'
 
   # Defines the root path route ("/")
