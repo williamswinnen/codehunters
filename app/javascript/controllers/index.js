@@ -3,6 +3,9 @@
 // ./bin/rails generate stimulus controllerName
 
 import { application } from "./application"
+import ScrollReveal from 'stimulus-scroll-reveal'
+
+application.register('scroll-reveal', ScrollReveal)
 
 import ChatroomSubscriptionController from "./chatroom_subscription_controller"
 application.register("chatroom-subscription", ChatroomSubscriptionController)
@@ -24,8 +27,8 @@ application.register("insert-code", InsertCodeController)
 import RangeInputController from "./range_input_controller"
 application.register("range-input", RangeInputController)
 
-import ScrollRevealController from "./scroll_reveal_controller"
-application.register("scroll-reveal", ScrollRevealController)
+// import ScrollRevealController from "./scroll_reveal_controller"
+// application.register("scroll-reveal", ScrollRevealController)
 
 import TabController from "./tab_controller"
 application.register("tab", TabController)
