@@ -14,12 +14,11 @@ class User < ApplicationRecord
   def update_ranking
     self.ranking = 0
 
-    solutions.each do |solution|
+    self.solutions.each do |solution|
       if solution.status == "accepted"
-        self.ranking += solution.bounty.difficulty_level
+        self.ranking += solution.bounty.difficulty_level * solution.bounty.price_cents
       end
     end
-    self.ranking = self.ranking.fdiv(self.solutions.where(status: 'accepted').count)
     return self.ranking
   end
 
