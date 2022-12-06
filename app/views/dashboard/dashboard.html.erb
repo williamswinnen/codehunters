@@ -155,17 +155,18 @@
     </div>
   </div>
   <div class="tab-pane fade" id="ranking-tab-pane" role="tabpanel" aria-labelledby="ranking-tab" tabindex="0">
-  <div class="col-8 offset-4">
-  <h2 class="text-light mb-5 mt-3 font-weight-bold">Leader<span class="green">board</span>:</h2>
-      <% n = 0%>
-   <% @users.order(ranking: :desc).limit(10).each do |u|%>
-   <div class = "grid-row">
-      <%= n+=1%>
-      <%=cl_image_tag u.photo.key, style:"width: 50px; height: 50px; border-radius: 50%;" %>
-      <%= u.username%>
-      <%= u.ranking%>
-      <%end%>
-      </div>
-  </div>
+    <div class="col-8 offset-4">
+    <h2 class="text-light mb-5 mt-3 font-weight-bold">Leader<span class="green">board</span>:</h2>
+      <div class="bounties-card">
+        <% n = 0%>
+        <% @users.order(ranking: :desc).limit(10).each do |u|%>
+          <div class = "grid-row">
+            <%= n+=1%>
+            <%=cl_image_tag u.photo.key, style:"width: 50px; height: 50px; border-radius: 50%;" %>
+            <%= u.username%>
+            <%= u.ranking%>
+          </div>
+        <%end%>
+    </div>
   </div>
 </div>
