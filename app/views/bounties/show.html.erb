@@ -20,6 +20,27 @@
 </div>
 
 
+<div class="modal fade" id="editBountyModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content card-show" style="height: 80%">
+    <h2 class="text-center" >Edit your Bounty</h2>
+      <div class="form mt-2">
+        <%= simple_form_for(@bounty) do |f| %>
+          <%= f.input :title%>
+          <%= f.input :content, :placeholder => "What is your coding problem" %>
+          <%= f.input :difficulty_level %>
+          <%= f.input :github_repo %>
+          <%= f.submit class: 'btn green mt-2 text-center' %>
+        <% end %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 
 
 
@@ -45,6 +66,7 @@
             </div>
           </div>
           <div class="overview mt-1">
+             <%= puts @bounty.github_repo.split("/")[4] == "rubyHunters"%>
             <p class="d-none" data-insert-code-target="owner"> <%= @github_name%></p>
             <p class="d-none" data-insert-code-target="path">  <%= @github_path %></p>
             <p class="d-none" data-insert-code-target="repo"> <%= @repo_name%></p>
@@ -76,7 +98,7 @@
             </div>
             <div class="link-edit-card">
               <% if policy(@bounty).edit? %>
-              <p class="text-decoration-none"><%= link_to "Edit this bounty", edit_bounty_path(@bounty), class: "button-create text-decoration-none link-edit-green",  data: { bs_toggle: "modal", bs_target:"#editModal"}%> </p>
+              <p class="text-decoration-none"><%= link_to "Edit this bounty", edit_bounty_path(@bounty), class: "button-create text-decoration-none link-edit-green",  data: { bs_toggle: "modal", bs_target:"#editBountyModal"}%> </p>
               <% end %>
             </div>
           </div>
