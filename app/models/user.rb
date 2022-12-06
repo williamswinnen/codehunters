@@ -19,6 +19,7 @@ class User < ApplicationRecord
         self.ranking += solution.bounty.difficulty_level * solution.bounty.price_cents
       end
     end
+    self.save
     return self.ranking
   end
 
