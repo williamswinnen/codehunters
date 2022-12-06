@@ -125,7 +125,7 @@
     <% end %>
   </div>
   <div class="tab-pane fade" id="homework-tab-pane" role="tabpanel" aria-labelledby="homework-tab" tabindex="0">
-        <h2 class="text-light mb-5 mt-3 font-weight-bold">My  <span class="green">homeworks</span>:</h2>
+        <h2 class="text-light mb-5 mt-3 font-weight-bold">My  <span class="green">homework</span>:</h2>
       <div class="solutions-list">
         <% @homeworks.each do |homework| %>
           <div class="card-show-solutions">
@@ -145,7 +145,7 @@
                   <p><%= link_to homework.bounty.title, bounty_path(homework.bounty) %></p>
                   <span class="grey"> Overview:</span>
                   <p> <%= homework.bounty.content %></p>
-                  <%= link_to "remove from your homeworks", bounty_homework_path(homework.bounty, homework), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "button-create text-decoration-none link-edit-green" %>
+                  <%= link_to "remove from your homework", bounty_homework_path(homework.bounty, homework), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "button-create text-decoration-none link-edit-green" %>
                 </div>
               </div>
             </div>

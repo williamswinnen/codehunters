@@ -56,6 +56,7 @@ gem "simple_form", github: "heartcombo/simple_form"
 gem "pundit"
 gem "cloudinary"
 
+
 gem 'money-rails', '~>1.12'
 
 

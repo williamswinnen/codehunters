@@ -19,31 +19,6 @@
   </div>
 </div>
 
-
-<div class="modal fade" id="editBountyModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content card-show" style="height: 80%">
-    <h2 class="text-center" >Edit your Bounty</h2>
-      <div class="form mt-2">
-        <%= simple_form_for(@bounty) do |f| %>
-          <%= f.input :title%>
-          <%= f.input :content, :placeholder => "What is your coding problem" %>
-          <%= f.input :difficulty_level %>
-          <%= f.input :github_repo %>
-          <%= f.submit class: 'btn green mt-2 text-center' %>
-        <% end %>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-
-
-
 <h1 class="text-center text-light mt-4 font-weight-bold">The <span class="green"> Bounty </span> Show</h1>
 
 <div class="back-container">
