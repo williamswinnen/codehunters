@@ -22,8 +22,8 @@
 .bounty-card.reveal {
   opacity: 0;
   // transition: 5s cubic-bezier(0.5, 0, 0, 1);
-  transform: translateX(50vw);
-  transition-duration: 2.5s;
+  transform: translateY(10vh);
+  transition-duration: 2s;
   transition-property: opacity, transform;
 }
 

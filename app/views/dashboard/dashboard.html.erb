@@ -20,7 +20,7 @@
       <h2 class="title-dashboard">All my <span class="green">bounties</span>:</h2>
       <div class="bounties-card" data-controller="scroll-reveal">
         <% @user.bounties.each_with_index do |bounty, i| %>
-          <div class="bounty-card reveal"  data-scroll-reveal-target="item"  data-delay="<%= i*100 %>ms" >
+          <div class="bounty-card reveal"  data-scroll-reveal-target="item"  data-delay="<%= i*50 %>ms" >
             <%= link_to bounty_path(bounty), class:"flex-grow-1 text-decoration-none" do %>
               <div class="bounty-info">
                 <div class="bounty-title">
@@ -43,7 +43,7 @@
                 </div>
                 <div class="bounty-difficulty">
                   <p class="title">Difficulty level </p>
-                  <p class="content"><%= bounty.difficulty_level %></p>
+                  <%= image_tag "#{bounty.difficulty_level}-star.png" %>
                 </div>
               </div>
             <% end %>
@@ -155,17 +155,30 @@
     </div>
   </div>
   <div class="tab-pane fade" id="ranking-tab-pane" role="tabpanel" aria-labelledby="ranking-tab" tabindex="0">
-  <div class="col-8 offset-4">
-  <h2 class="text-light mb-5 mt-3 font-weight-bold">Leader<span class="green">board</span>:</h2>
-      <% n = 0%>
-   <% @users.order(ranking: :desc).limit(10).each do |u|%>
-   <div class = "grid-row">
-      <%= n+=1%>
-      <%=cl_image_tag u.photo.key, style:"width: 50px; height: 50px; border-radius: 50%;" %>
-      <%= u.username%>
-      <%= u.ranking%>
-      <%end%>
+    <h2 class="text-light mb-5 mt-3 font-weight-bold text-center">Leader<span class="green">board</span>:</h2>
+    <div class="container ml-1">
+      <div class="leader-bord d-flex">
+        <div class="col-8 mx-3">
+            <% n = 0%>
+            <% @users.order(ranking: :desc).limit(10).each do |u|%>
+              <div class = "leaderboard-card">
+                <%= n+=1%>
+                <%=cl_image_tag u.photo.key, style:"width: 50px; height: 50px; border-radius: 50%;" %>
+                <%= u.username%>
+                <%= u.ranking%>
+              </div>
+            <%end%>
+        </div>
+        <div class="col-6 mx-2 ml-4">
+          <div class="score-board">
+            <h3 class="text-white text-center">This is your score board</h3>
+                <div class="card-description d-flex justify-content-evenly mb-3">
+                    <p class="card-text price-card mx-2 p-4"> So far you earned <span class="light-price"><%= @user.prize_money %>$</p>
+                    <p class="card-text difficulty-card p-4 mx-2">Solving <span class="light-price"><%= @user.solutions.where(status:"accepted").count %></span>bounties</p>
+                    <p class="card-text deadline-card mb-3 p-4 mx-2">And earned <span class="light-price"><%= @user.ranking %> points</span></p>
+                </div>
+          </div>
+        </div>
       </div>
-  </div>
-  </div>
+    </div>
 </div>
