@@ -9,15 +9,18 @@
     <li class="nav-item" role="presentation">
       <button class="nav-link" id="homework-tab" data-bs-toggle="tab" data-bs-target="#homework-tab-pane" type="button" role="tab" aria-controls="homework" aria-selected="false">My Homework </button>
     </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="ranking-tab" data-bs-toggle="tab" data-bs-target="#ranking-tab-pane" type="button" role="tab" aria-controls="ranking" aria-selected="false">Leaderboard</button>
+    </li>
 </ul>
 </div>
 <div class="tab-content" id="myTabContent">
   <div class="tab-pane fade show active" id="bounties-tab-pane" role="tabpanel" aria-labelledby="bounties-tab" tabindex="0">
     <div class="bounty-dashboard-container">
       <h2 class="title-dashboard">All my <span class="green">bounties</span>:</h2>
-      <div class="bounties-card">
-        <% @user.bounties.each do |bounty| %>
-          <div class="bounty-card">
+      <div class="bounties-card" data-controller="scroll-reveal">
+        <% @user.bounties.each_with_index do |bounty, i| %>
+          <div class="bounty-card reveal"  data-scroll-reveal-target="item"  data-delay="<%= i*100 %>ms" >
             <%= link_to bounty_path(bounty), class:"flex-grow-1 text-decoration-none" do %>
               <div class="bounty-info">
                 <div class="bounty-title">
@@ -59,7 +62,7 @@
   </div>
   <div class="tab-pane fade" id="solutions-tab-pane" role="tabpanel" aria-labelledby="solutions-tab" tabindex="0">
     <h2 class="text-light mb-5 mt-3 font-weight-bold">All my  <span class="green">accepted solutions</span>:</h2>
-    <% @user.solutions.where(status:"accepted").each do |solution| %>
+      <% @user.solutions.where(status:"accepted").each do |solution| %>
       <div class="col-8 offset-2">
       <div class="card-show">
         <div class="card-top d-flex justify-content-between">
@@ -114,12 +117,12 @@
                   </div>
                   </div>
                 </div>
-              <% end %>
             </div>
           </div>
         </div>
       </div>
       </div>
+    <% end %>
   </div>
   <div class="tab-pane fade" id="homework-tab-pane" role="tabpanel" aria-labelledby="homework-tab" tabindex="0">
         <h2 class="text-light mb-5 mt-3 font-weight-bold">My  <span class="green">homework</span>:</h2>
@@ -150,5 +153,19 @@
         <% end %>
       </div>
     </div>
+  </div>
+  <div class="tab-pane fade" id="ranking-tab-pane" role="tabpanel" aria-labelledby="ranking-tab" tabindex="0">
+  <div class="col-8 offset-4">
+  <h2 class="text-light mb-5 mt-3 font-weight-bold">Leader<span class="green">board</span>:</h2>
+      <% n = 0%>
+   <% @users.order(ranking: :desc).limit(10).each do |u|%>
+   <div class = "grid-row">
+      <%= n+=1%>
+      <%=cl_image_tag u.photo.key, style:"width: 50px; height: 50px; border-radius: 50%;" %>
+      <%= u.username%>
+      <%= u.ranking%>
+      <%end%>
+      </div>
+  </div>
   </div>
 </div>

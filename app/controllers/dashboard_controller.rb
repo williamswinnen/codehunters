@@ -3,6 +3,7 @@ class DashboardController < ApplicationController
 
   def dashboard
     @user = current_user
+    @users = User.all
     authorize :dashboard
     @solved_bounties = @user.bounties.where(status: 'solved')
     @pending_bounties = @user.bounties.where(status: 'pending')

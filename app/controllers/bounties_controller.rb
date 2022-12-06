@@ -4,9 +4,10 @@ class BountiesController < ApplicationController
     @bounties = policy_scope(Bounty)
     if params[:query].present?
       sql_query = <<~SQL
-        title  ILIKE :query
+        bounties.title  ILIKE :query
+        OR users.username ILIKE :query
       SQL
-      @bounties = @bounties.where(sql_query, query: "%#{params[:query]}%")
+      @bounties = @bounties.joins(:user).where(sql_query, query: "%#{params[:query]}%")
     end
 
     if params[:min].present? || params[:max].present?
@@ -41,8 +42,9 @@ class BountiesController < ApplicationController
     @solution = Solution.new
     @solutions = @bounty.user == current_user ? Solution.where(bounty: @bounty) : current_user.solutions.where(bounty: @bounty)
     authorize @bounty
-    @github_name = @bounty.github_repo.split("/")[-2]
-    @repo_name = @bounty.github_repo.split("/")[-1]
+    @github_path = @bounty.github_repo.split("/")[-3..].join("/")
+    @github_name = @bounty.github_repo.split("/")[3]
+    @repo_name = @bounty.github_repo.split("/")[4]
     @homework = Homework.new
   end
 

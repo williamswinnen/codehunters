@@ -40,8 +40,9 @@
               <span class="green font-weight-bold"><%=@bounty.user.username%></span>
             </div>
           </div>
-          <div class="overview mt-1" >
+          <div class="overview mt-1">
             <p class="d-none" data-insert-code-target="owner"> <%= @github_name%></p>
+            <p class="d-none" data-insert-code-target="path">  <%= @github_path %></p>
             <p class="d-none" data-insert-code-target="repo"> <%= @repo_name%></p>
             <p data-insert-code-target ="url" class="d-none"><%= "https://api.github.com/users/#{@github_name}/repos" %></p>
             <p class="description-text text-white"><%=@bounty.content%></p>
@@ -50,11 +51,16 @@
               <code data-insert-code-target="code" data-github-token="<%= ENV["GITHUB_TOKEN"] %>" ></code>
             </div>
           </div>
-          <p class="align-self-center  card-github">
-            <%= link_to "github", @bounty.github_repo, target: "_blank", class: "card-text text-decoration-none text-white link-github", data: {
+
+          <p class="mt-3">see more on the repo <span> <%=@repo_name%></span>:</p>
+          <p class="align-self-center  card-github mt-0">
+            <%= link_to @bounty.github_repo, class: "text-decoration-none text-white", data: {
+
             insert_code_target: "url",
             action: "click->insert-code#collect"
-            }%>
+            } do %>
+            <i class="fa-brands fa-github"></i>
+            <%end %>
           </p>
           <div class="ending-links-card d-flex justify-content-between">
             <div class="link-homework-card mt-3">
@@ -126,7 +132,7 @@
                         </p>
 
                         <% if solution.bounty.user == current_user && solution.status == nil || solution.status == "pending" %>
-                          <%= link_to "Validate this solution", validate_solution_path(solution), class: "btn chat-btn mb-2 mt-3", data: {turbo_method: :patch, turbo_confirm: 'Are you sure you want to confirm this solution?'} %>
+                          <%= link_to "Validate this solution", bounty_solutions_path(solution), class: "btn chat-btn mb-2 mt-3", data: {turbo_method: :patch, turbo_confirm: 'Are you sure you want to confirm this solution?'} %>
                         <% end %>
                         <p class="mt-4">  <span class="grey">Status:</span> <%= solution.status %></p>
                         <div class="solutions-btn-style justify-content-evenly">
