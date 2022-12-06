@@ -47,7 +47,7 @@
     </div>
     <div class="bounties-card">
       <% @bounties.each_with_index do |bounty, i| %>
-        <div class="bounty-card reveal" data-scroll-reveal-target="item"  data-delay="<%= i*50 %>ms" >
+        <div class="bounty-card reveal" data-scroll-reveal-target="item" data-delay="<%= i*20 %>ms" >
           <%= link_to bounty_path(bounty), class:"flex-grow-1 text-decoration-none" do %>
             <div class="bounty-info">
               <div class="bounty-title">
