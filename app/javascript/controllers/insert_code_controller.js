@@ -12,11 +12,9 @@ export default class extends Controller {
     console.log("hello from insert code controller ! ")
     const path = this.pathTarget.innerText.replace(/\s/g, "");
     const owner = this.ownerTarget.innerText.replace(/\s/g, "");
-    console.log(owner);
     const repo = this.repoTarget.innerText.replace(/\s/g, "");
     const githubToken = this.codeTarget.dataset.githubToken;
     const sha_url = `https://api.github.com/repos/${owner}/${repo}/contents/${path}`
-    console.log(sha_url)
     const headers = {
       "Authorization": `Bearer ${githubToken}`
     }
