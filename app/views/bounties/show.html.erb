@@ -20,26 +20,6 @@
 </div>
 
 
-<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content card-show">
-      <div class="modal-header">
-        <h2 class="text-center mt-5 mb-4">Edit your <span class="green">solution</span></h2>
-      </div>
-
-      <div class="modal-body">
-        <%= simple_form_for([@bounty, @solution]) do |f| %>
-          <%= f.input :content, :placeholder => "Detail your solution" %>
-          <%= f.input :github_repo, :placeholder => "Link to your code"%>
-          <%= f.submit "Edit your solution", class: 'btn green mt-2' %>
-        <% end %>
-      </div>
-      <div class="modal-footer">
-        <a type="button" class="text-decoration-none link-back-green" data-bs-dismiss="modal">Close</a>
-      </div>
-    </div>
-  </div>
-</div>
 
 
 
@@ -75,7 +55,7 @@
             </div>
           </div>
           <p class="align-self-center  card-github">
-            <%= link_to "github", @bounty.github_repo, class: "card-text text-decoration-none text-white link-github", data: {
+            <%= link_to "github", @bounty.github_repo, target: "_blank", class: "card-text text-decoration-none text-white link-github", data: {
             insert_code_target: "url",
             action: "click->insert-code#collect"
             }%>
@@ -98,6 +78,26 @@
             <div class="solutions-list">
               <h2 class="text-light mb-5 mt-3 font-weight-bold">All  <span class="green">solutions</span>:</h2>
               <% @solutions.each do |solution| %>
+                <div class="modal fade" id="editModal<%=solution.id%>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content card-show">
+                      <div class="modal-header">
+                        <h2 class="text-center mt-5 mb-4">Edit your <span class="green">solution</span></h2>
+                      </div>
+
+                      <div class="modal-body">
+                        <%= simple_form_for([@bounty, solution]) do |f| %>
+                          <%= f.input :content, :placeholder => "Detail your solution" %>
+                          <%= f.input :github_repo, :placeholder => "Link to your code"%>
+                          <%= f.submit "Edit your solution", class: 'btn green mt-2' %>
+                        <% end %>
+                      </div>
+                      <div class="modal-footer">
+                        <a type="button" class="text-decoration-none link-back-green" data-bs-dismiss="modal">Close</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
                 <div class="card-show-solutions">
                   <div class="solution-top d-flex">
                     <div class="solution-left-top d-flex mx-4">
@@ -123,9 +123,10 @@
                         </div>
 
                         <p>
-                          <%= link_to @bounty.github_repo,  class: "card-text text-decoration-none text-white link-github" do %>
-                            <%= @bounty.github_repo%>
-                          <%end %>
+                          <%= link_to "See the full solution", solution.github_repo, target: "_blank", class: "card-text text-decoration-none text-white link-github", data: {
+                            insert_code_target: "url",
+                            action: "click->insert-code#collect"
+                            } %>
                         </p>
 
                         <% if solution.bounty.user == current_user && solution.status == nil || solution.status == "pending" %>
@@ -135,7 +136,7 @@
                         <div class="solutions-btn-style justify-content-evenly">
                           <% if policy(solution).edit? %>
                           <p>
-                          <%= link_to "Edit your solution", "#", class: "text-decoration-none link-back-green", data: { bs_toggle: "modal", bs_target:"#editModal"}%>
+                          <%= link_to "Edit your solution", edit_bounty_solution_path(@bounty, solution), class: "text-decoration-none link-back-green", data: {turbo_method: :patch, bs_toggle: "modal", bs_target:"#editModal#{solution.id}"}%>
                           </p>
                           <% end %>
                           <% if policy(solution).destroy? %>
