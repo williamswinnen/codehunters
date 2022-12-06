@@ -1,5 +1,5 @@
-<div class="index-container">
-  <div class="filter-container d-flex flex-column justify-content-center">
+<div class="index-container" data-controller="scroll-reveal">
+  <div class="filter-container d-flex flex-column justify-content-center reveal" data-scroll-reveal-target="item">
     <%= form_with url: bounties_path, method: :get, html: { 'data-controller' => "range-input", "data-range-input-min-value" => params[:min]||0 , "data-range-input-max-value" => params[:max] || 50000} do %>
       <div class="price-box" data-range-input-target="range">
         <%= number_field_tag :min, params[:min] || 0, 'data-range-input-target' => 'minInput', class: 'd-none' %>
@@ -46,8 +46,8 @@
       <%# <%= link_to "Create a new bounty", new_bounty_path ,class: 'button-create' %>
     </div>
     <div class="bounties-card">
-      <% @bounties.each do |bounty| %>
-        <div class="bounty-card">
+      <% @bounties.each_with_index do |bounty, i| %>
+        <div class="bounty-card reveal" data-scroll-reveal-target="item"  data-delay="<%= i*100 %>ms" >
           <%= link_to bounty_path(bounty), class:"flex-grow-1 text-decoration-none" do %>
             <div class="bounty-info">
               <div class="bounty-title">

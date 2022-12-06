@@ -18,9 +18,9 @@
   <div class="tab-pane fade show active" id="bounties-tab-pane" role="tabpanel" aria-labelledby="bounties-tab" tabindex="0">
     <div class="bounty-dashboard-container">
       <h2 class="title-dashboard">All my <span class="green">bounties</span>:</h2>
-      <div class="bounties-card">
-        <% @user.bounties.each do |bounty| %>
-          <div class="bounty-card">
+      <div class="bounties-card" data-controller="scroll-reveal">
+        <% @user.bounties.each_with_index do |bounty, i| %>
+          <div class="bounty-card reveal"  data-scroll-reveal-target="item"  data-delay="<%= i*100 %>ms" >
             <%= link_to bounty_path(bounty), class:"flex-grow-1 text-decoration-none" do %>
               <div class="bounty-info">
                 <div class="bounty-title">

@@ -1,5 +1,4 @@
 // Import page-specific CSS files here.
-@import "home";
 
 .index-container {
   margin-top: 2rem;
@@ -10,6 +9,22 @@
 
 .bounty-container{
   width: 70vw;
+}
+
+.filter-container {
+  opacity: 0;
+  // transition: 5s cubic-bezier(0.5, 0, 0, 1);
+  transform: translateX(-10vw);
+  transition-duration: 2.5s;
+  transition-property: opacity, transform;
+}
+
+.bounty-card.reveal {
+  opacity: 0;
+  // transition: 5s cubic-bezier(0.5, 0, 0, 1);
+  transform: translateX(50vw);
+  transition-duration: 2.5s;
+  transition-property: opacity, transform;
 }
 
 .filter-container {
