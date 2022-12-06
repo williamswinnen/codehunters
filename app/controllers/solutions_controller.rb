@@ -41,7 +41,9 @@ class SolutionsController < ApplicationController
     if @solution.save
       redirect_to bounty_path(@bounty)
     else
-      render :new, status: :unprocessable_entity
+      @solutions = @bounty.user == current_user ? Solution.where(bounty: @bounty) : current_user.solutions.where(bounty: @bounty)
+      @message = Message.new
+      render "bounties/show", status: :unprocessable_entity
     end
   end
 
@@ -69,7 +71,7 @@ class SolutionsController < ApplicationController
   private
 
   def solution_params
-    params.require(:solution).permit(:title, :content ,:github_repo)
+    params.require(:solution).permit(:content, :github_repo)
   end
 
   def set_bounty
