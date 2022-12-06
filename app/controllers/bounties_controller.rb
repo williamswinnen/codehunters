@@ -4,9 +4,10 @@ class BountiesController < ApplicationController
     @bounties = policy_scope(Bounty)
     if params[:query].present?
       sql_query = <<~SQL
-        title  ILIKE :query
+        bounties.title  ILIKE :query
+        OR users.username ILIKE :query
       SQL
-      @bounties = @bounties.where(sql_query, query: "%#{params[:query]}%")
+      @bounties = @bounties.joins(:user).where(sql_query, query: "%#{params[:query]}%")
     end
 
     if params[:min].present? || params[:max].present?
