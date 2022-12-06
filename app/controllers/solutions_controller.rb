@@ -66,6 +66,7 @@ class SolutionsController < ApplicationController
     @solution.save
     @solution.bounty.status = "solved"
     @solution.bounty.save
+    @solution.user.update_ranking
     redirect_to bounty_path(@solution.bounty)
   end
 
