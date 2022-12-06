@@ -132,7 +132,7 @@
                             } %>
                         </p>
 
-                        <% if solution.bounty.user == current_user && solution.status == nil || solution.status == "pending" %>
+                        <% if solution.bounty.user == current_user && solution.status == "pending" %>
                           <%= link_to "Validate this solution", bounty_solutions_path(solution), class: "btn chat-btn mb-2 mt-3", data: {turbo_method: :patch, turbo_confirm: 'Are you sure you want to confirm this solution?'} %>
                         <% end %>
                         <p class="mt-4">  <span class="grey">Status:</span> <%= solution.status %></p>

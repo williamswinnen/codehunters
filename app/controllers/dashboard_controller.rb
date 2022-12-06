@@ -9,5 +9,8 @@ class DashboardController < ApplicationController
     @pending_bounties = @user.bounties.where(status: 'pending')
     @unsolved_bounties = @user.bounties.where(status: 'unsolved')
     @homeworks = @user.homeworks
+    @homeworks.each do |homework|
+      homework.destroy if homework.bounty.status == 'unsolved'
+    end
   end
 end
