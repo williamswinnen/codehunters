@@ -6,7 +6,7 @@
       <span class="formfont"><%= f.input :content, :placeholder => "Detail your coding problem" %></span>
       <span class="formfont"><%= f.input :price_cents, :placeholder => "What price are you willing to pay?" %></span>
       <span class="formfont"><%= f.input :difficulty_level %></span>
-      <%# <span class="formfont"><%= f.input :deadline, :input_html => {:value => Time.now}, start_year: Time.now.year, start_month: Time.now.month, start_day: Time.now.day %></span> %>
+      <%# <span class="formfont"><%= f.input :deadline, :input_html => {:value => Time.now}, start_year: Time.now.year, start_month: Time.now.month, start_day: Time.now.day</span> %>
       <span class="formfont"><%= f.input :deadline, as: :string, input_html: { data: { controller: 'flatpickr' } } %></span>
       <span class="formfont"><%= f.input :github_repo, :placeholder => "Link to your code"%></span>
       <%= f.submit class: 'button2' %>

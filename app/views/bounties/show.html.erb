@@ -19,10 +19,6 @@
   </div>
 </div>
 
-
-
-
-
 <h1 class="text-center text-light mt-4 font-weight-bold">The <span class="green"> Bounty </span> Show</h1>
 
 <div class="back-container">
@@ -45,6 +41,7 @@
             </div>
           </div>
           <div class="overview mt-1">
+             <%= puts @bounty.github_repo.split("/")[4] == "rubyHunters"%>
             <p class="d-none" data-insert-code-target="owner"> <%= @github_name%></p>
             <p class="d-none" data-insert-code-target="path">  <%= @github_path %></p>
             <p class="d-none" data-insert-code-target="repo"> <%= @repo_name%></p>
@@ -76,7 +73,7 @@
             </div>
             <div class="link-edit-card">
               <% if policy(@bounty).edit? %>
-              <p class="text-decoration-none"><%= link_to "Edit this bounty", edit_bounty_path(@bounty), class: "button-create text-decoration-none link-edit-green",  data: { bs_toggle: "modal", bs_target:"#editModal"}%> </p>
+              <p class="text-decoration-none"><%= link_to "Edit this bounty", edit_bounty_path(@bounty), class: "button-create text-decoration-none link-edit-green",  data: { bs_toggle: "modal", bs_target:"#editBountyModal"}%> </p>
               <% end %>
             </div>
           </div>
