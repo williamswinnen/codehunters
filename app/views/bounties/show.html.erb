@@ -184,9 +184,10 @@
           <div class="container-chatroom"
             data-controller="chatroom-subscription"
             data-chatroom-subscription-solution-id-value="<%= solution.id %>"
+            data-chatroom-subscription-current-user-id-value="<%= current_user.id %>"
             >
             <div class="d-flex justify-content-between">
-              <h1>#Solution id: <%= solution.id %> </h1>
+              <h1 class="chat-title">#Solution id: <%= solution.id %> </h1>
               <button class="btn btn-flat" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample<%=solution.id%>" aria-expanded="false" aria-controls="collapseExample<%=solution.id%>">
                     X
               </button>
@@ -194,8 +195,10 @@
 
             <div class="messages" data-chatroom-subscription-target="messages">
               <% solution.messages.each do |message| %>
-                <div id="message-<%= message.id %>">
-                  <%= render "messages/message", message: message %>
+                <div class="message-row d-flex <%= message.sender?(current_user) ? 'justify-content-end' : 'justify-content-start' %>">
+                  <div class="<%= message.sender?(current_user) ? 'sender-style' : 'receiver-style' %>">
+                    <%= render "messages/message", message: message %>
+                  </div>
                 </div>
               <% end %>
             </div>

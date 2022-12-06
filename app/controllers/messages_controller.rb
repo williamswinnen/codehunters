@@ -4,11 +4,13 @@ class MessagesController < ApplicationController
     @message = Message.new(message_params)
     @message.solution = @solution
     @message.user = current_user
-  authorize @message
+    authorize @message
     if @message.save
       ChatroomChannel.broadcast_to(
         @solution,
-        render_to_string(partial: "message", locals: {message: @message})
+        message: render_to_string(partial: "message", locals: { message: @message }),
+        sender_id: @message.user.id
+        # render_to_string(partial: "message", locals: {message: @message})
       )
       head :ok
     else

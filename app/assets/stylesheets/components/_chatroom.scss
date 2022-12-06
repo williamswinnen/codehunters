@@ -1,6 +1,16 @@
+.messages {
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  scrollbar-width: none;  /* Firefox */
+
+}
+
+.messages::-webkit-scrollbar {
+  display: none;  /* Safari and Chrome */
+}
+
 .container-chatroom {
   color: black;
-  background: white;
+  background: #6f42c1;
   // margin-top: 9px;
   // height: calc(100vh - 75px);
   height: 70vh;
@@ -12,8 +22,20 @@
   // position: fixed;
   // bottom: 0;
   // right: 1vw;
+  border: 1px solid #4CAF50;
+  border-radius: 8px;
 
-
+  .chat-title{
+    text-align: center;
+    border-right: #4CAF50 2px solid;
+    border-bottom: #4CAF50 2px solid;
+    width: 100%;
+  }
+  .btn-flat {
+    font-size: 2rem;
+    font-weight: bolder;
+    border-bottom:  #4CAF50 2px solid;
+  }
 
   h1 {
     border-bottom: 1px solid $gray-200;
