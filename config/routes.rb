@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: "pages#home"
+  get "/smart", to: "pages#smart"
+
   resources :users, only: :show
   get "/dashboard", to: "dashboard#dashboard"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
