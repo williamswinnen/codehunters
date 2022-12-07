@@ -39,7 +39,7 @@
                 </div>
                 <div class="bounty-price">
                   <p class="title">Price </p>
-                  <p class="content"><%= bounty.price_cents %> $</p>
+                  <p class="content"><%= bounty.price_cents %> eth.</p>
                 </div>
                 <div class="bounty-difficulty">
                   <p class="title">Difficulty level </p>
@@ -80,7 +80,7 @@
                 </div>
                 <div class="bounty-price">
                   <p class="title">Price </p>
-                  <p class="content"><%= bounty.price_cents %> $</p>
+                  <p class="content"><%= bounty.price_cents %> eth.</p>
                 </div>
                 <div class="bounty-difficulty">
                   <p class="title">Difficulty level </p>
@@ -121,7 +121,7 @@
                 </div>
                 <div class="bounty-price">
                   <p class="title">Price </p>
-                  <p class="content"><%= bounty.price_cents %> $</p>
+                  <p class="content"><%= bounty.price_cents %> eth.</p>
                 </div>
                 <div class="bounty-difficulty">
                   <p class="title">Difficulty level </p>
@@ -242,6 +242,7 @@
       <div class="leader-bord d-flex">
         <div class="col-6 mx-3">
             <% @users.order(ranking: :desc).limit(10).each_with_index do |u, i|%>
+
               <div class = "leaderboard-card d-flex justify-content-between px-2">
                 <div class="d-flex justify-content-between w-25">
                   <%= i+=1%>
@@ -249,8 +250,11 @@
                 </div>
                 <div class="d-flex justify-content-between w-40">
                   <p><%= u.username%></p>
-                  <p><%= u.ranking%></p>
+                  <p><%= u.ranking.round(2)%></p>
                 </div>
+
+              
+
               </div>
             <%end%>
         </div>
@@ -258,8 +262,11 @@
           <div class="score-board">
             <h3 class="text-white text-center">This is your score board</h3>
                 <div class="card-description d-flex justify-content-evenly mb-3">
-                    <p class="card-text price-card mx-2 p-4"> So far you've earned <span class="light-price"><%= @user.prize_money %>$</p>
+
+                    <p class="card-text price-card mx-2 p-4"> So far you've earned <span class="light-price"><%= @user.prize_money %> ethereum</p>
                     <p class="card-text difficulty-card p-4 mx-2">You've solved <span class="light-price"><%= @user.solutions.where(status:"accepted").count %> </span>bounties</p>
+                    
+
                     <p class="card-text deadline-card mb-3 p-4 mx-2">And earned <span class="light-price"><%= @user.ranking %> points</span></p>
                 </div>
                 <p class="text-center text-white"> YOU ARE CURRENTLY <span class="light-price">N°<%= @users.order(ranking: :desc).index(current_user) + 1 %></span> IN THE RANKINGS</p>

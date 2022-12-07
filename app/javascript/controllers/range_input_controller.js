@@ -6,40 +6,30 @@ export default class extends Controller {
   static targets = [ 'range', 'minInput', 'maxInput']
   static values = {
     min: Number,
-    max: Number
+    max: Number,
+    maxPrice: Number
   }
   connect() {
+    console.log(this.minValue, this.maxValue)
     noUiSlider.create(this.rangeTarget, {
       start: [this.minValue, this.maxValue],
       connect: true,
-      margin: 1,
-      step: 1,
+      step: 0.00001,
       range: {
         'min': 0,
-        'max': 1000
+        'max': this.maxPriceValue
       },
       tooltips: [
-        wNumb({decimals: 1}),
-        wNumb({decimals: 1})
+        wNumb({decimals: 5}),
+        wNumb({decimals: 5})
       ],
     })
 
-    this.rangeTarget.noUiSlider.on('set', (e) => {
-      const min = e[0]
-      const max = e[1]
-
-      this.#updateInputsValues(min, max)
-    })
-
-
+    this.rangeTarget.noUiSlider.on('set', this.#updateInputsValues.bind(this))
   }
 
-  #updateInputsValues(min, max) {
-    this.minInputTarget.value = min
-    this.maxInputTarget.value = max
-  }
-
-  updateCheckBoxes() {
-
+  #updateInputsValues(values, handle, unencoded, tap, positions, noUiSlider) {
+    this.minInputTarget.value = unencoded[0]
+    this.maxInputTarget.value = unencoded[1]
   }
 }
