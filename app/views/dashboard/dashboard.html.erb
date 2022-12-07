@@ -246,7 +246,7 @@
                 <%= i+=1%>
                 <%=cl_image_tag u.photo.key, style:"width: 50px; height: 50px; border-radius: 50%;" %>
                 <%= u.username%>
-                <%= u.ranking%>
+                <%= u.ranking.round(2)%>
               </div>
             <%end%>
         </div>
@@ -254,7 +254,7 @@
           <div class="score-board">
             <h3 class="text-white text-center">This is your score board</h3>
                 <div class="card-description d-flex justify-content-evenly mb-3">
-                    <p class="card-text price-card mx-2 p-4"> So far you earned <span class="light-price"><%= @user.prize_money %>$</p>
+                    <p class="card-text price-card mx-2 p-4"> So far you earned <span class="light-price"><%= @user.prize_money %> ethereum</p>
                     <p class="card-text difficulty-card p-4 mx-2">Solving <span class="light-price"><%= @user.solutions.where(status:"accepted").count %></span>bounties</p>
                     <p class="card-text deadline-card mb-3 p-4 mx-2">And earned <span class="light-price"><%= @user.ranking %> points</span></p>
                 </div>
