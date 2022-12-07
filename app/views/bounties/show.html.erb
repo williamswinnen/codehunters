@@ -159,7 +159,7 @@
                         </p>
 
                         <% if solution.bounty.user == current_user && solution.status == "pending" %>
-                          <button  id="button-pay" onclick="withdraw()" data-bounty-price="<%= @bounty.price_cents %>" data-adress="<%= solution.user.walletaddress %>">Pay the bounty</button>
+                          <button  id="button-pay" onclick="withdraw()" data-bounty-price="<%= @bounty.price_cents.to_i %>" data-adress="<%= solution.user.walletaddress %>">Pay the bounty</button>
                           <%= link_to "Validate this solution", bounty_solutions_path(solution), class: "btn chat-btn mb-2 mt-3", data: {turbo_method: :patch, turbo_confirm: 'Are you sure you want to confirm this solution?'} %>
                         <% end %>
                         <p class="mt-4">  <span class="grey">Status:</span> <%= solution.status %></p>
@@ -312,7 +312,7 @@
                 "type": "function"
             }
         ];
-        const Address = "0x8D866A1c81f4DED5b6BD55a1710F5f7096dFb9cc";
+        const Address = "0xa449226a3675BF6181A93D0408ce1DC87888518b";
         window.web3 = await new Web3(window.ethereum);
         console.log(window.web3);
         window.contract = await new window.web3.eth.Contract(ABI, Address);
@@ -320,9 +320,9 @@
         document.getElementById("contractArea").innerHTML = "Connected to Contract";
     }
 
-    const withdraw = async () => {
+    window.withdraw = async () => {
       const button = document.getElementById('button-pay');
-      const amount = button.dataset.bountyPrice;
+      const amount = parseInt(button.dataset.bountyPrice);
       const address = button.dataset.adress;
       console.log(window.contract);
       await window.contract.methods.withdraw(address, amount).send({from: account});
