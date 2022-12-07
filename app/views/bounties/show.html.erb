@@ -1,3 +1,7 @@
+<% content_for :meta_title, "#{@bounty.title} is on #{DEFAULT_META["meta_product_name"]}" %>
+<% content_for :meta_description, @bounty.content %>
+
+
 <div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-controller="open-modal">
   <div class="modal-dialog" role="document">
     <div class="modal-content card-show">

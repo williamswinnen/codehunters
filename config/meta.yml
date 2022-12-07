@@ -1,0 +1,5 @@
+meta_product_name: "Code Hunter"
+meta_title: "Code Hunter - Solve bugs, receive experience and get paid"
+meta_description: "Post a bug with a bounty or post a solution to a bounty and get paid"
+meta_image: "simple circle transparent.png" # should exist in `app/assets/images/`
+# twitter_account: "@product_twitter_account"   # required for Twitter Cards
