@@ -1,5 +1,3 @@
-
-
 <div class="navbar-container">
   <div class="home-navbar <%= "home-transparent" if action_name == "home" %>" id="">
 
@@ -21,25 +19,24 @@
         </li>
         <li class="nav-item dropdown notification-ui show" data-controller="notifications", style="
     margin-top: 1em; margin-right: 0.5em;">
-
-            <p class="nav-link dropdown-toggle notification-ui_icon" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"   data-action="click->notifications#showNotifications">
+            <p class="nav-link dropdown-toggle notification-ui_icon" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"   data-action="click->notifications#showNotifications">
                 <i data-action="click->notifications#removeGreen" class="fa fa-bell"></i>
                 <span class="unread-notification d-none" id="pastille"></span>
-            </p>
-            <div class="dropdown-menu notification-ui_dd show d-none" aria-labelledby="navbarDropdown" id="notifs">
-                <div class="notification-ui_dd-header dropdown-item">
-                    <h3 class="text-center">Notifications</h3>
-                </div>
-                <div class="notification-ui_dd-content dropdown-item">
-                    <div class="notification-list notification-list--unread">
-                        <div class="notification-list_detail">
-                            <%current_user.notifications.each do |notif|%>
-                            <p><%=notif.content%></p>
-                            <%end %>
+                <div class="dropdown-menu notification-ui_dd show d-none" aria-labelledby="navbarDropdown" id="notifs" style="margin-right: 100em;">
+                    <div class="notification-ui_dd-header dropdown-item">
+                        <h3 class="text-center">Notifications</h3>
+                    </div>
+                    <div class="notification-ui_dd-content dropdown-item">
+                        <div class="notification-list notification-list--unread">
+                            <div class="notification-list_detail">
+                                <%current_user.notifications.each do |notif|%>
+                                <p><%=notif.content%></p>
+                                <%end %>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </p>
         </li>
         <li class="nav-item dropdown">
           <% if current_user.photo.attached? %>

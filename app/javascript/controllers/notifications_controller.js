@@ -11,17 +11,7 @@ export default class extends Controller {
   addNotification(event){
     console.log("okay");
     const pastille = document.getElementById("pastille");
-    const name = document.getElementById("name").innerText;
-    const notifs = document.getElementById("notifs");
-    const notif = `<div class='notification-list dropdown-item ml-2'>
-    <div class='notification-list_detail'>
-        <p><b>${name}</b> proposed a solution to your <span>Bounty</span></p>
-    </div>
-    </div>`;
-    console.log(notifs);
-    notifs.insertAdjacentHTML("beforeend", notif);
     pastille.classList.remove("d-none");
-
   }
 
   showNotifications(event) {

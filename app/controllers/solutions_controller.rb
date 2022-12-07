@@ -23,7 +23,7 @@ class SolutionsController < ApplicationController
     if @solution.save
       Notification.create(
       user: @solution.bounty.user,
-      content: "#{current_user.username} proposed a solution on bounty :(#{@bounty.content})")
+      content: "#{current_user.username} added a solution on my bounty")
       redirect_to bounty_path(@bounty)
     else
       @solutions = @bounty.user == current_user ? Solution.where(bounty: @bounty) : current_user.solutions.where(bounty: @bounty)
