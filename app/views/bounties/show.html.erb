@@ -159,7 +159,7 @@
                         </p>
 
                         <% if solution.bounty.user == current_user && solution.status == "pending" %>
-                          <button class="green-create" id="button-pay" onclick="withdraw()" data-bounty-price="<%= @bounty.price_cents %>" data-adress="<%= solution.user.walletaddress %>">WITHDRAW ETHER TO ANY ADDRESS</button>
+                          <button  id="button-pay" onclick="withdraw()" data-bounty-price="<%= @bounty.price_cents %>" data-adress="<%= solution.user.walletaddress %>">Pay the bounty</button>
                           <%= link_to "Validate this solution", bounty_solutions_path(solution), class: "btn chat-btn mb-2 mt-3", data: {turbo_method: :patch, turbo_confirm: 'Are you sure you want to confirm this solution?'} %>
                         <% end %>
                         <p class="mt-4">  <span class="grey">Status:</span> <%= solution.status %></p>
