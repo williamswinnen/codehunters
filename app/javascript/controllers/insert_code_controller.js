@@ -15,7 +15,6 @@ export default class extends Controller {
     const repo = this.repoTarget.innerText.replace(/\s/g, "");
     const githubToken = this.codeTarget.dataset.githubToken;
     const sha_url = `https://api.github.com/repos/${owner}/${repo}/contents/${path}`
-    console.log(sha_url)
     const headers = {
       "Authorization": `Bearer ${githubToken}`
     }

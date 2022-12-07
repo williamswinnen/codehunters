@@ -1,6 +1,7 @@
 class BountiesController < ApplicationController
   before_action :set_bounty, only: [:edit, :show, :update]
   def index
+    @notifications = Notification.all
     @bounties = policy_scope(Bounty)
     @min_price = @bounties.sort_by(&:price_cents).first.price_cents
     @max_price = @bounties.sort_by(&:price_cents).last.price_cents

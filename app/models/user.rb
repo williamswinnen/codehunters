@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :messages, dependent: :destroy
   has_many :solutions, dependent: :destroy
   has_many :homeworks, dependent: :destroy
+  has_many :notifications, dependent: :destroy
 
   has_one_attached :photo
 

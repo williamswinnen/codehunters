@@ -10,7 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_07_115443) do
+
+ActiveRecord::Schema[7.0].define(version: 2022_12_07_154113) do
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -76,6 +78,14 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_07_115443) do
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
+  create_table "notifications", force: :cascade do |t|
+    t.string "content"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_notifications_on_user_id"
+  end
+
   create_table "solutions", force: :cascade do |t|
     t.text "content"
     t.string "status", default: "pending"
@@ -111,6 +121,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_07_115443) do
   add_foreign_key "homeworks", "users"
   add_foreign_key "messages", "solutions"
   add_foreign_key "messages", "users"
+  add_foreign_key "notifications", "users"
   add_foreign_key "solutions", "bounties"
   add_foreign_key "solutions", "users"
 end
