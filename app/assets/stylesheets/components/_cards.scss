@@ -140,8 +140,10 @@ a:hover {
 }
 
 .overview {
+
   code{
     white-space: pre-wrap;
+    color: #F3EFE0;
   }
 
   .coding-lines {
@@ -149,5 +151,6 @@ a:hover {
     overflow: hidden;
     overflow-y: scroll;
     border-radius: 4px;
+    background-color: #434242;
   }
 }
