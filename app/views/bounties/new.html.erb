@@ -4,6 +4,7 @@
     <%= simple_form_for (@bounty) do |f| %>
       <span class="formfont" ><%= f.input :title%></span>
       <span class="formfont"><%= f.input :content, :placeholder => "Detail your coding problem" %></span>
+      <span class="formfont"><%= f.input :smartcontractaddress, :placeholder => "Smart contract address", :label => "Smart contract adress" %></span>
       <span class="formfont"><%= f.input :price_cents, :placeholder => "What price are you willing to pay?" %></span>
       <span class="formfont"><%= f.input :difficulty_level %></span>
       <%# <span class="formfont"><%= f.input :deadline, :input_html => {:value => Time.now}, start_year: Time.now.year, start_month: Time.now.month, start_day: Time.now.day</span> %>
