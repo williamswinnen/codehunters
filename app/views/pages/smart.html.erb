@@ -87,7 +87,7 @@
                 "type": "function"
             }
         ];
-        const Address = "0xE7B17dd54bF1aE4f26A2F2Bee9118A53ad718918";
+        const Address = "0x8D866A1c81f4DED5b6BD55a1710F5f7096dFb9cc";
         window.web3 = await new Web3(window.ethereum);
         console.log(window.web3);
         window.contract = await new window.web3.eth.Contract(ABI, Address);
@@ -97,7 +97,7 @@
 
     const getContractAccount = async () => {
         const data = await window.contract.methods.getAddress().call();
-        document.getElementById("contractAccount").innerHTML = `Contract Account: ${data}`;
+        document.getElementById("contractAccount").innerHTML = `Connected to contract Account: ${data}`;
     }
 
     const getBalanceApple = async () => {
