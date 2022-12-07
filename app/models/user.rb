@@ -17,7 +17,7 @@ class User < ApplicationRecord
 
     self.solutions.each do |solution|
       if solution.status == "accepted"
-        self.ranking += solution.bounty.difficulty_level * solution.bounty.price_cents
+        self.ranking += solution.bounty.difficulty_level * (solution.bounty.price_cents * 1000)
       end
     end
     self.save

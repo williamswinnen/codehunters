@@ -1,30 +1,26 @@
-<div class="container new_bounty">
-  <div class="col-4 offset-4 my-5 pb-5" style="padding-bottom:200px">
-    <h5 class="text-center">Create a <span class="green">bounty</span></h5>
-    <%= simple_form_for (@bounty) do |f| %>
-      <span class="formfont" ><%= f.input :title%></span>
-      <span class="formfont"><%= f.input :content, :placeholder => "Detail your coding problem" %></span>
-      <div>
-        <button type="button", onclick="connectContract(),getContractAccount()">Connect to contract</button>
-        <p id="contractAccount">Contract Account: Not Connected to Contract</p>
-      </div>
-      <div id="writeArea">
-        <span class="formfont" id="depositInput"><%= f.input :price_cents, id:"depositInput", :placeholder => "What price are you willing to pay?" %></span>
-        <button type="button" onclick="depositContract()">Send money to contract</button>
-      </div>
-      <span class="formfont"><%= f.input :difficulty_level %></span>
-      <%# <span class="formfont"><%= f.input :deadline, :input_html => {:value => Time.now}, start_year: Time.now.year, start_month: Time.now.month, start_day: Time.now.day</span> %>
-      <span class="formfont"><%= f.input :deadline, as: :string, input_html: { data: { controller: 'flatpickr' } } %></span>
-      <span class="formfont"><%= f.input :github_repo, :placeholder => "Link to your code"%></span>
-      <%= f.submit class: 'button2' %>
-    <% end %>
-    <div style="margin-top:30px">
-      <%= link_to "back to all bounties", bounties_path %>
-    </div>
-  </div>
+<div id="readArea">
+      <button onclick="connectMetamask()">CONNECT TO METAMASK</button>
+      <p id="userArea">Status: Not connected to Metamask</p>
+
+      <button onclick="connectContract()">CONNECT TO CONTRACT</button>
+      <p id="contractArea">Status: Not connected to Contract</p>
+
+      <button onclick="getContractAccount()"> GET CONTRACT ACCOUNT </button>
+      <p id="contractAccount">Contract Account: Not Connected to Contract</p>
+
+      <button onclick="getBalanceApple()">GET BALANCE OF THE CONTRACT</button>
+      <p id="balanceArea">Balance: Not Connected to Contract</p>
+
 </div>
 
- <%# :placeholder => "What is your wished deadline" %>
+<div id="writeArea">
+    <button onclick="depositContract()">Send ether to the Contract</button><br>
+    <input type="number" id="depositInput" placeholder="Enter Amount"><br> <br>
+
+    <button onclick="withdraw()">WITHDRAW ETHER TO ANY ADDRESS</button> <br>
+    <input type="text" id="addressInput" placeholder="Enter Address"> <br>
+    <input type="number" id="amountInput" placeholder="Enter Amount">
+</div>
 
 <script>
 
@@ -101,12 +97,23 @@
 
     const getContractAccount = async () => {
         const data = await window.contract.methods.getAddress().call();
-        document.getElementById("contractAccount").innerHTML = `Contract Account: ${data}`;
+        document.getElementById("contractAccount").innerHTML = `Connected to contract Account: ${data}`;
+    }
+
+    const getBalanceApple = async () => {
+        const data = await window.contract.methods.getBalance().call();
+        document.getElementById("balanceArea").innerHTML = `Contract Balance: ${data}`;
     }
 
     const depositContract = async () => {
         const amount = document.getElementById("depositInput").value;
         await window.contract.methods.deposit().send({from: account, value: amount});
+    }
+
+    const withdraw = async () => {
+        const amount = document.getElementById("amountInput").value; // get amoubt from validation view
+        const address = document.getElementById("addressInput").value; // get address from validation view
+        await window.contract.methods.withdraw(address, amount).send({from: account});
     }
 
 </script>

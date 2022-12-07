@@ -10,7 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema[7.0].define(version: 2022_12_07_154113) do
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -44,7 +46,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_07_154113) do
 
   create_table "bounties", force: :cascade do |t|
     t.text "content"
-    t.integer "price_cents"
+    t.float "price_cents"
     t.integer "difficulty_level"
     t.date "deadline"
     t.string "github_repo"
@@ -53,6 +55,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_07_154113) do
     t.datetime "updated_at", null: false
     t.string "title"
     t.string "status", default: "pending"
+    t.string "smartcontractaddress"
     t.index ["user_id"], name: "index_bounties_on_user_id"
   end
 
@@ -105,7 +108,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_07_154113) do
     t.datetime "updated_at", null: false
     t.string "username"
     t.string "photo"
-    t.integer "ranking"
+    t.float "ranking"
+    t.string "walletaddress"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

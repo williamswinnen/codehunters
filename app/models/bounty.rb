@@ -3,7 +3,6 @@ class Bounty < ApplicationRecord
   has_many :homeworks, dependent: :destroy
   has_many :solutions, dependent: :destroy
 
-  monetize :price_cents
 
   validates :content, :price_cents, :github_repo, :title, presence: true
   validates :difficulty_level, inclusion: { in: (1..5),

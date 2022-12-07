@@ -8,8 +8,13 @@
       <% if user_signed_in? %>
         <li class="nav-item">
           <%= link_to "/bounties/new", class:"text-decoration-none" do %>
-          <p  class="green-create" >Create a bounty</p>
+            <p  class="green-create" >Create a bounty</p>
           <%end %>
+        </li>
+        <li class="nav-item">
+          <button onclick="connectMetamask(), connectContract()" class="green-create">Connect to Metamask</button>
+          <p id="userArea">Status: Not connected to Metamask</p>
+          <p id="contractArea">Status: Not connected to Contract</p>
         </li>
         <li class="nav-item active">
           <%= link_to "Bounties", "/bounties", class: "nav-link" %>
@@ -56,6 +61,5 @@
         <%= link_to "Login", new_user_session_path, class: "nav-link" %>
       <% end %>
     </ul>
+  </div>
 </div>
-</div>
-<%# current_user.photo (Don't delete) %>
