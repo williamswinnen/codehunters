@@ -12,47 +12,47 @@ User.destroy_all
 puts "destroying users & bounties"
 puts "creating users & bounties"
 
-user = User.create!(email: "default@default.com", password: "123456", username: "Michel")
+user = User.create!(email: "default@default.com", password: "123456", username: "Michel", walletaddress: "0x52bCbCe9cD56c539107d2305c48F3c579d43d599")
 user.photo.attach(io: URI.open("https://avatars.githubusercontent.com/u/115413024?v=4"), filename: "michel.png", content_type: "image/png")
 user.save!
 
-user1 = User.create!(email: "default1@default.com", password: "123456", username: "Gwendolyne")
+user1 = User.create!(email: "default1@default.com", password: "123456", username: "Gwendolyne", walletaddress: "0xCD417A2F57eD3e0c961f1F74D61b4F0BDB6c1533")
 user1.photo.attach(io: URI.open("https://avatars.githubusercontent.com/u/96949079?v=4"), filename: "Gwendolyne.png", content_type: "image/png")
 user1.save!
 
-user2 = User.create!(email: "default2@default.com", password: "123456", username: "Josianne")
+user2 = User.create!(email: "default2@default.com", password: "123456", username: "Josianne", walletaddress: "0xCD417A2F57eD3e0c961f1F74D61b4F0BDB6c1533")
 user2.photo.attach(io: URI.open("https://avatars.githubusercontent.com/u/106176972?v=4"), filename: "Josianne.png", content_type: "image/png")
 user2.save!
 
-user3 = User.create!(email: "default3@default.com", password: "123456", username: "Bernard")
+user3 = User.create!(email: "default3@default.com", password: "123456", username: "Bernard", walletaddress: "0xCD417A2F57eD3e0c961f1F74D61b4F0BDB6c1533")
 user3.photo.attach(io: URI.open("https://avatars.githubusercontent.com/u/115095838?v=4"), filename: "Bernard.png", content_type: "image/png")
 user3.save!
 
-user4 = User.create!(email: "default4@default.com", password: "123456", username: "Superliver")
+user4 = User.create!(email: "default4@default.com", password: "123456", username: "Superliver", walletaddress: "0xCD417A2F57eD3e0c961f1F74D61b4F0BDB6c1533")
 user4.photo.attach(io: URI.open("https://avatars.githubusercontent.com/u/115033783?v=4"), filename: "Superliver.png", content_type: "image/png")
 user4.save!
 
-user5 = User.create!(email: "default5@default.com", password: "123456", username: "Tocard")
+user5 = User.create!(email: "default5@default.com", password: "123456", username: "Tocard", walletaddress: "0xCD417A2F57eD3e0c961f1F74D61b4F0BDB6c1533")
 user5.photo.attach(io: URI.open("https://avatars.githubusercontent.com/u/115413668?v=4"), filename: "Tocard.png", content_type: "image/png")
 user5.save!
 
-user6 = User.create!(email: "default6@default.com", password: "123456", username: "gasp_du_62")
+user6 = User.create!(email: "default6@default.com", password: "123456", username: "gasp_du_62", walletaddress: "0xCD417A2F57eD3e0c961f1F74D61b4F0BDB6c1533")
 user6.photo.attach(io: URI.open("https://avatars.githubusercontent.com/u/114876925?v=4"), filename: "gasp_du_62.png", content_type: "image/png")
 user6.save!
 
-user7 = User.create!(email: "default7@default.com", password: "123456", username: "Seisen")
+user7 = User.create!(email: "default7@default.com", password: "123456", username: "Seisen", walletaddress: "0xCD417A2F57eD3e0c961f1F74D61b4F0BDB6c1533")
 user7.photo.attach(io: URI.open("https://avatars.githubusercontent.com/u/89862895?v=4"), filename: "Seisen.png", content_type: "image/png")
 user7.save!
 
-user8 = User.create!(email: "default8@default.com", password: "123456", username: "Tim")
+user8 = User.create!(email: "default8@default.com", password: "123456", username: "Tim", walletaddress: "0xCD417A2F57eD3e0c961f1F74D61b4F0BDB6c1533")
 user8.photo.attach(io: URI.open("https://avatars.githubusercontent.com/u/59280703?v=4"), filename: "Tim.png", content_type: "image/png")
 user8.save!
 
-user9 = User.create!(email: "default9@default.com", password: "123456", username: "Diane")
+user9 = User.create!(email: "default9@default.com", password: "123456", username: "Diane", walletaddress: "0xCD417A2F57eD3e0c961f1F74D61b4F0BDB6c1533")
 user9.photo.attach(io: URI.open("https://avatars.githubusercontent.com/u/43373459?v=4"), filename: "Diane.png", content_type: "image/png")
 user9.save!
 
-user10 = User.create!(email: "default10@default.com", password: "123456", username: "Dark_sasuke_XX")
+user10 = User.create!(email: "default10@default.com", password: "123456", username: "Dark_sasuke_XX", walletaddress: "0xCD417A2F57eD3e0c961f1F74D61b4F0BDB6c1533")
 user10.photo.attach(io: URI.open("https://avatars.githubusercontent.com/u/54006203?v=4"), filename: "Dark_sasuke_XX.png", content_type: "image/png")
 user10.save!
 
