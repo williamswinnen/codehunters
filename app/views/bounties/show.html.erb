@@ -47,7 +47,7 @@
             <p class="d-none" data-insert-code-target="repo"> <%= @repo_name%></p>
             <p data-insert-code-target ="url" class="d-none"><%= "https://api.github.com/users/#{@github_name}/repos" %></p>
             <p class="description-text text-white"><%=@bounty.content%></p>
-            <div class="coding-lines bg-dark">
+            <div class="coding-lines ">
 
               <code data-insert-code-target="code" data-github-token="<%= ENV["GITHUB_TOKEN"] %>" ></code>
             </div>
