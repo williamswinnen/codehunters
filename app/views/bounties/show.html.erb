@@ -10,7 +10,7 @@
       </div>
 
       <div class="modal-body">
-                  <%= simple_form_for([@bounty, @solution]) do |f| %>
+                <%= simple_form_for([@bounty, @solution]) do |f| %>
                   <%= f.input :content, :label => "Solution Overview", :placeholder => "Detail your solution" %>
                   <%= f.input :github_repo, :placeholder => "Link to your code"%>
                   <%= f.submit "Create solution", class: 'btn green mt-2' %>
@@ -159,13 +159,14 @@
                         </p>
 
                         <% if solution.bounty.user == current_user && solution.status == "pending" %>
+                          <button  id="button-pay" onclick="withdraw()" data-bounty-price="<%= @bounty.price_cents %>" data-adress="<%= solution.user.walletaddress %>">Pay the bounty</button>
                           <%= link_to "Validate this solution", bounty_solutions_path(solution), class: "btn chat-btn mb-2 mt-3", data: {turbo_method: :patch, turbo_confirm: 'Are you sure you want to confirm this solution?'} %>
                         <% end %>
                         <p class="mt-4">  <span class="grey">Status:</span> <%= solution.status %></p>
                         <div class="solutions-btn-style justify-content-evenly">
                           <% if policy(solution).edit? %>
                           <p>
-                          <%= link_to "Edit your solution", edit_bounty_solution_path(@bounty, solution), class: "text-decoration-none link-back-green", data: {turbo_method: :patch, bs_toggle: "modal", bs_target:"#editModal#{solution.id}"}%>
+                            <%= link_to "Edit your solution", edit_bounty_solution_path(@bounty, solution), class: "text-decoration-none link-back-green", data: {turbo_method: :patch, bs_toggle: "modal", bs_target:"#editModal#{solution.id}"}%>
                           </p>
                           <% end %>
                           <% if policy(solution).destroy? %>
@@ -246,3 +247,85 @@
     <% end %>
   </div>
 </div>
+
+<script>
+    let account;
+    const connectMetamask = async () => {
+        if(window.ethereum !== "undefined") {
+            const accounts = await ethereum.request({method: "eth_requestAccounts"});
+            account = accounts[0];
+            document.getElementById("userArea").innerHTML = `User Account: ${account}`;
+        }
+    }
+
+    const connectContract = async () => {
+        const ABI = [
+            {
+                "inputs": [],
+                "name": "deposit",
+                "outputs": [],
+                "stateMutability": "payable",
+                "type": "function"
+            },
+            {
+                "inputs": [
+                    {
+                        "internalType": "address payable",
+                        "name": "_to",
+                        "type": "address"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "name": "_amount",
+                        "type": "uint256"
+                    }
+                ],
+                "name": "withdraw",
+                "outputs": [],
+                "stateMutability": "nonpayable",
+                "type": "function"
+            },
+            {
+                "inputs": [],
+                "name": "getAddress",
+                "outputs": [
+                    {
+                        "internalType": "address",
+                        "name": "",
+                        "type": "address"
+                    }
+                ],
+                "stateMutability": "view",
+                "type": "function"
+            },
+            {
+                "inputs": [],
+                "name": "getBalance",
+                "outputs": [
+                    {
+                        "internalType": "uint256",
+                        "name": "",
+                        "type": "uint256"
+                    }
+                ],
+                "stateMutability": "view",
+                "type": "function"
+            }
+        ];
+        const Address = "0x8D866A1c81f4DED5b6BD55a1710F5f7096dFb9cc";
+        window.web3 = await new Web3(window.ethereum);
+        console.log(window.web3);
+        window.contract = await new window.web3.eth.Contract(ABI, Address);
+        console.log(window.contract);
+        document.getElementById("contractArea").innerHTML = "Connected to Contract";
+    }
+
+    const withdraw = async () => {
+      const button = document.getElementById('button-pay');
+      const amount = button.dataset.bountyPrice;
+      const address = button.dataset.adress;
+      console.log(window.contract);
+      await window.contract.methods.withdraw(address, amount).send({from: account});
+    }
+
+</script>

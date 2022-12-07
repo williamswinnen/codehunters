@@ -21,6 +21,9 @@ body::-webkit-scrollbar {
   text-align: center;
   width: 80%;
   height: 10vh;
+  #userArea{
+    color: #02BE6E;
+  }
 
   ul {
     margin: 0;
@@ -52,6 +55,7 @@ body::-webkit-scrollbar {
   color: white;
   font-size: 0.7rem;
   margin-bottom: 0rem;
+  border: none;
 }
 
 .green-create:hover {
