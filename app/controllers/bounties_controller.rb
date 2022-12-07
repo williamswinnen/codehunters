@@ -1,6 +1,7 @@
 class BountiesController < ApplicationController
   before_action :set_bounty, only: [:edit, :show, :update]
   def index
+    @notifications = Notification.all
     @bounties = policy_scope(Bounty)
     if params[:query].present?
       sql_query = <<~SQL

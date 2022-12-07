@@ -1,16 +1,16 @@
-<div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-controller="open-modal">
+<div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-controller="open-modal" data-controller="notifications">
   <div class="modal-dialog" role="document">
     <div class="modal-content card-show">
       <div class="modal-header">
         <h2 class="text-center mt-5 mb-4">Propose your <span class="green">solution</span></h2>
       </div>
-
       <div class="modal-body">
-                  <%= simple_form_for([@bounty, @solution]) do |f| %>
-                  <%= f.input :content, :label => "Solution Overview", :placeholder => "Detail your solution" %>
-                  <%= f.input :github_repo, :placeholder => "Link to your code"%>
-                  <%= f.submit "Create solution", class: 'btn green mt-2' %>
-                <% end %>
+        <%= simple_form_for([@bounty, @solution], data: { controller: "notifications", action: "submit->notifications#addNotification", notifications_id: {value: current_user.id}}) do |f| %>
+          <%= f.input :content, :label => "Solution Overview", :placeholder => "Detail your solution" %>
+          <%= f.input :github_repo, :placeholder => "Link to your code"%>
+          <%= f.submit "Create solution", class: 'btn green mt-2' %>
+          <p class="d-none" id="name"> <%=current_user.username %> </p>
+        <% end %>
       </div>
       <div class="modal-footer">
         <a type="button" class="text-decoration-none link-back-green" data-bs-dismiss="modal">Close</a>
@@ -19,13 +19,14 @@
   </div>
 </div>
 
+
 <div class="modal fade" id="editBountyModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content card-show" style="height: 80%">
     <h2 class="text-center" >Edit your Bounty</h2>
       <div class="form mt-2">
         <%= simple_form_for(@bounty) do |f| %>
-          <%= f.input :title%>
+          <%= f.input :title, class:'hs-form-required { color: #0171b2; }'%>
           <%= f.input :content, :placeholder => "What is your coding problem" %>
           <%= f.input :difficulty_level %>
           <%= f.input :github_repo %>

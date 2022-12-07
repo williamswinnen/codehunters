@@ -21,6 +21,9 @@ class SolutionsController < ApplicationController
     @solution.bounty = @bounty
     @solution.user = current_user
     if @solution.save
+      Notification.create(
+      user: @solution.bounty.user,
+      content: "#{current_user.username} proposed a solution on bounty :(#{@bounty.content})")
       redirect_to bounty_path(@bounty)
     else
       @solutions = @bounty.user == current_user ? Solution.where(bounty: @bounty) : current_user.solutions.where(bounty: @bounty)
@@ -35,7 +38,6 @@ class SolutionsController < ApplicationController
   end
 
   def update
-    raise
     @solution = Solution.find(params[:id])
     @solution.update(solution_params)
     authorize @solution

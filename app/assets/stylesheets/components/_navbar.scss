@@ -6,6 +6,8 @@ body::-webkit-scrollbar {
   display: none;  /* Safari and Chrome */
 }
 
+
+
 .navbar-container {
   width: 100vw;
   display: flex;
@@ -57,4 +59,97 @@ body::-webkit-scrollbar {
 .green-create:hover {
   opacity: 0.8;
   color: white;
+}
+
+.notification-ui p:after {
+  display: none;
+  .dropdown-menu  {
+    display: none;
+  }
+}
+
+
+.notification-ui_icon {
+  position: relative;
+}
+
+.notification-ui_icon .unread-notification {
+  display: inline-block;
+  height: 7px;
+  width: 7px;
+  border-radius: 7px;
+  background-color: #66BB6A;
+  position: absolute;
+  top: 7px;
+  left: 12px;
+}
+
+@media (min-width: 900px) {
+  .notification-ui_icon .unread-notification {
+      left: 20px;
+  }
+}
+
+.notification-ui_dd {
+  padding: 0;
+  border-radius: 10px;
+  -webkit-box-shadow: 0 5px 20px -3px rgba(0, 0, 0, 0.16);
+  box-shadow: 0 5px 20px -3px rgba(0, 0, 0, 0.16);
+  border: 0;
+  max-width: 450px;
+}
+
+
+@media (min-width: 900px) {
+  .notification-ui_dd {
+      min-width: 400px;
+      position: absolute;
+      left: -192px;
+      top: 70px;
+  }
+}
+
+.notification-ui_dd:after {
+  content: "";
+  position: absolute;
+  top: -30px;
+  left: calc(50% - 7px);
+  border-top: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-bottom: 15px solid #fff;
+  border-left: 15px solid transparent;
+}
+
+.notification-ui_dd .notification-ui_dd-header {
+  border-bottom: 1px solid #ddd;
+  padding: 15px;
+}
+
+.notification-ui_dd .notification-ui_dd-header h3 {
+  margin-bottom: 0;
+}
+
+.notification-ui_dd .notification-ui_dd-content {
+  max-height: 400px;
+  overflow: auto;
+}
+
+.notification-list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  padding: 20px 0;
+
+  border-bottom: 1px solid #ddd;
+}
+
+.notification-list--unread {
+  position: relative;
+}
+
+
+.notification-list .notification-list_detail p {
+  margin-bottom: 5px;
+  line-height: 1.2;
 }
