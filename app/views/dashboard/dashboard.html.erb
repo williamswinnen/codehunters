@@ -143,7 +143,7 @@
     </div>
   </div>
   <div class="tab-pane fade" id="solutions-tab-pane" role="tabpanel" aria-labelledby="solutions-tab" tabindex="0">
-    <h2 class="text-light mb-5 mt-3 font-weight-bold">All my  <span class="green">accepted solutions</span>:</h2>
+    <h2 class="text-light mb-5 mt-3 font-weight-bold text-center">All my  <span class="green">accepted solutions</span>:</h2>
       <% @user.solutions.where(status:"accepted").each do |solution| %>
       <div class="col-8 offset-2">
       <div class="card-show">
@@ -186,13 +186,13 @@
                       <div class="solution-content mt-4">
                         <span class="grey">Comment:</span>
                         <p> <%= solution.content %></p>
-                        <span class="grey"> See more:</span>
+                        <span class="grey"> See more:</span><br>
                         <div>
                           <p>
                           </p>
                         </div>
                         <p>
-                          <%= link_to solution.github_repo,  class: "card-text text-decoration-none text-white link-github" do %>
+                          <%= link_to solution.github_repo,  class: "card-text text-decoration-none text-white link-github mt-3" do %>
                             <%= solution.github_repo%>
                           <%end %>
                         </p>
@@ -240,13 +240,17 @@
     <h2 class="text-light mb-5 mt-3 font-weight-bold text-center">Leader<span class="green">board</span>:</h2>
     <div class="container ml-1">
       <div class="leader-bord d-flex">
-        <div class="col-8 mx-3">
+        <div class="col-6 mx-3">
             <% @users.order(ranking: :desc).limit(10).each_with_index do |u, i|%>
-              <div class = "leaderboard-card">
-                <%= i+=1%>
-                <%=cl_image_tag u.photo.key, style:"width: 50px; height: 50px; border-radius: 50%;" %>
-                <%= u.username%>
-                <%= u.ranking%>
+              <div class = "leaderboard-card d-flex justify-content-between px-2">
+                <div class="d-flex justify-content-between w-25">
+                  <%= i+=1%>
+                  <%=cl_image_tag u.photo.key, style:"width: 50px; height: 50px; border-radius: 50%;" %>
+                </div>
+                <div class="d-flex justify-content-between w-40">
+                  <p><%= u.username%></p>
+                  <p><%= u.ranking%></p>
+                </div>
               </div>
             <%end%>
         </div>
@@ -254,11 +258,11 @@
           <div class="score-board">
             <h3 class="text-white text-center">This is your score board</h3>
                 <div class="card-description d-flex justify-content-evenly mb-3">
-                    <p class="card-text price-card mx-2 p-4"> So far you earned <span class="light-price"><%= @user.prize_money %>$</p>
-                    <p class="card-text difficulty-card p-4 mx-2">Solving <span class="light-price"><%= @user.solutions.where(status:"accepted").count %></span>bounties</p>
+                    <p class="card-text price-card mx-2 p-4"> So far you've earned <span class="light-price"><%= @user.prize_money %>$</p>
+                    <p class="card-text difficulty-card p-4 mx-2">You've solved <span class="light-price"><%= @user.solutions.where(status:"accepted").count %> </span>bounties</p>
                     <p class="card-text deadline-card mb-3 p-4 mx-2">And earned <span class="light-price"><%= @user.ranking %> points</span></p>
                 </div>
-                <p> YOU ARE CURRENTLY IN THE <%= @users.order(ranking: :desc).index(current_user) + 1 %> PLACE GROS FDP</p>
+                <p class="text-center text-white"> YOU ARE CURRENTLY <span class="light-price">N°<%= @users.order(ranking: :desc).index(current_user) + 1 %></span> IN THE RANKINGS</p>
               </div>
         </div>
       </div>
