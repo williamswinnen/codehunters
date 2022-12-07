@@ -17,9 +17,50 @@
 <div class="tab-content" id="myTabContent">
   <div class="tab-pane fade show active" id="bounties-tab-pane" role="tabpanel" aria-labelledby="bounties-tab" tabindex="0">
     <div class="bounty-dashboard-container">
-      <h2 class="title-dashboard">All my <span class="green">bounties</span>:</h2>
+    <h2 class="title-dashboard">All my <span class="green">pending bounties</span>:</h2>
       <div class="bounties-card" data-controller="scroll-reveal">
-        <% @user.bounties.each_with_index do |bounty, i| %>
+        <% @pending_bounties.each_with_index do |bounty, i| %>
+          <div class="bounty-card reveal"  data-scroll-reveal-target="item"  data-delay="<%= i*50 %>ms" >
+            <%= link_to bounty_path(bounty), class:"flex-grow-1 text-decoration-none" do %>
+              <div class="bounty-info">
+                <div class="bounty-title">
+                  <p class="title-title">Title </p>
+                  <p class="content-title"><%= bounty.title %></p>
+                </div>
+                <div class="bounty-deadline">
+                  <p class="title">Deadline </p>
+                  <p class="content">
+                    <% if bounty.deadline == nil %>
+                      <%= "none" %>
+                    <% else %>
+                      <%= bounty.deadline %>
+                    <% end %>
+                  </p>
+                </div>
+                <div class="bounty-price">
+                  <p class="title">Price </p>
+                  <p class="content"><%= bounty.price_cents %> $</p>
+                </div>
+                <div class="bounty-difficulty">
+                  <p class="title">Difficulty level </p>
+                  <%= image_tag "#{bounty.difficulty_level}-star.png" %>
+                </div>
+              </div>
+            <% end %>
+            <div class="bounty-links">
+              <% if bounty.user.photo.attached? %>
+                <%= cl_image_tag bounty.user.photo.key, class:"avatar-bounty" %>
+              <% else %>
+                <%= image_tag("blank-profile.png") %>
+              <% end %>
+              <p class="title"><%= bounty.user.username %></p>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <h2 class="title-dashboard">All my <span class="green">solved bounties</span>:</h2>
+      <div class="bounties-card" data-controller="scroll-reveal">
+        <%@solved_bounties.each_with_index do |bounty, i| %>
           <div class="bounty-card reveal"  data-scroll-reveal-target="item"  data-delay="<%= i*50 %>ms" >
             <%= link_to bounty_path(bounty), class:"flex-grow-1 text-decoration-none" do %>
               <div class="bounty-info">
