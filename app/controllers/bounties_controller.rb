@@ -2,6 +2,8 @@ class BountiesController < ApplicationController
   before_action :set_bounty, only: [:edit, :show, :update]
   def index
     @bounties = policy_scope(Bounty)
+    @min_price = @bounties.sort_by(&:price_cents).first.price_cents
+    @max_price = @bounties.sort_by(&:price_cents).last.price_cents
     if params[:query].present?
       sql_query = <<~SQL
         bounties.title  ILIKE :query
@@ -14,7 +16,7 @@ class BountiesController < ApplicationController
       sql_query = <<~SQL
         price_cents  BETWEEN :min_value AND :max_value
       SQL
-      @bounties = @bounties.where(sql_query, min_value: params[:min].to_i || 0, max_value: params[:max].to_i||50000)
+      @bounties = @bounties.where(sql_query, min_value: params[:min].to_f || @min_price, max_value: params[:max].to_f||@max_price)
     end
     if params[:difficulty_level].present?
       @bounties = @bounties.where(difficulty_level: params[:difficulty_level].to_i)
