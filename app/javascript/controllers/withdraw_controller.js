@@ -71,7 +71,7 @@ export default class extends Controller {
               "type": "function"
           }
       ];
-      const Address = "0x9b5d6b7301cB38cbaDF27c3FFF055cb5a5E13D37";
+      const Address = "0x8A6B0807949932dd6550A728aF4443156bC82C71";
       window.web3 = await new Web3(window.ethereum);
       //console.log(window.web3);
       window.contract = await new window.web3.eth.Contract(ABI, Address);
@@ -101,7 +101,10 @@ export default class extends Controller {
   withdraw = async () => {
     console.log("pouetWithdraw")
     //const amount = document.getElementById("amountInput").value; // get amoubt from validation view
+    const accounts = await ethereum.request({method: "eth_requestAccounts"});
+    let account = accounts[0];
     const button = document.getElementById('button-pay');
+    console.log(button)
     const amount = parseInt(button.dataset.bountyPrice);
     const address = button.dataset.adress;
     console.log(amount)
