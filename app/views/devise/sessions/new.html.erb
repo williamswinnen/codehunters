@@ -1,4 +1,6 @@
-<div class="col-4 offset-4">
+<div class="col-4 offset-4 p-1">
+<div id="create-bounty">
+  <div class ="pimp">
 <h2 class="text-light mb-5 mt-3 font-weight-bold">Log<span class="green">in</span>:</h2>
 <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), data: { turbo: :false }) do |f| %>
 
@@ -13,8 +15,11 @@
     <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
   </div>
   <div class="form-actions">
-    <%= f.button :submit, "Log in" %>
+    <%= f.button :submit, "Log in", class: "button2 mx-auto d-block" %>
   </div>
 <% end %>
+
 <%= render "devise/shared/links" %>
+</div>
+</div>
 </div>
