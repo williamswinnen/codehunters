@@ -15,7 +15,7 @@
               <button type="button" data-action="click->withdraw#depositContract">Send money to contract</button>
             </div>
           </div>
-        <div class ="create-wrapper">
+        <div class ="create-wrapper m-0">
           <span class="formfont"><%= f.input :difficulty_level, label: false, placeholder: 'Difficulty from 1 to 5' %></span>
           <%# <span class="formfont"><%= f.input :deadline, :input_html => {:value => Time.now}, start_year: Time.now.year, start_month: Time.now.month, start_day: Time.now.day</span> %>
           <span class="formfont"><%= f.input :deadline, as: :string, input_html: { data: { controller: 'flatpickr' } },label: false, placeholder: 'Optional: chose a deadline' %></span>
