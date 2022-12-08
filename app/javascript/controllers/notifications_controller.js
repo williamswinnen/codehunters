@@ -20,7 +20,8 @@ export default class extends Controller {
 
 
   removeGreen(event){
-    console.log("removed by clicking")
-    pastille.classList.add("d-none")
-  }
+    console.log("removed by clicking");
+    pastille.classList.add("d-none");
+}
+
 }
