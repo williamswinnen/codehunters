@@ -5,7 +5,7 @@
   <div class="modal-dialog p-3" role="document">
     <div class="modal-content card-show">
       <div class="modal-header">
-        <h2 class="text-center mt-5 mb-4">Propose your <span class="green">solution</span></h2>
+        <h2 class="text-center mt-5 mb-4">Offer your <span class="green">solution</span></h2>
       </div>
       <div class="modal-body">
 
@@ -179,16 +179,26 @@
           <div class="call-to-action-purple position-sticky top-0" >
             <div class="card-body">
               <div class="card-description d-flex justify-content-evenly mb-3">
-                  <p class="card-text price-card mx-1 p-2"> Price <span class="light-price"><%= @bounty.price_cents %> <br>ETH</p>
-                  <p class="card-text difficulty-card p-2 mx-1">Difficulty <span class="light-price"><%= @bounty.difficulty_level %></span></p>
+                <div class="d-flex flex-column price-card px-2">
+                  <p class="mx-1 p-2 mt-2"> Price </p>
+                  <p class="light-price" style="font-size: 14px;"><%= @bounty.price_cents %> ETH</p>
+                </div>
+                <div class="d-flex flex-column price-card px-2 mx-1">
+                  <p class="p-2 mx-1 mt-2">Difficulty </p>
+                  <p class="light-price" style="font-size: 14px;"><%= @bounty.difficulty_level %></p>
+                </div>
+                <div class="d-flex flex-column price-card px-2">
                   <%if @bounty.deadline.nil?%>
-                    <p class="card-text deadline-card mb-3 p-2 mx-1">Deadline <span class="light-price"> Not defined</span></p>
+                    <p class="mb-3 p-2 mx-1 mt-2">Deadline </p>
+                    <p class="light-price" style="font-size: 14px;"> Not defined</p>
                   <%else %>
-                    <p class="card-text deadline-card mb-3 p-2 mx-1">Deadline <span class="light-price"> <%= @bounty.deadline %></span></p>
+                    <p class="mb-3 p-2 mx-1 mt-2">Deadline </p>
+                    <p class="light-price" style="font-size: 14px;"> <%= @bounty.deadline %></p>
                   <%end %>
+                </div>
               </div>
             </div>
-            <p class="text-center text-decoration-none px-1"> <%= link_to "Offer a solution", "#", class: "button2", data: { bs_toggle: "modal", bs_target:"#createModal"} %> </p>
+            <%= link_to "Offer a solution", "#", class: "d-block button2 text-center text-decoration-none", data: { bs_toggle: "modal", bs_target:"#createModal"} %>
           </div>
       </div>
     </div>
