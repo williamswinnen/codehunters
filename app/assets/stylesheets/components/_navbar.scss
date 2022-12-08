@@ -67,11 +67,15 @@ body::-webkit-scrollbar {
 
 .notification-ui p:after {
   display: none;
-  .dropdown-menu  {
-    display: none;
-  }
 }
 
+.notification-ui_dd-header{
+  background-color: #179a6a !important;
+}
+
+.dropdown-menu{
+  background-color: #179a6a !important;
+}
 
 .notification-ui_icon {
   position: relative;
@@ -84,34 +88,41 @@ body::-webkit-scrollbar {
   border-radius: 7px;
   background-color: #66BB6A;
   position: absolute;
-  top: 7px;
-  left: 12px;
 }
 
 @media (min-width: 900px) {
   .notification-ui_icon .unread-notification {
-      left: 20px;
+      left: 15px;
+      margin-top: 0.4em;
   }
 }
 
 .notification-ui_dd {
-  padding: 24px;
+  font-size: 0.9rem!important;
+  text-align: center!important;
+  padding: 1em;
+  padding-top: 2.5;
+  width: 20vw;
   border-radius: 10px;
   -webkit-box-shadow: 0 5px 20px -3px rgba(0, 0, 0, 0.16);
   box-shadow: 0 5px 20px -3px rgba(0, 0, 0, 0.16);
   border: 0;
-  max-width: 450px;
+  left: -18em;
+  margin-right: 500em;
 }
-
 
 @media (min-width: 900px) {
   .notification-ui_dd {
-      min-width: 400px;
+      min-width: 2em;
       position: absolute;
-      left: -192px;
-      top: 70px;
+      left: -9em;
+      margin-top: 10px;
   }
 }
+
+
+
+
 
 .notification-ui_dd:after {
   content: "";
@@ -120,33 +131,10 @@ body::-webkit-scrollbar {
   left: calc(50% - 7px);
   border-top: 15px solid transparent;
   border-right: 15px solid transparent;
-  border-bottom: 15px solid #fff;
+  border-bottom: 15px solid #179a6a;
   border-left: 15px solid transparent;
 }
 
-.notification-ui_dd .notification-ui_dd-header {
-  border-bottom: 1px solid #ddd;
-  padding: 15px;
-}
-
-.notification-ui_dd .notification-ui_dd-header h3 {
-  margin-bottom: 0;
-}
-
-.notification-ui_dd .notification-ui_dd-content {
-  max-height: 400px;
-  overflow: auto;
-}
-
-.notification-list {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  -webkit-box-pack: justify;
-  -ms-flex-pack: justify;
-  padding: 20px 0;
-
-  border-bottom: 1px solid #ddd;
-}
 
 .notification-list--unread {
   position: relative;
@@ -154,6 +142,20 @@ body::-webkit-scrollbar {
 
 
 .notification-list .notification-list_detail p {
-  margin-bottom: 5px;
+  margin-bottom: 2em;
+  border-bottom: solid;
   line-height: 1.2;
+  padding-bottom:1em;
+}
+
+
+
+.dropdown-item:hover{
+  background-color:  #179a6a !important;
+}
+
+
+.notif-links:hover {
+  color: white;
+  opacity: 0.6;
 }
