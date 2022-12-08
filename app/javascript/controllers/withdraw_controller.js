@@ -5,6 +5,8 @@ export default class extends Controller {
   connect() {
     console.log("ueeeesh");
     let account;
+    this.connectMetamask();
+    this.connectContract();
   }
 
 
@@ -13,7 +15,7 @@ export default class extends Controller {
           const accounts = await ethereum.request({method: "eth_requestAccounts"});
           console.log("ouesh2")
           let account = accounts[0];
-          document.getElementById("userArea").innerHTML = `User Account: ${account}`;
+          document.getElementById("userArea").innerHTML = `${account}`;
       }
   }
 

@@ -1,18 +1,18 @@
 
 <div class="col-6 offset-3">
-  <div class ="pimp">
+  <div class ="pimp" data-controller="withdraw">
     <h5 class="text-center">Create a <span class="green">bounty</span></h5>
       <%= simple_form_for (@bounty) do |f| %>
         <span class="formfont" ><%= f.input :title, label: false, placeholder: 'Title'%></span>
         <span class="formfont"><%= f.input :content, label: false, :placeholder => "Detail your coding problem" %></span>
           <div class ="create-wrapper">
             <div>
-            <button type="button", onclick="connectContract(),getContractAccount()">Connect to contract</button>
-            <p id="contractAccount">Contract Account: Not Connected to Contract</p>
+              <p id="contractAccount">Contract Account: Not Connected to Contract</p>
+              <button type="button", data-action="click->withdraw#connectContract click->withdraw#getContractAccount">Connect to contract</button>
             </div>
             <div id="writeArea">
               <span class="formfont" id="depositInput"><%= f.input :price_cents, id:"depositInput", label: false, :placeholder => "What price are you willing to pay?" %></span>
-              <button type="button" onclick="depositContract()">Send money to contract</button>
+              <button type="button" data-action="click->withdraw#depositContract">Send money to contract</button>
             </div>
           </div>
         <div class ="create-wrapper">
