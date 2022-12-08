@@ -1,6 +1,7 @@
 
 <div class="index-container" data-controller="scroll-reveal">
   <div class="filter-container d-flex flex-column justify-content-center reveal" data-scroll-reveal-target="item">
+        <p class="text-center mb-4">Price range</p>
     <%= form_with url: bounties_path,
                   method: :get,
                   html: {
@@ -8,16 +9,16 @@
                       controller: "range-input",
                       "range-input-min-value" => params[:min]|| @min_price ,
                       "range-input-max-value" => params[:max] || @max_price,
-                      "range-input-max-price-value" => @max_price
+                      "range-input-max-price-value" => @max_price,
+                      class: "pricing-filter"
                     }
                   } do %>
       <div class="price-box" data-range-input-target="range"></div>
       <%= text_field_tag :min, params[:min] || @min_price, 'data-range-input-target' => 'minInput', class: 'd-none' %>
       <%= text_field_tag :max, params[:max] || @max_price, 'data-range-input-target' => 'maxInput', class: 'd-none' %>
-      <p class="text-center">Price range</p>
       <div class="tag-item difficulty-box">
         <p class="mb-3 text-center mt-3">Difficulty level</p>
-        <div class="difficulty-level">
+        <div class="difficulty-level" style="border: #6F42C1 solid 1px;">
           <% (0..4).each do |i|%>
             <input type="checkbox" name="difficulty_level" id="difficulty_level_<%= i+1%>" value="<%= i+1%>" class="tag-selector" >
             <label for="difficulty_level_<%= i+1%>">level <%= i+1%></label>
@@ -35,8 +36,8 @@
     <% end %>
   </div>
   <div class="bounty-container mb-3">
-    <h2 class="title">All <span class="green">open</span> bounties</h2>
-    <div class="input-group rounded mb-3">
+    <h2 class="title my-5 text-center">All <span class="green">open</span> bounties</h2>
+    <div class="input-group rounded ">
       <%= form_with url: bounties_path, method: :get do %>
         <%= text_field_tag :query,
             params[:query],
