@@ -128,58 +128,46 @@
                     </div>
                   </div>
                 </div>
-                <div class="card-show-solutions">
-                  <div class="solution-top d-flex">
-                    <div class="solution-left-top d-flex mx-4">
+                <div class="card-show-solutions solution-top d-flex flex-column">
+                  <div class="solution-left-top d-flex mx-1 justify-content-between align-items-start">
+                    <div class="d-flex">
                       <% if solution.user.photo.attached? %>
                         <%= cl_image_tag solution.user.photo.key, style:"width: 50px; height: 50px; border-radius: 50%;" %>
                       <% else %>
                         <%= image_tag("blank-profile.png")%>
                       <% end %>
+                      <div class="d-flex flex-column ms-2">
+                        <p class="align-self-start username green font-weight-bold mb-0"><%= solution.user.username %></p>
+                        <p class="m-0"><%= solution.user.email %></p>
+                      </div>
                     </div>
-                    <div class="solution-right-top">
-                      <p class="align-self-start username green font-weight-bold"><%= solution.user.username %></p>
-                      <p><%= solution.user.email %></p>
-                      <div class="solution-content mt-4">
-                        <span class="grey">Comment:</span>
-                        <p> <%= solution.content %></p>
-                        <span class="grey"> See more:</span>
-                        <div class="d-flex justify-content-between mt-2">
-                          <a class="card-text text-decoration-none text-white link-github p-2 btn-empty-white" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample<%=solution.id%>" aria-expanded="false" aria-controls="collapseExample<%=solution.id%>">
-                            Chat
-                          </a>
-                          <%= link_to "See the full solution", target: "_blank", class: "card-text text-decoration-none text-white p-2 btn-empty-white", data: {
-                            insert_code_target: "url",
-                            action: "click->insert-code#collect"
-                            } do %>
-                            <i class="fa-brands fa-github"></i>
-                          <%end%>
-                        </div>
-
-
-                        <% if solution.bounty.user == current_user && solution.status == "pending" %>
-
-                          <%= link_to "Validate this solution", bounty_solutions_path(solution), class: "btn chat-btn mb-2 mt-3", data: {turbo_method: :patch, turbo_confirm: 'Are you sure you want to confirm this solution?'} %> <br>
-                          <button id="button-pay", class="btn btn-success text-white" data-action="click->withdraw#withdraw" data-bounty-price="<%= @bounty.price_cents.to_i %>" data-adress="<%= solution.user.walletaddress %>">Pay the bounty</button>
-
-
-
-                        <% end %>
-                        <p class="mt-4">  <span class="grey">Status:</span> <%= solution.status %></p>
-                        <div class="solutions-btn-style justify-content-evenly">
-                          <% if policy(solution).edit? %>
-                          <p>
-                            <%= link_to "Edit your solution", edit_bounty_solution_path(@bounty, solution), class: "text-decoration-none link-back-green", data: {turbo_method: :patch, bs_toggle: "modal", bs_target:"#editModal#{solution.id}"}%>
-                          </p>
-                          <% end %>
-                          <% if policy(solution).destroy? %>
-                          <p>
-                            <%= link_to "Delete your solution", solution_path(solution), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?'}, class: "text-decoration-none link-back-green" %>
-                          </p>
-                          <% end %>
-                        </div>
-                    </div>
+                    <a class="text-decoration-none text-white" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample<%=solution.id%>" aria-expanded="false" aria-controls="collapseExample<%=solution.id%>">
+                      <i class="fa-solid fa-comment-dots" style="font-size: 25px;"></i>
+                    </a>
                   </div>
+                  <div class="d-flex flex-column mb-3 mt-4 align-items-start">
+                    <%= link_to solution.github_repo, target: "_blank", class: "text-decoration-none text-white d-flex align-items-center pb-2 mb-2 border-bottom border-white", data: {
+                      insert_code_target: "url",
+                      action: "click->insert-code#collect"
+                      } do %>
+                        <strong>SEE FULL SOLUTION</strong> <i class="fa-brands fa-github ps-2" style="font-size: 25px;"></i>
+                    <% end %>
+                    <p><i>"<%= solution.content %>"</i></p>
+                  </div>
+                  <div class="d-flex justify-content-between align-items-end">
+                    <div class="badge <% if solution.status == 'accepted' %> bg-success <% elsif solution.status == 'pending' %> bg-secondary <% else %> bg-dark <% end %>" ><%= solution.status %></div>
+                    <div class="d-flex">
+                      <% if solution.bounty.user == current_user && solution.status == "pending" %>
+                        <%= link_to "Validate", validate_solution_path(solution), class: "btn chat-btn me-1", data: {turbo_method: :patch, turbo_confirm: 'Are you sure you want to confirm this solution?'} %>
+                        <button id="button-pay", class="btn btn-success text-white ms-1" onclick="withdraw()" data-bounty-price="<%= @bounty.price_cents.to_i %>" data-adress="<%= solution.user.walletaddress %>">Pay the bounty</button>
+                      <% end %>
+                      <% if policy(solution).edit? %>
+                        <%= link_to "Edit your solution", edit_bounty_solution_path(@bounty, solution), class: "text-decoration-none link-back-green me-1", data: {turbo_method: :patch, bs_toggle: "modal", bs_target:"#editModal#{solution.id}"}%>
+                      <% end %>
+                      <% if policy(solution).destroy? %>
+                        <%= link_to "Delete your solution", solution_path(solution), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?'}, class: "text-decoration-none link-back-green ms-1" %>
+                      <% end %>
+                    </div>
                   </div>
                 </div>
               <% end %>

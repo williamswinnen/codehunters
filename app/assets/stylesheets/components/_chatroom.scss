@@ -109,7 +109,7 @@
 
 .chat-btn {
   background-color: #AC00FF;
-  border-radius: 8px;
+  border-radius: 4px;
   color: white;
 }
 
@@ -117,4 +117,8 @@
 .chat-btn:hover {
   color: white;
   background-color: #C54EFF;
+}
+
+#button-pay {
+  border-radius: 4px;
 }
