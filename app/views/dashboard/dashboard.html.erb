@@ -206,43 +206,53 @@
       </div>
     <% end %>
   </div>
-  <div class="tab-pane fade" id="homework-tab-pane" role="tabpanel" aria-labelledby="homework-tab" tabindex="0">
-    <div class="container">
+  <div class="tab-pane fade container" id="homework-tab-pane" role="tabpanel" aria-labelledby="homework-tab" tabindex="0">
       <h2 class="text-light mb-5 mt-3 font-weight-bold">My  <span class="green">homework</span></h2>
-      <div class="solutions-list">
+      <div class="solutions-list d-flex">
         <% @homeworks.each do |homework| %>
-          <div class="card-show-solutions">
-            <div class="solution-top d-flex">
-              <div class="solution-left-top d-flex mx-4">
-                <% if homework.bounty.user.photo.attached? %>
-                  <%= cl_image_tag homework.bounty.user.photo.key, style:"width: 50px; height: 50px; border-radius: 50%;" %>
-                <% else %>
-                  <%= image_tag("blank-profile.png")%>
+          <div class="card-show-solutions mx-3" style= "width: 40vw;">
+            <div class="solution-top d-flex justify-content-between">
+              <div class="solution-left-top d-flex">
+                <div class="username-photo">
+                  <% if homework.bounty.user.photo.attached? %>
+                    <%= cl_image_tag homework.bounty.user.photo.key, style:"width: 50px; height: 50px; border-radius: 50%;" %>
+                  <% else %>
+                    <%= image_tag("blank-profile.png")%>
+                  <% end %>
+                </div>
+                <p class="align-self-start username green font-weight-bold mt-2 mx-2"><%= homework.bounty.user.username %></p>
+              </div>
+              <div class="remove-homework">
+                <%= link_to bounty_homework_path(homework.bounty, homework), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "text-decoration-none link-edit-green" do  %>
+                    <i class="fa-sharp fa-solid fa-trash"></i>
                 <% end %>
               </div>
-              <div class="solution-right-top">
-                <p class="align-self-start username green font-weight-bold"><%= homework.bounty.user.username %></p>
-                <p><%= homework.bounty.user.email %></p>
-                <div class="solution-content mt-4">
-                  <span class="grey">Title:</span>
-                  <p><%= link_to homework.bounty.title, bounty_path(homework.bounty) %></p>
-                  <span class="grey"> Overview:</span>
-                  <p> <%= homework.bounty.content %></p>
-                  <%= link_to "remove from your homework", bounty_homework_path(homework.bounty, homework), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "button-create text-decoration-none link-edit-green" %>
+            </div>
+              <div class="solution-content mt-4">
+                <span class="grey">Title:</span>
+                <p><%= link_to bounty_path(homework.bounty), class: "homework-link" do %>
+                    <%= homework.bounty.title %>
+                  <% end %>
+                </p>
+                <span class="grey"> Overview:</span>
+                <p> <%= homework.bounty.content %></p>
+                <div class="github">
+                  <p class="grey">Code on :</p>
+                  <%= link_to homework.bounty.github_repo, class: "card-text text-decoration-none text-white" do %>
+                  <i class="fa-brands fa-github"></i>
+                  <%end %>
                 </div>
               </div>
-            </div>
           </div>
         <% end %>
       </div>
-    </div>
   </div>
 
   <div class="tab-pane fade" id="ranking-tab-pane" role="tabpanel" aria-labelledby="ranking-tab" tabindex="0">
     <h2 class="text-light mb-5 mt-3 font-weight-bold text-center">Leader<span class="green">board</span></h2>
-    <div class="container ml-1">
+    <div class="container">
       <div class="leader-bord d-flex">
-        <div class="col-6 mx-3">
+        <div class="col-6" style="margin-right: 1em;">
             <% @users.order(ranking: :desc).limit(10).each_with_index do |u, i|%>
 
               <div class = "leaderboard-card d-flex justify-content-between px-2">
@@ -260,7 +270,7 @@
               </div>
             <%end%>
         </div>
-        <div class="col-6 mx-2 ml-4">
+        <div class="col-6">
           <div class="score-board">
             <h3 class="text-white text-center">This is your score board</h3>
                 <div class="card-description d-flex justify-content-evenly mb-3">
