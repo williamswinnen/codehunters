@@ -1,16 +1,16 @@
 <div class="container new_bounty">
-  <div class="col-4 offset-4 my-5 pb-5" style="padding-bottom:200px">
+  <div class="col-4 offset-4 my-5 pb-5" style="padding-bottom:200px"  data-controller="withdraw">
     <h5 class="text-center">Create a <span class="green">bounty</span></h5>
     <%= simple_form_for (@bounty) do |f| %>
       <span class="formfont" ><%= f.input :title%></span>
       <span class="formfont"><%= f.input :content, :placeholder => "Detail your coding problem" %></span>
       <div>
-        <button type="button", onclick="connectContract(),getContractAccount()">Connect to contract</button>
+        <button type="button", data-action="click->withdraw#connectContract click->withdraw#getContractAccount">Connect to contract</button>
         <p id="contractAccount">Contract Account: Not Connected to Contract</p>
       </div>
       <div id="writeArea">
         <span class="formfont" id="depositInput"><%= f.input :price_cents, id:"depositInput", :placeholder => "What price are you willing to pay?" %></span>
-        <button type="button" onclick="depositContract()">Send money to contract</button>
+        <button type="button" data-action="click->withdraw#depositContract">Send money to contract</button>
       </div>
       <span class="formfont"><%= f.input :difficulty_level %></span>
       <%# <span class="formfont"><%= f.input :deadline, :input_html => {:value => Time.now}, start_year: Time.now.year, start_month: Time.now.month, start_day: Time.now.day</span> %>
@@ -25,88 +25,3 @@
 </div>
 
  <%# :placeholder => "What is your wished deadline" %>
-
-<script>
-
-    let account;
-    const connectMetamask = async () => {
-        if(window.ethereum !== "undefined") {
-            const accounts = await ethereum.request({method: "eth_requestAccounts"});
-            account = accounts[0];
-            document.getElementById("userArea").innerHTML = `User Account: ${account}`;
-        }
-    }
-
-    const connectContract = async () => {
-        const ABI = [
-            {
-                "inputs": [],
-                "name": "deposit",
-                "outputs": [],
-                "stateMutability": "payable",
-                "type": "function"
-            },
-            {
-                "inputs": [
-                    {
-                        "internalType": "address payable",
-                        "name": "_to",
-                        "type": "address"
-                    },
-                    {
-                        "internalType": "uint256",
-                        "name": "_amount",
-                        "type": "uint256"
-                    }
-                ],
-                "name": "withdraw",
-                "outputs": [],
-                "stateMutability": "nonpayable",
-                "type": "function"
-            },
-            {
-                "inputs": [],
-                "name": "getAddress",
-                "outputs": [
-                    {
-                        "internalType": "address",
-                        "name": "",
-                        "type": "address"
-                    }
-                ],
-                "stateMutability": "view",
-                "type": "function"
-            },
-            {
-                "inputs": [],
-                "name": "getBalance",
-                "outputs": [
-                    {
-                        "internalType": "uint256",
-                        "name": "",
-                        "type": "uint256"
-                    }
-                ],
-                "stateMutability": "view",
-                "type": "function"
-            }
-        ];
-        const Address = "0x8D866A1c81f4DED5b6BD55a1710F5f7096dFb9cc";
-        window.web3 = await new Web3(window.ethereum);
-        console.log(window.web3);
-        window.contract = await new window.web3.eth.Contract(ABI, Address);
-        console.log(window.contract);
-        document.getElementById("contractArea").innerHTML = "Connected to Contract";
-    }
-
-    const getContractAccount = async () => {
-        const data = await window.contract.methods.getAddress().call();
-        document.getElementById("contractAccount").innerHTML = `Contract Account: ${data}`;
-    }
-
-    const depositContract = async () => {
-        const amount = document.getElementById("depositInput").value;
-        await window.contract.methods.deposit().send({from: account, value: amount});
-    }
-
-</script>

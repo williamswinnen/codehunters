@@ -49,7 +49,7 @@
 
 <div class="back-container">
   <div class="container ml-1" data-controller="insert-code">
-    <div class="d-flex ">
+    <div class="d-flex"  data-controller="withdraw">
       <div class="col-8 mx-3">
         <p> <%= link_to "Back to the index ↩", bounties_path, class: "text-decoration-none link-back-green"%> </p>
         <div class="card-show">
@@ -159,7 +159,7 @@
                         </p>
 
                         <% if solution.bounty.user == current_user && solution.status == "pending" %>
-                          <button id="button-pay" onclick="withdraw()" data-bounty-price="<%= @bounty.price_cents.to_i %>" data-adress="<%= solution.user.walletaddress %>">Pay the bounty</button>
+                          <button id="button-pay" data-action="click->withdraw#withdraw" data-bounty-price="<%= @bounty.price_cents.to_i %>" data-adress="<%= solution.user.walletaddress %>">Pay the bounty</button>
                           <%= link_to "Validate this solution", bounty_solutions_path(solution), class: "btn chat-btn mb-2 mt-3", data: {turbo_method: :patch, turbo_confirm: 'Are you sure you want to confirm this solution?'} %>
                         <% end %>
                         <p class="mt-4">  <span class="grey">Status:</span> <%= solution.status %></p>
@@ -247,85 +247,3 @@
     <% end %>
   </div>
 </div>
-
-<script>
-    let account;
-    const connectMetamask = async () => {
-        if(window.ethereum !== "undefined") {
-            const accounts = await ethereum.request({method: "eth_requestAccounts"});
-            account = accounts[0];
-            document.getElementById("userArea").innerHTML = `User Account: ${account}`;
-        }
-    }
-
-    const connectContract = async () => {
-        const ABI = [
-            {
-                "inputs": [],
-                "name": "deposit",
-                "outputs": [],
-                "stateMutability": "payable",
-                "type": "function"
-            },
-            {
-                "inputs": [
-                    {
-                        "internalType": "address payable",
-                        "name": "_to",
-                        "type": "address"
-                    },
-                    {
-                        "internalType": "uint256",
-                        "name": "_amount",
-                        "type": "uint256"
-                    }
-                ],
-                "name": "withdraw",
-                "outputs": [],
-                "stateMutability": "nonpayable",
-                "type": "function"
-            },
-            {
-                "inputs": [],
-                "name": "getAddress",
-                "outputs": [
-                    {
-                        "internalType": "address",
-                        "name": "",
-                        "type": "address"
-                    }
-                ],
-                "stateMutability": "view",
-                "type": "function"
-            },
-            {
-                "inputs": [],
-                "name": "getBalance",
-                "outputs": [
-                    {
-                        "internalType": "uint256",
-                        "name": "",
-                        "type": "uint256"
-                    }
-                ],
-                "stateMutability": "view",
-                "type": "function"
-            }
-        ];
-        const Address = "0xa449226a3675BF6181A93D0408ce1DC87888518b";
-        window.web3 = await new Web3(window.ethereum);
-        console.log(window.web3);
-        window.contract = await new window.web3.eth.Contract(ABI, Address);
-        console.log(window.contract);
-        document.getElementById("contractArea").innerHTML = "Connected to Contract";
-    }
-
-    window.withdraw = async () => {
-      const button = document.getElementById('button-pay');
-      const amount = parseInt(button.dataset.bountyPrice);
-      const address = button.dataset.adress;
-      console.log(window.contract);
-      await window.contract.methods.withdraw(address, amount).send({from: account});
-    }
-
-</script>
