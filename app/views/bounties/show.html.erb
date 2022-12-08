@@ -155,7 +155,7 @@
                     <p><i>"<%= solution.content %>"</i></p>
                   </div>
                   <div class="d-flex justify-content-between align-items-end">
-                    <div class="badge bg-secondary"><%= solution.status %></div>
+                    <div class="badge <% if solution.status == 'accepted' %> bg-success <% elsif solution.status == 'pending' %> bg-secondary <% else %> bg-dark <% end %>" ><%= solution.status %></div>
                     <div class="d-flex">
                       <% if solution.bounty.user == current_user && solution.status == "pending" %>
                         <%= link_to "Validate", validate_solution_path(solution), class: "btn chat-btn me-1", data: {turbo_method: :patch, turbo_confirm: 'Are you sure you want to confirm this solution?'} %>
