@@ -11,15 +11,37 @@
             <p  class="green-create" >Create a bounty</p>
           <%end %>
         </li>
-        <li class="nav-item">
-          <button onclick="connectMetamask(), connectContract()" class="green-create">Connect to Metamask</button>
+        <li class="nav-item" data-controller="withdraw">
+          <button data-action="click->withdraw#connectMetamask click->withdraw#connectContract" class="green-create">Connect to Metamask</button>
           <p id="userArea">Status: Not connected to Metamask</p>
+          <p id="contractArea">Status: Not connected to Contract</p>
         </li>
         <li class="nav-item active">
           <%= link_to "Bounties", "/bounties", class: "nav-link" %>
         </li>
         <li class="nav-item">
           <%= link_to "Dashboard", "/dashboard", class: "nav-link" %>
+        </li>
+        <li class="nav-item dropdown notification-ui show" data-controller="notifications", style="
+    margin-top: 1em; margin-right: 0.5em;">
+            <p class="nav-link dropdown-toggle notification-ui_icon" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"   data-action="click->notifications#showNotifications">
+                <i data-action="click->notifications#removeGreen" class="fa fa-bell"></i>
+                <span class="unread-notification d-none" id="pastille"></span>
+                <div class="dropdown-menu notification-ui_dd show d-none" aria-labelledby="navbarDropdown" id="notifs" style="margin-right: 100em;">
+                    <div class="notification-ui_dd-header dropdown-item">
+                        <h3 class="text-center">Notifications</h3>
+                    </div>
+                    <div class="notification-ui_dd-content dropdown-item">
+                        <div class="notification-list notification-list--unread">
+                            <div class="notification-list_detail">
+                                <%current_user.notifications.each do |notif|%>
+                                <p><%=notif.content%></p>
+                                <%end %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </p>
         </li>
         <li class="nav-item dropdown">
           <% if current_user.photo.attached? %>
@@ -28,6 +50,7 @@
             <%= image_tag("blank-profile.png")%>
           <% end %>
           <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+            <%= link_to "Notifications", "#", class: "dropdown-item" %>
             <%= link_to "Bounties", "/bounties", class: "dropdown-item" %>
             <%= link_to "Dashboard", "#", class: "dropdown-item" %>
             <%= link_to "Log out", destroy_user_session_path, class: "dropdown-item", data: {turbo_method: :delete} %>
