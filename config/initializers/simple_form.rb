@@ -159,6 +159,8 @@ SimpleForm.setup do |config|
   # Default class for inputs
   # config.input_class = nil
 
+
+
   # Define the default class of the input wrapper of the boolean input.
   config.boolean_label_class = 'checkbox'
 
