@@ -18,7 +18,62 @@
 }
 
 .create-wrapper{
-display:flex;
+  display:flex;
+  align-items:center;
+  &:not(:last-child) { margin: 0 20px; }
+
 }
 
+#create-bounty {
+  width: 70%;
+  margin: auto;
 
+}
+
+.create-bounty-all {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+
+  .create-bounty-left {
+    height: 400px;
+    width: 50%;
+    max-width: 50%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+  }
+
+  .create-bounty-right {
+    height: 400px;
+    width: 50%;
+    max-width: 50%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+
+    .form-font {
+      margin: 0;
+    }
+    p {
+      margin-left: 20px;
+      font-size: 0.9rem;
+    }
+  }
+  input {
+    font-size: 0.9rem;
+  }
+
+  #depositInput {
+    margin-left: 20px;
+  }
+
+  .green-create {
+    height: fit-content;
+    margin-left: 1rem;
+    width: 11rem;
+    flex-shrink: 0;
+    font-size: 0.9rem;
+  }
+
+}
