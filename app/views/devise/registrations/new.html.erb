@@ -1,4 +1,7 @@
-<h2>Sign up</h2>
+<div class="col-4 offset-4 p-1">
+<div id="create-bounty">
+  <div class ="pimp">
+    <h5 class="text-center">Sign<span class="green">up</span></h5>
 
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), data: { turbo: :false }) do |f| %>
   <%= f.error_notification %>
@@ -7,23 +10,34 @@
    <%= f.input :username,
                 required: true,
                 autofocus: true,
+                label: false,
+                placeholder: "Ton nom de thug",
                 input_html: { autocomplete: "username" }%>
     <%= f.input :email,
                 required: true,
                 autofocus: true,
+                label: false,
+                placeholder: "Ton mail de thug",
                 input_html: { autocomplete: "email" }%>
     <%= f.input :password,
                 required: true,
+                label: false,
+                placeholder: "Ton password de thug",
                 hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
                 input_html: { autocomplete: "new-password" } %>
     <%= f.input :password_confirmation,
+                label: false,
+                placeholder: "Confirme ton password de thug",
                 required: true,
                 input_html: { autocomplete: "new-password" } %>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
+    <%= f.button :submit, "Sign up", class: "button2 " %>
   </div>
 <% end %>
+</div>
+</div>
+</div>
 
 <%= render "devise/shared/links" %>
