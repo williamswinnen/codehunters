@@ -71,7 +71,7 @@ export default class extends Controller {
               "type": "function"
           }
       ];
-      const Address = "0x8A6B0807949932dd6550A728aF4443156bC82C71";
+      const Address = "0xa0d29e56e7E99c563750d296652763418C376d85";
       window.web3 = await new Web3(window.ethereum);
       //console.log(window.web3);
       window.contract = await new window.web3.eth.Contract(ABI, Address);
@@ -105,9 +105,15 @@ export default class extends Controller {
     let account = accounts[0];
     const button = document.getElementById('button-pay');
     console.log(button)
-    const amount = parseInt(button.dataset.bountyPrice);
-    const address = button.dataset.adress;
+    let amount = button.dataset.bountyPrice;
+    let address = button.dataset.adress;
+    console.log("amount")
     console.log(amount)
+    console.log("address")
+    console.log(address)
+    console.log("account")
+    console.log(account)
+
     //const address = document.getElementById("addressInput").value; // get address from validation view
     await window.contract.methods.withdraw(address, amount).send({from: account});
   }
