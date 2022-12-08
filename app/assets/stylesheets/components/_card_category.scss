@@ -102,7 +102,6 @@
 .link-github{
   border: solid;
   padding: 20px;
-  margin: 100px auto;
   border-radius: 10px;
 }
 
@@ -124,6 +123,10 @@
   margin: 40px;
   text-decoration: none;
   background-color: white;
+}
+
+.call-to-action-purple .button2 {
+  margin: 0px;
 }
 
 .button2:hover {

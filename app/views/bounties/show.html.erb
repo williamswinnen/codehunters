@@ -91,17 +91,17 @@
             <i class="fa-brands fa-github"></i>
             <%end %>
           </p>
-          <div class="ending-links-card d-flex justify-content-between">
-            <div class="link-homework-card mt-3">
+          <div class="ending-links-card d-flex justify-content-between mt-4">
+            <div class="link-homework-card">
               <% if current_user.homeworks.where(bounty: @bounty).empty? %>
-                <%= link_to "Add to my homework", bounty_homeworks_path(@bounty, @homework), data: {turbo_method: :post}, class: "button-create text-decoration-none link-edit-green" %>
+                <%= link_to "Add to my homework", bounty_homeworks_path(@bounty, @homework), data: {turbo_method: :post}, class: "button-create text-decoration-none link-edit-green p-1" %>
               <% else %>
                 <p>already in your homeworks</p>
               <% end %>
             </div>
             <div class="link-edit-card">
               <% if policy(@bounty).edit? %>
-              <p class="text-decoration-none"><%= link_to "Edit this bounty", edit_bounty_path(@bounty), class: "button-create text-decoration-none link-edit-green"%> </p>
+              <p class="text-decoration-none"><%= link_to "Edit this bounty", edit_bounty_path(@bounty), class: "button-create text-decoration-none link-edit-green p-1"%> </p>
               <% end %>
             </div>
           </div>
@@ -145,24 +145,24 @@
                         <span class="grey">Comment:</span>
                         <p> <%= solution.content %></p>
                         <span class="grey"> See more:</span>
-                        <div>
-                          <p>
-                            <button class="btn mb-4 mt-3 chat-btn" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample<%=solution.id%>" aria-expanded="false" aria-controls="collapseExample<%=solution.id%>">
-                              Chat
-                            </button>
-                          </p>
-                        </div>
-
-                        <p>
-                          <%= link_to "See the full solution", solution.github_repo, target: "_blank", class: "card-text text-decoration-none text-white link-github", data: {
+                        <div class="d-flex justify-content-between mt-2">
+                          <a class="card-text text-decoration-none text-white link-github p-2 btn-empty-white" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample<%=solution.id%>" aria-expanded="false" aria-controls="collapseExample<%=solution.id%>">
+                            Chat
+                          </a>
+                          <%= link_to "See the full solution", solution.github_repo, target: "_blank", class: "card-text text-decoration-none text-white link-github p-2 btn-empty-white", data: {
                             insert_code_target: "url",
                             action: "click->insert-code#collect"
                             } %>
-                        </p>
+                        </div>
+
 
                         <% if solution.bounty.user == current_user && solution.status == "pending" %>
-                          <button id="button-pay" data-action="click->withdraw#withdraw" data-bounty-price="<%= @bounty.price_cents.to_i %>" data-adress="<%= solution.user.walletaddress %>">Pay the bounty</button>
-                          <%= link_to "Validate this solution", bounty_solutions_path(solution), class: "btn chat-btn mb-2 mt-3", data: {turbo_method: :patch, turbo_confirm: 'Are you sure you want to confirm this solution?'} %>
+
+                          <%= link_to "Validate this solution", bounty_solutions_path(solution), class: "btn chat-btn mb-2 mt-3", data: {turbo_method: :patch, turbo_confirm: 'Are you sure you want to confirm this solution?'} %> <br>
+                          <button id="button-pay", class="btn btn-success text-white" onclick="withdraw()" data-bounty-price="<%= @bounty.price_cents.to_i %>" data-adress="<%= solution.user.walletaddress %>">Pay the bounty</button>
+
+                        
+
                         <% end %>
                         <p class="mt-4">  <span class="grey">Status:</span> <%= solution.status %></p>
                         <div class="solutions-btn-style justify-content-evenly">
@@ -173,7 +173,7 @@
                           <% end %>
                           <% if policy(solution).destroy? %>
                           <p>
-                            <%= link_to "Delete your solution, Proutman", solution_path(solution), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?'}, class: "text-decoration-none link-back-green" %>
+                            <%= link_to "Delete your solution", solution_path(solution), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?'}, class: "text-decoration-none link-back-green" %>
                           </p>
                           <% end %>
                         </div>
@@ -190,16 +190,16 @@
           <div class="call-to-action-purple position-sticky top-0" >
             <div class="card-body">
               <div class="card-description d-flex justify-content-evenly mb-3">
-                  <p class="card-text price-card mx-2 p-4"> Price <span class="light-price"><%= @bounty.price_cents %>$</p>
-                  <p class="card-text difficulty-card p-4 mx-2">Difficulty <span class="light-price"><%= @bounty.difficulty_level %></span></p>
+                  <p class="card-text price-card mx-1 p-2"> Price <span class="light-price"><%= @bounty.price_cents %> <br>ETH</p>
+                  <p class="card-text difficulty-card p-2 mx-1">Difficulty <span class="light-price"><%= @bounty.difficulty_level %></span></p>
                   <%if @bounty.deadline.nil?%>
-                    <p class="card-text deadline-card mb-3 p-4 mx-2">Deadline <span class="light-price"> Not defined</span></p>
+                    <p class="card-text deadline-card mb-3 p-2 mx-1">Deadline <span class="light-price"> Not defined</span></p>
                   <%else %>
-                    <p class="card-text deadline-card mb-3 p-4 mx-2">Deadline <span class="light-price"> <%= @bounty.deadline %></span></p>
+                    <p class="card-text deadline-card mb-3 p-2 mx-1">Deadline <span class="light-price"> <%= @bounty.deadline %></span></p>
                   <%end %>
               </div>
             </div>
-            <p class="text-center text-decoration-none"> <%= link_to "Propose a solution", "#", class: "button-purple", data: { bs_toggle: "modal", bs_target:"#createModal"} %> </p>
+            <p class="text-center text-decoration-none px-1"> <%= link_to "Offer a solution", "#", class: "button2", data: { bs_toggle: "modal", bs_target:"#createModal"} %> </p>
           </div>
       </div>
     </div>
