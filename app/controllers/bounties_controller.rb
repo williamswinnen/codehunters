@@ -32,6 +32,7 @@ class BountiesController < ApplicationController
   def create
     @bounty = Bounty.new(bounties_params)
     @bounty.user = current_user
+    @bounty.price_cents = params[:price_cents]
     authorize @bounty
     if @bounty.save
       redirect_to bounty_path(@bounty)
