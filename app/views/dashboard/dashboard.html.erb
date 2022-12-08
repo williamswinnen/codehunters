@@ -150,15 +150,17 @@
         <div class="card-top d-flex justify-content-between">
           <div class="card-title">
             <h2 class=" text-white font-weight-bold"> <%= solution.bounty.title %> </h2>
-            </div>
+          </div>
+          <div class="profile d-flex">
             <div class="card-photo">
-              <% if solution.bounty.user.photo.attached? %>
-                <%= cl_image_tag solution.bounty.user.photo.key, class:"card-img-top", alt:"..."%>
-              <% else %>
-                <%= image_tag("blank-profile.png")%>
-              <% end %>
-              <span class="green font-weight-bold"><%=solution.bounty.user.username%></span>
+                <% if solution.bounty.user.photo.attached? %>
+                  <%= cl_image_tag solution.bounty.user.photo.key, class:"card-img-top", alt:"..."%>
+                <% else %>
+                  <%= image_tag("blank-profile.png")%>
+                <% end %>
             </div>
+            <span class="green font-weight-bold mx-2 mt-2"><%=solution.bounty.user.username%></span>
+          </div>
           </div>
           <div class="overview mt-3 mb-3">
             <p class="description-text grey"> <%= solution.bounty.content %> "I have been trying to post data to controller action in RAILS application development. When i post data through form, POST data reaches specific controller action defined in routes.rb. But it gives back with 404 error."</p>
@@ -174,33 +176,29 @@
               <h3 class="text-light mb-5 mt-3 font-weight-bold">My <span class="green">solution</span></h3>
               <div class="solutions-list">
                 <div class="card-show-solutions">
-                  <div class="solution-top d-flex">
-                    <div class="solution-left-top d-flex mx-4">
-                      <% if solution.user.photo.attached? %>
-                        <%= cl_image_tag solution.user.photo.key, style:"width: 50px; height: 50px; border-radius: 50%;" %>
-                      <% else %>
-                        <%= image_tag("blank-profile.png")%>
-                      <% end %>
+                    <div class="solution-top">
+                      <div class="profile d-flex mb-3">
+                        <% if solution.user.photo.attached? %>
+                          <%= cl_image_tag solution.user.photo.key, style:"width: 50px; height: 50px; border-radius: 50%;" %>
+                        <% else %>
+                          <%= image_tag("blank-profile.png")%>
+                        <% end %>
+                        <p class="username green font-weight-bold mt-2 mx-3"><%= solution.user.username %></p>
+                      </div>
                     </div>
-                    <div class="solution-right-top">
-                      <p class="align-self-start username green font-weight-bold"><%= solution.user.username %></p>
-                      <p><%= solution.user.email %></p>
-                      <div class="solution-content mt-4">
-                        <span class="grey">Comment:</span>
-                        <p> <%= solution.content %></p>
-                        <span class="grey"> See more:</span><br>
-                        <div>
-                          <p>
-                          </p>
-                        </div>
+                    <div class="solution-content mt-4">
+                      <span class="grey">Comment:</span>
+                      <p> <%= solution.content %></p>
+                      <span class="grey"> See more:</span><br>
+                      <div class="medias d-flex mt-2">
                         <p>
-                          <%= link_to solution.github_repo,  class: "card-text text-decoration-none text-white link-github mt-3" do %>
-                            <%= solution.github_repo%>
+                          <%= link_to solution.github_repo,   class: "card-text text-decoration-none text-white" do %>
+                            <i class="fa-brands fa-github"></i>
                           <%end %>
                         </p>
-                  </div>
-                  </div>
-                </div>
+                        <p class= "card-text text-decoration-none text-white", style="font-size: 2rem; margin-left: 1em;"> <i class="fa-solid fa-envelope"></i> </p>
+                      </div>
+                    </div>
             </div>
           </div>
         </div>
@@ -208,43 +206,53 @@
       </div>
     <% end %>
   </div>
-  <div class="container">
-    <div class="tab-pane fade" id="homework-tab-pane" role="tabpanel" aria-labelledby="homework-tab" tabindex="0">
-          <h2 class="text-light mb-5 mt-3 font-weight-bold">My  <span class="green">homework</span></h2>
-        <div class="solutions-list">
-          <% @homeworks.each do |homework| %>
-            <div class="card-show-solutions">
-              <div class="solution-top d-flex">
-                <div class="solution-left-top d-flex mx-4">
+  <div class="tab-pane fade container" id="homework-tab-pane" role="tabpanel" aria-labelledby="homework-tab" tabindex="0">
+      <h2 class="text-light mb-5 mt-3 font-weight-bold">My  <span class="green">homework</span></h2>
+      <div class="solutions-list d-flex justify-content-between flex-wrap">
+        <% @homeworks.each do |homework| %>
+          <div class="card-show-solutions m-0 mt-5" style= "width: 42vw;">
+            <div class="solution-top d-flex justify-content-between">
+              <div class="solution-left-top d-flex">
+                <div class="username-photo">
                   <% if homework.bounty.user.photo.attached? %>
                     <%= cl_image_tag homework.bounty.user.photo.key, style:"width: 50px; height: 50px; border-radius: 50%;" %>
                   <% else %>
                     <%= image_tag("blank-profile.png")%>
                   <% end %>
                 </div>
-                <div class="solution-right-top">
-                  <p class="align-self-start username green font-weight-bold"><%= homework.bounty.user.username %></p>
-                  <p><%= homework.bounty.user.email %></p>
-                  <div class="solution-content mt-4">
-                    <span class="grey">Title:</span>
-                    <p><%= link_to homework.bounty.title, bounty_path(homework.bounty) %></p>
-                    <span class="grey"> Overview:</span>
-                    <p> <%= homework.bounty.content %></p>
-                    <%= link_to "remove from your homework", bounty_homework_path(homework.bounty, homework), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "button-create text-decoration-none link-edit-green" %>
-                  </div>
-                </div>
+                <p class="align-self-start username green font-weight-bold mt-2 mx-2"><%= homework.bounty.user.username %></p>
+              </div>
+              <div class="remove-homework">
+                <%= link_to bounty_homework_path(homework.bounty, homework), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "text-decoration-none link-edit-green" do  %>
+                    <i class="fa-sharp fa-solid fa-trash"></i>
+                <% end %>
               </div>
             </div>
-          <% end %>
-        </div>
+              <div class="solution-content mt-4">
+                <span class="grey">Title:</span>
+                <p><%= link_to bounty_path(homework.bounty), class: "homework-link" do %>
+                    <%= homework.bounty.title %>
+                  <% end %>
+                </p>
+                <span class="grey"> Overview:</span>
+                <p> <%= homework.bounty.content %></p>
+                <div class="github">
+                  <p class="grey">Code on :</p>
+                  <%= link_to homework.bounty.github_repo, class: "card-text text-decoration-none text-white" do %>
+                  <i class="fa-brands fa-github"></i>
+                  <%end %>
+                </div>
+              </div>
+          </div>
+        <% end %>
       </div>
-    </div>
   </div>
+
   <div class="tab-pane fade" id="ranking-tab-pane" role="tabpanel" aria-labelledby="ranking-tab" tabindex="0">
     <h2 class="text-light mb-5 mt-3 font-weight-bold text-center">Leader<span class="green">board</span></h2>
-    <div class="container ml-1">
+    <div class="container">
       <div class="leader-bord d-flex">
-        <div class="col-6 mx-3">
+        <div class="col-6" style="margin-right: 1em;">
             <% @users.order(ranking: :desc).limit(10).each_with_index do |u, i|%>
 
               <div class = "leaderboard-card d-flex justify-content-between px-2">
@@ -262,7 +270,7 @@
               </div>
             <%end%>
         </div>
-        <div class="col-6 mx-2 ml-4">
+        <div class="col-6">
           <div class="score-board">
             <h3 class="text-white text-center">This is your score board</h3>
                 <div class="card-description d-flex justify-content-evenly mb-3">
