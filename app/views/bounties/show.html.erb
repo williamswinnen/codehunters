@@ -158,8 +158,8 @@
                     <div class="badge <% if solution.status == 'accepted' %> bg-success <% elsif solution.status == 'pending' %> bg-secondary <% else %> bg-dark <% end %>" ><%= solution.status %></div>
                     <div class="d-flex">
                       <% if solution.bounty.user == current_user && solution.status == "pending" %>
-                        <%= link_to "Validate", validate_solution_path(solution), class: "btn chat-btn me-1", data: {turbo_method: :patch, turbo_confirm: 'Are you sure you want to confirm this solution?'} %>
-                        <button id="button-pay", class="btn btn-success text-white ms-1" onclick="withdraw()" data-bounty-price="<%= @bounty.price_cents.to_i %>" data-adress="<%= solution.user.walletaddress %>">Pay the bounty</button>
+                        <button id="button-pay", class="btn btn-success text-white me-1" data-action="click->withdraw#withdraw" data-bounty-price="<%= @bounty.price_cents.to_i %>" data-adress="<%= solution.user.walletaddress %>">Pay the bounty</button>
+                        <%= link_to "Validate", validate_solution_path(solution), class: "btn chat-btn ms-1", data: {turbo_method: :patch, turbo_confirm: 'Are you sure you want to confirm this solution?'} %>
                       <% end %>
                       <% if policy(solution).edit? %>
                         <%= link_to "Edit your solution", edit_bounty_solution_path(@bounty, solution), class: "text-decoration-none link-back-green me-1", data: {turbo_method: :patch, bs_toggle: "modal", bs_target:"#editModal#{solution.id}"}%>
