@@ -1,28 +1,30 @@
-<div class="container new_bounty">
-  <div class="col-4 offset-4 my-5 pb-5" style="padding-bottom:200px">
+<div class="col-6 offset-3">
+  <div class ="pimp">
     <h5 class="text-center">Create a <span class="green">bounty</span></h5>
-    <%= simple_form_for (@bounty) do |f| %>
-      <span class="formfont" ><%= f.input :title%></span>
-      <span class="formfont"><%= f.input :content, :placeholder => "Detail your coding problem" %></span>
-      <div>
-        <button type="button", onclick="connectContract(),getContractAccount()">Connect to contract</button>
-        <p id="contractAccount">Contract Account: Not Connected to Contract</p>
-      </div>
-      <div id="writeArea">
-        <span class="formfont" id="depositInput"><%= f.input :price_cents, id:"depositInput", :placeholder => "What price are you willing to pay?" %></span>
-        <button type="button" onclick="depositContract()">Send money to contract</button>
-      </div>
-      <span class="formfont"><%= f.input :difficulty_level %></span>
-      <%# <span class="formfont"><%= f.input :deadline, :input_html => {:value => Time.now}, start_year: Time.now.year, start_month: Time.now.month, start_day: Time.now.day</span> %>
-      <span class="formfont"><%= f.input :deadline, as: :string, input_html: { data: { controller: 'flatpickr' } } %></span>
-      <span class="formfont"><%= f.input :github_repo, :placeholder => "Link to your code"%></span>
-      <%= f.submit class: 'button2' %>
-    <% end %>
-    <div style="margin-top:30px">
-      <%= link_to "back to all bounties", bounties_path %>
+      <%= simple_form_for (@bounty) do |f| %>
+        <span class="formfont" ><%= f.input :title, label: false, placeholder: 'Title'%></span>
+        <span class="formfont"><%= f.input :content, label: false, :placeholder => "Detail your coding problem" %></span>
+          <div class ="create-wrapper">
+            <div>
+            <button type="button", onclick="connectContract(),getContractAccount()">Connect to contract</button>
+            <p id="contractAccount">Contract Account: Not Connected to Contract</p>
+            </div>
+            <div id="writeArea">
+              <span class="formfont" id="depositInput"><%= f.input :price_cents, id:"depositInput", label: false, :placeholder => "What price are you willing to pay?" %></span>
+              <button type="button" onclick="depositContract()">Send money to contract</button>
+            </div>
+          </div>
+        <div class ="create-wrapper">
+          <span class="formfont"><%= f.input :difficulty_level, label: false, placeholder: 'Difficulty from 1 to 5' %></span>
+          <%# <span class="formfont"><%= f.input :deadline, :input_html => {:value => Time.now}, start_year: Time.now.year, start_month: Time.now.month, start_day: Time.now.day</span> %>
+          <span class="formfont"><%= f.input :deadline, as: :string, input_html: { data: { controller: 'flatpickr' } },label: false, placeholder: 'Optional: chose a deadline' %></span>
+        </div>
+          <span class="formfont"><%= f.input :github_repo, label: false, :placeholder => "Link to your code"%></span>
+          <%= f.submit class: 'button2'%>
+        <% end %>
     </div>
-  </div>
 </div>
+
 
  <%# :placeholder => "What is your wished deadline" %>
 
