@@ -35,7 +35,6 @@ class SolutionsController < ApplicationController
   end
 
   def update
-    raise
     @solution = Solution.find(params[:id])
     @solution.update(solution_params)
     authorize @solution
