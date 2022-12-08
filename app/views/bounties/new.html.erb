@@ -17,7 +17,7 @@
               <button type="button" class="green-create" data-withdraw-target="connectContract" data-action="click->withdraw#connectContract click->withdraw#getContractAccount">Connect to contract</button>
             </div>
             <div id="writeArea" class="d-flex align-items-center justify-content-between d-none" data-withdraw-target="depositButton">
-                <div class=" input-group" id="depositInput">
+                <div class=" input-group">
                   <%= number_field_tag :price_cents, '', class:"form-control", id:"depositInput", :placeholder => "Price" %>
                   <div class="input-group-append">
                     <span class="input-group-text">ETH</span>
