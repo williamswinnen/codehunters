@@ -7,17 +7,57 @@
 // barre gauche/droite
 .noUi-base{
   background: linear-gradient(#E683FC, #c101ec);
+  width: 6em;
 }
 
 // barre milieu
 .noUi-connect
-{background-color: #E683FC;}
+{background-color: #E683FC;
+}
 
 // range
 
 .noUi-tooltip {
   background: transparent;
   border: none;
-  font-size: 0.7rem;
+  font-size: 0.5rem;
   color: white;
+  padding: 0;
+
+}
+
+.noUi-handle:before {
+  content: none;
+}
+.noUi-handle:after {
+  content: none;
+}
+
+
+.noUi-target {
+  width: 6em;
+  right: -1em;
+}
+
+
+.noUi-horizontal .noUi-tooltip {
+  left: 40%;
+  margin-top: 10em;
+}
+
+.noUi-connects {
+
+}
+
+.pricing-filter {
+  width: 10rem;
+}
+
+
+
+.filter-container{
+  .difficulty-box {
+
+    border: #6F42C1 solid 1px!important;
+  }
 }
