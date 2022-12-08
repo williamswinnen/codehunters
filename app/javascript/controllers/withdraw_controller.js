@@ -2,12 +2,15 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="withdraw"
 export default class extends Controller {
+  static targets =["connectContract", "depositButton"]
+
   connect() {
     console.log("ueeeesh");
     let account;
     this.connectMetamask();
     this.connectContract();
   }
+
 
 
   connectMetamask = async() => {
@@ -73,7 +76,7 @@ export default class extends Controller {
               "type": "function"
           }
       ];
-      const Address = "0x4490d7Cf9135Fe7a7FCc7B17c54733CB59D59629";
+      const Address = "0xC06162c3A7417DFd98276A816f37517F1E1724aE";
       window.web3 = await new Web3(window.ethereum);
       //console.log(window.web3);
       window.contract = await new window.web3.eth.Contract(ABI, Address);
@@ -85,6 +88,8 @@ export default class extends Controller {
       const data = await window.contract.methods.getAddress().call();
       console.log(data);
       document.getElementById("contractAccount").innerHTML = `Connected to contract Account: ${data}`;
+      this.connectContractTarget.classList.add("d-none")
+      this.depositButtonTarget.classList.remove("d-none")
   }
 
   getBalanceApple = async () => {
