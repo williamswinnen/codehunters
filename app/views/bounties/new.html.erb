@@ -7,8 +7,8 @@
         <span class="formfont"><%= f.input :content, label: false, :placeholder => "Detail your coding problem" %></span>
           <div class ="create-wrapper">
             <div>
-              <p id="contractAccount">Contract Account: Not Connected to Contract</p>
-              <button type="button", data-action="click->withdraw#connectContract click->withdraw#getContractAccount">Connect to contract</button>
+              <p id="contractAccount">Not connected to smart contract</p>
+              <button type="button", data-action="click->withdraw#connectContract click->withdraw#getContractAccount">Connect to smart contract</button>
             </div>
             <div id="writeArea">
               <span class="formfont" id="depositInput"><%= f.input :price_cents, id:"depositInput", label: false, :placeholder => "What price are you willing to pay?" %></span>
