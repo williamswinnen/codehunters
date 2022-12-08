@@ -2,7 +2,7 @@
 <div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-controller="open-modal" data-controller="notifications">
   <% content_for :meta_title, "#{@bounty.title} is on #{DEFAULT_META["meta_product_name"]}" %>
   <% content_for :meta_description, @bounty.content %>
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog p-3" role="document">
     <div class="modal-content card-show">
       <div class="modal-header">
         <h2 class="text-center mt-5 mb-4">Propose your <span class="green">solution</span></h2>
@@ -10,8 +10,8 @@
       <div class="modal-body">
 
         <%= simple_form_for([@bounty, @solution], data: { controller: "notifications", action: "submit->notifications#addNotification", notifications_id: {value: current_user.id}}) do |f| %>
-          <%= f.input :content, :label => "Solution Overview", :placeholder => "Detail your solution" %>
-          <%= f.input :github_repo, :placeholder => "Link to your code"%>
+          <%= f.input :content, :label => "Solution Overview", :required => false , :placeholder => "Detail your solution" %>
+          <%= f.input :github_repo, :label => "Github Link", :required => false, :placeholder => "Link to your file repo"%>
           <%= f.submit "Create solution", class: 'btn green mt-2' %>
           <p class="d-none" id="name"> <%=current_user.username %> </p>
         <% end %>

@@ -17,7 +17,7 @@
 <div class="tab-content" id="myTabContent">
   <div class="tab-pane fade show active" id="bounties-tab-pane" role="tabpanel" aria-labelledby="bounties-tab" tabindex="0">
     <div class="bounty-dashboard-container">
-    <h2 class="title-dashboard">All my <span class="green">pending bounties</span>:</h2>
+    <h2 class="title-dashboard">All my <span class="green">pending bounties</span></h2>
       <div class="bounties-card" data-controller="scroll-reveal">
         <% @pending_bounties.each_with_index do |bounty, i| %>
           <div class="bounty-card reveal"  data-scroll-reveal-target="item"  data-delay="<%= i*50 %>ms" >
@@ -143,10 +143,10 @@
     </div>
   </div>
   <div class="tab-pane fade" id="solutions-tab-pane" role="tabpanel" aria-labelledby="solutions-tab" tabindex="0">
-    <h2 class="text-light mb-5 mt-3 font-weight-bold text-center">All my  <span class="green">accepted solutions</span>:</h2>
+    <h2 class="text-light mb-5 mt-3 font-weight-bold text-center">All my  <span class="green">accepted solutions</span></h2>
       <% @user.solutions.where(status:"accepted").each do |solution| %>
       <div class="col-8 offset-2">
-      <div class="card-show">
+      <div class="card-show p-5">
         <div class="card-top d-flex justify-content-between">
           <div class="card-title">
             <h2 class=" text-white font-weight-bold"> <%= solution.bounty.title %> </h2>
@@ -163,13 +163,15 @@
           <div class="overview mt-3 mb-3">
             <p class="description-text grey"> <%= solution.bounty.content %> "I have been trying to post data to controller action in RAILS application development. When i post data through form, POST data reaches specific controller action defined in routes.rb. But it gives back with 404 error."</p>
           </div>
-          <p class="align-self-center  card-github">
-            <%= link_to solution.bounty.github_repo, solution.bounty.github_repo, class: "card-text text-decoration-none text-white link-github" %>
+          <p class="align-self-center">
+            <%= link_to solution.bounty.github_repo, class: "card-text text-decoration-none text-white" do %>
+              <i class="fa-brands fa-github"></i>
+            <%end %>
           </p>
           <div class="ending-links-card d-flex justify-content-between">
           </div>
             <div class="solutions">
-              <h2 class="text-light mb-5 mt-3 font-weight-bold">My <span class="green">solution</span>:</h2>
+              <h3 class="text-light mb-5 mt-3 font-weight-bold">My <span class="green">solution</span></h3>
               <div class="solutions-list">
                 <div class="card-show-solutions">
                   <div class="solution-top d-flex">
@@ -207,7 +209,7 @@
     <% end %>
   </div>
   <div class="tab-pane fade" id="homework-tab-pane" role="tabpanel" aria-labelledby="homework-tab" tabindex="0">
-        <h2 class="text-light mb-5 mt-3 font-weight-bold">My  <span class="green">homework</span>:</h2>
+        <h2 class="text-light mb-5 mt-3 font-weight-bold">My  <span class="green">homework</span></h2>
       <div class="solutions-list">
         <% @homeworks.each do |homework| %>
           <div class="card-show-solutions">
@@ -237,7 +239,7 @@
     </div>
   </div>
   <div class="tab-pane fade" id="ranking-tab-pane" role="tabpanel" aria-labelledby="ranking-tab" tabindex="0">
-    <h2 class="text-light mb-5 mt-3 font-weight-bold text-center">Leader<span class="green">board</span>:</h2>
+    <h2 class="text-light mb-5 mt-3 font-weight-bold text-center">Leader<span class="green">board</span></h2>
     <div class="container ml-1">
       <div class="leader-bord d-flex">
         <div class="col-6 mx-3">
@@ -253,7 +255,7 @@
                   <p><%= u.ranking.round(2)%></p>
                 </div>
 
-              
+
 
               </div>
             <%end%>
@@ -265,7 +267,7 @@
 
                     <p class="card-text price-card mx-2 p-4"> So far you've earned <span class="light-price"><%= @user.prize_money %> ethereum</p>
                     <p class="card-text difficulty-card p-4 mx-2">You've solved <span class="light-price"><%= @user.solutions.where(status:"accepted").count %> </span>bounties</p>
-                    
+
 
                     <p class="card-text deadline-card mb-3 p-4 mx-2">And earned <span class="light-price"><%= @user.ranking %> points</span></p>
                 </div>
