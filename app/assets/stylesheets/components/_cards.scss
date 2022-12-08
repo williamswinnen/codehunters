@@ -170,6 +170,13 @@ a:hover {
 
 .create-wrapper{
   display:flex;
+  align-items:center;
+  &:not(:last-child) { margin: 0 20px; }
+
+}
+
+#writeArea button {
+  margin-left:20px;
 }
 
 
