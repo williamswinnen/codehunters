@@ -107,12 +107,11 @@ body::-webkit-scrollbar {
   text-align: center!important;
   padding: 1em;
   padding-top: 2.5;
-  width: 20vw;
   border-radius: 10px;
   -webkit-box-shadow: 0 5px 20px -3px rgba(0, 0, 0, 0.16);
   box-shadow: 0 5px 20px -3px rgba(0, 0, 0, 0.16);
   border: 0;
-  left: -18em;
+  left: -20em;
   margin-right: 500em;
 }
 
@@ -120,7 +119,7 @@ body::-webkit-scrollbar {
   .notification-ui_dd {
       min-width: 2em;
       position: absolute;
-      left: -9em;
+      left: -9.5em;
       margin-top: 10px;
   }
 }
@@ -147,16 +146,17 @@ body::-webkit-scrollbar {
 
 
 .notification-list .notification-list_detail p {
-  margin-bottom: 2em;
   border-bottom: solid;
   line-height: 1.2;
   padding-bottom:1em;
 }
 
 
-
+.dropdown-menu {
+  padding-bottom: 0;
+}
 .dropdown-item:hover{
-  background-color:  #179a6a !important;
+  background-color:  #199969!important;
 }
 
 
