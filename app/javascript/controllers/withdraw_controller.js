@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="withdraw"
 export default class extends Controller {
-  static targets =["connectContract", "depositButton"]
+  static targets =["connectContract", "depositButton", "smartid"]
 
   connect() {
     console.log("ueeeesh");
@@ -76,7 +76,7 @@ export default class extends Controller {
             "type": "function"
         }
     ];
-    const Address = "0xC06162c3A7417DFd98276A816f37517F1E1724aE";
+    const Address = "0x0B83777Ca8bc64604A0EF7448157bC4F22814AdC";
     window.web3 = await new Web3(window.ethereum);
     //console.log(window.web3);
     window.contract = await new window.web3.eth.Contract(ABI, Address);
@@ -88,6 +88,7 @@ export default class extends Controller {
       const data = await window.contract.methods.getAddress().call();
       console.log(data);
       document.getElementById("contractAccount").innerHTML = `Connected to contract Account: ${data}`;
+      this.smartidTarget.value = data;
       this.connectContractTarget.classList.add("d-none")
       this.depositButtonTarget.classList.remove("d-none")
   }
@@ -107,10 +108,16 @@ export default class extends Controller {
     let account = accounts[0];
     const amount = document.getElementById("depositInput").value;
     const amountWei = web3.utils.toWei(String(amount), 'ether');
+    console.log(amountWei)
     await window.contract.methods.deposit().send({from: account, value: amountWei});
   }
 
   withdraw = async () => {
+    const options = {
+      transactionConfirmationBlocks: 1,
+      transactionBlockTimeout: 5
+    };
+    const web3 = new Web3(window.ethereum, null, options);
     console.log("pouetWithdraw")
     //const amount = document.getElementById("amountInput").value; // get amoubt from validation view
     const accounts = await ethereum.request({method: "eth_requestAccounts"});
@@ -118,6 +125,11 @@ export default class extends Controller {
     const button = document.getElementById('button-pay');
     console.log(button)
     let amount = button.dataset.bountyPrice;
+    console.log("amountDebut")
+    console.log(amount)
+    console.log("fin")
+    const amountWei = web3.utils.toWei(String(amount), 'ether');
+    console.log(amountWei)
     let address = button.dataset.adress;
     console.log("amount")
     console.log(amount)
@@ -127,7 +139,7 @@ export default class extends Controller {
     console.log(account)
 
     //const address = document.getElementById("addressInput").value; // get address from validation view
-    await window.contract.methods.withdraw(address, amount).send({from: account});
+    await window.contract.methods.withdraw(address, amountWei).send({from: account});
   }
 
 }

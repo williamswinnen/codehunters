@@ -69,7 +69,7 @@ class BountiesController < ApplicationController
   private
 
   def bounties_params
-    params.require(:bounty).permit(:title, :content, :price_cents, :github_repo, :deadline, :difficulty_level)
+    params.require(:bounty).permit(:title, :content, :price_cents, :github_repo, :deadline, :difficulty_level, :smartcontractaddress)
   end
 
   def set_bounty

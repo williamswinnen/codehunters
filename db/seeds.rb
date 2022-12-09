@@ -16,7 +16,7 @@ user = User.create!(email: "default@default.com", password: "123456", username: 
 user.photo.attach(io: URI.open("https://avatars.githubusercontent.com/u/115413024?v=4"), filename: "michel.png", content_type: "image/png")
 user.save!
 
-user1 = User.create!(email: "default1@default.com", password: "123456", username: "Gwendolyne", walletaddress: "0xCD417A2F57eD3e0c961f1F74D61b4F0BDB6c1533")
+user1 = User.create!(email: "default1@default.com", password: "123456", username: "Gwendolyne", walletaddress: "0x91C55Af814A5E6cE0a2cFDF372dc8017f435151F")
 user1.photo.attach(io: URI.open("https://avatars.githubusercontent.com/u/96949079?v=4"), filename: "Gwendolyne.png", content_type: "image/png")
 user1.save!
 
