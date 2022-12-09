@@ -79,7 +79,7 @@
               <code data-insert-code-target="code" data-github-token="<%= ENV["GITHUB_TOKEN"] %>" ></code>
             </div>
           </div>
-          <p>Smart contract adress: <%= @bounty.smartcontractaddress %></p>
+          <p class="green mt-3">Smart contract adress: <%= @bounty.smartcontractaddress %></p>
           <p class="mt-3">see more on the repo <span> <%=@repo_name%></span>:</p>
           <p class="align-self-center  card-github mt-0">
             <%= link_to @bounty.github_repo, class: "text-decoration-none text-white", data: {
@@ -158,7 +158,7 @@
                     <div class="badge <% if solution.status == 'accepted' %> bg-success <% elsif solution.status == 'pending' %> bg-secondary <% else %> bg-dark <% end %>" ><%= solution.status %></div>
                     <div class="d-flex">
                       <% if solution.bounty.user == current_user && solution.status == "pending" %>
-                        <button id="button-pay", class="btn btn-success text-white me-1" data-action="click->withdraw#withdraw" data-bounty-price="<%= @bounty.price_cents.to_i %>" data-adress="<%= solution.user.walletaddress %>">Pay the bounty</button>
+                        <button id="button-pay", class="green-create text-white me-1" data-action="click->withdraw#withdraw" data-bounty-price="<%= @bounty.price_cents.to_i %>" data-adress="<%= solution.user.walletaddress %>">Pay the bounty</button>
                         <%= link_to "Validate", validate_solution_path(solution), class: "btn chat-btn ms-1", data: {turbo_method: :patch, turbo_confirm: 'Are you sure you want to confirm this solution?'} %>
                       <% end %>
                       <% if policy(solution).edit? %>

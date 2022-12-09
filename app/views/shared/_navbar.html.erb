@@ -38,7 +38,7 @@
                             <div class="notification-list_detail">
                                 <% current_user.notifications.each do |notif|%>
                                   <%= link_to "/dashboard", class:"text-decoration-none notif-links" do %>
-                                    <p><%=notif.content%></p>
+                                    <p class="mb-4"><%=notif.content%></p>
                                   <%end %>
                                 <%end %>
                             </div>

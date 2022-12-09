@@ -56,18 +56,20 @@ body::-webkit-scrollbar {
 }
 
 .green-create {
-  background-color: #06BE6D;
+  background-color:#008d4f;
   padding: 0.5rem 0.5rem;
   border-radius: 8px;
   color: white;
+  font-weight: bold;
   font-size: 0.7rem;
   margin-bottom: 0rem;
   border: none;
 }
 
+
 .green-create:hover {
-  opacity: 0.8;
   color: white;
+  background-color: #008d4fc4;
 }
 
 .notification-ui p:after {
@@ -157,6 +159,7 @@ body::-webkit-scrollbar {
 }
 .dropdown-item:hover{
   background-color:  #199969!important;
+
 }
 
 
