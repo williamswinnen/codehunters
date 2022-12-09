@@ -76,7 +76,7 @@ export default class extends Controller {
             "type": "function"
         }
     ];
-    const Address = "0x0B83777Ca8bc64604A0EF7448157bC4F22814AdC";
+    const Address = "0xCac0D95748D01C3102D558295BCbAbe06bd44B84";
     window.web3 = await new Web3(window.ethereum);
     //console.log(window.web3);
     window.contract = await new window.web3.eth.Contract(ABI, Address);
