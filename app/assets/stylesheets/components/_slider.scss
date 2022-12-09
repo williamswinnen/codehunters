@@ -1,18 +1,19 @@
 
 // les handles
 .noUi-handle{
-  background-color:rgb(147, 39, 169);
+  background-color:#cac6e8;
   border-radius: 50%;
 }
 // barre gauche/droite
 .noUi-base{
   background: linear-gradient(#E683FC, #c101ec);
-  width: 6em;
+  width: 9em;
 }
 
 // barre milieu
 .noUi-connect
-{background-color: #E683FC;
+{background-color: #FFFFFF
+  ;
 }
 
 // range
@@ -35,8 +36,11 @@
 
 
 .noUi-target {
-  width: 6em;
-  right: -1em;
+  width: 9em;
+  margin: auto;
+}
+.noUi-horizontal {
+  height: 8px;
 }
 
 
@@ -51,13 +55,32 @@
 
 .pricing-filter {
   width: 10rem;
+  height: 100%;
 }
 
-
+.noUi-touch-area{
+  width: 80%;
+}
 
 .filter-container{
   .difficulty-box {
 
     border: #6F42C1 solid 1px!important;
   }
+}
+
+.noUi-horizontal .noUi-handle {
+  height: 2em;
+  width: 2em;
+  right: -17px;
+   top: -12px;
+}
+
+.noUi-handle {
+  border-width: 0;
+  box-shadow: none;
+}
+
+.index_container {
+  align-items: start;
 }
