@@ -16,7 +16,7 @@ user = User.create!(email: "default@default.com", password: "123456", username: 
 user.photo.attach(io: URI.open("https://avatars.githubusercontent.com/u/115413024?v=4"), filename: "michel.png", content_type: "image/png")
 user.save!
 
-user1 = User.create!(email: "default1@default.com", password: "123456", username: "Gwendolyne", walletaddress: "0x91C55Af814A5E6cE0a2cFDF372dc8017f435151F")
+user1 = User.create!(email: "default1@default.com", password: "123456", username: "Ahmadou", walletaddress: "0x91C55Af814A5E6cE0a2cFDF372dc8017f435151F")
 user1.photo.attach(io: URI.open("https://avatars.githubusercontent.com/u/96949079?v=4"), filename: "Gwendolyne.png", content_type: "image/png")
 user1.save!
 
@@ -28,11 +28,11 @@ user3 = User.create!(email: "default3@default.com", password: "123456", username
 user3.photo.attach(io: URI.open("https://avatars.githubusercontent.com/u/115095838?v=4"), filename: "Bernard.png", content_type: "image/png")
 user3.save!
 
-user4 = User.create!(email: "default4@default.com", password: "123456", username: "Superliver", walletaddress: "0xCD417A2F57eD3e0c961f1F74D61b4F0BDB6c1533")
+user4 = User.create!(email: "default4@default.com", password: "123456", username: "Romain", walletaddress: "0xCD417A2F57eD3e0c961f1F74D61b4F0BDB6c1533")
 user4.photo.attach(io: URI.open("https://avatars.githubusercontent.com/u/115033783?v=4"), filename: "Superliver.png", content_type: "image/png")
 user4.save!
 
-user5 = User.create!(email: "default5@default.com", password: "123456", username: "Tocard", walletaddress: "0xCD417A2F57eD3e0c961f1F74D61b4F0BDB6c1533")
+user5 = User.create!(email: "default5@default.com", password: "123456", username: "Joël", walletaddress: "0xCD417A2F57eD3e0c961f1F74D61b4F0BDB6c1533")
 user5.photo.attach(io: URI.open("https://avatars.githubusercontent.com/u/115413668?v=4"), filename: "Tocard.png", content_type: "image/png")
 user5.save!
 
