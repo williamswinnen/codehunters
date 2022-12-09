@@ -105,6 +105,7 @@ solution23 = Solution.create!(content: " i captured the = as an operator, and ch
 solution24 = Solution.create!(content: " run the migration i created it should fix the 'product' table", bounty: bounty15, user: user, github_repo:"https://github.com/heartcombo/devise", status: "accepted")
 solution25 = Solution.create!(content: " created a functionnal View Controller to make the loop work", bounty: bounty20, user: user8, github_repo:"https://github.com/heartcombo/devise", status: "accepted")
 solution25 = Solution.create!(content: " i used require.resolve and a const path", bounty: bounty22, user: user7, github_repo:"https://github.com/heartcombo/devise", status: "accepted")
+Homework.create!(bounty: bounty11, user: user)
 User.all.each do |u|
   u.update_ranking
 end
