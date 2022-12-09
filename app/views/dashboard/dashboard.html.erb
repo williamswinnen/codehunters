@@ -1,5 +1,5 @@
-<div class="navbar-dashboard">
-  <ul class="nav nav-tabs" id="myTab" role="tablist">
+<div class="navbar-dashboard bounty-dashboard-container mt-5">
+  <ul class="nav nav-tabs justify-content-evenly" id="myTab" role="tablist">
     <li class="nav-item" role="presentation">
       <button class="nav-link active" id="bounties-tab" data-bs-toggle="tab" data-bs-target="#bounties-tab-pane" type="button" role="tab" aria-controls="bounties" aria-selected="true">My Bounties</button>
     </li>
@@ -12,7 +12,7 @@
     <li class="nav-item" role="presentation">
       <button class="nav-link" id="ranking-tab" data-bs-toggle="tab" data-bs-target="#ranking-tab-pane" type="button" role="tab" aria-controls="ranking" aria-selected="false">Leaderboard</button>
     </li>
-</ul>
+  </ul>
 </div>
 <div class="tab-content" id="myTabContent">
   <div class="tab-pane fade show active" id="bounties-tab-pane" role="tabpanel" aria-labelledby="bounties-tab" tabindex="0">
@@ -206,13 +206,13 @@
       </div>
     <% end %>
   </div>
-  <div class="tab-pane fade container" id="homework-tab-pane" role="tabpanel" aria-labelledby="homework-tab" tabindex="0">
+  <div class="tab-pane fade bounty-dashboard-container" id="homework-tab-pane" role="tabpanel" aria-labelledby="homework-tab" tabindex="0">
 
       <h2 class="text-light mb-1 font-weight-bold text-center">My  <span class="green">homework</span></h2>
 
       <div class="solutions-list d-flex justify-content-between flex-wrap">
         <% @homeworks.each do |homework| %>
-          <div class="card-show-solutions m-0 mt-5" style= "width: 42vw;">
+          <div class="card-show-solutions m-0 mt-5" style= "width: 39vw;">
             <div class="solution-top d-flex justify-content-between">
               <div class="solution-left-top d-flex">
                 <div class="username-photo">
@@ -250,7 +250,7 @@
       </div>
   </div>
 
-  <div class="tab-pane fade container" id="ranking-tab-pane" role="tabpanel" aria-labelledby="ranking-tab" tabindex="0">
+  <div class="tab-pane fade bounty-dashboard-container" id="ranking-tab-pane" role="tabpanel" aria-labelledby="ranking-tab" tabindex="0">
     <h2 class="text-light mb-5 mt-2 font-weight-bold text-center">Leader<span class="green">board</span></h2>
       <div class="leader-bord d-flex justify-content-between">
         <div class="col-6">
@@ -267,19 +267,23 @@
               </div>
             <%end%>
         </div>
-        <div class="col-6">
-          <div class="score-board" style="width: 45vw;">
+        <div class="col-6 d-flex justify-content-end align-items-start">
+          <div class="score-board" style="width: 38vw;">
             <h3 class="text-white text-center">This is your score board</h3>
                 <div class="card-description d-flex justify-content-evenly mb-3">
-
-                    <p class="card-text price-card mx-2 p-4"> So far you've earned <span class="light-price"><%= @user.prize_money %> ethereum</p>
-                    <p class="card-text difficulty-card p-4 mx-2">You've solved <span class="light-price"><%= @user.solutions.where(status:"accepted").count %> </span>bounties</p>
-
-
-                    <p class="card-text deadline-card mb-3 p-4 mx-2">And earned <span class="light-price"><%= @user.ranking %> points</span></p>
+                  <div class="d-flex flex-column price-card justify-content-center mx-2 p-4">
+                    <p>So far you've earned</p>
+                    <p class="light-price mb-0"><%= @user.prize_money %> ETH</p>
+                  </div>
+                  <div class="price-card d-flex flex-column justify-content-center p-4 mx-2">
+                    <p class="mb-0">You've solved <span class="light-price"><%= @user.solutions.where(status:"accepted").count %> </span>bounties</p>
+                  </div>
+                  <div class="price-card d-flex flex-column justify-content-center p-4 mx-2">
+                    <p>And earned</p>
+                    <p class="light-price mb-0"><%= @user.ranking %> points</p>
+                  </div>
                 </div>
                 <p class="text-center text-white"> YOU ARE CURRENTLY <span class="light-price">N°<%= @users.order(ranking: :desc).index(current_user) + 1 %></span> IN THE RANKINGS</p>
-              </div>
+          </div>
         </div>
-      </div>
 </div>
