@@ -63,7 +63,7 @@
               <% if @bounty.user.photo.attached? %>
                 <%= cl_image_tag @bounty.user.photo.key, class:"card-img-top", alt:"..."%>
               <% else %>
-                <%= image_tag("blank-profile.png")%>
+                <%= image_tag("blank-profile.png", class:"card-img-top", alt:"...")%>
               <% end %>
               <span class="green font-weight-bold"><%=@bounty.user.username%></span>
             </div>
