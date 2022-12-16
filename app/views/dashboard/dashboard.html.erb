@@ -268,7 +268,7 @@
                   <p><%= u.username%></p>
                 </div>
                 <div class="d-flex justify-content-end">
-                  <p><%= u.ranking.round(2) %></p>
+                  <p><%= u.ranking.nil? ? 0.0 : u.ranking.round(2) %></p>
                 </div>
               </div>
             <%end%>
