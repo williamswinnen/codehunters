@@ -12,7 +12,7 @@ User.destroy_all
 puts "destroying users & bounties"
 puts "creating users & bounties"
 
-user = User.create!(email: "default@default.com", password: "123456", username: "Michel", walletaddress: "0x88C64643229733788EbCdA1c41DCf44F8585659e")
+user = User.create!(email: "default@default.com", password: "123456", username: "Michel", walletaddress: "0xed13fB9341cF596824C06d0b1D082Aa80A4F32dF")
 user.photo.attach(io: URI.open("https://avatars.githubusercontent.com/u/115413024?v=4"), filename: "michel.png", content_type: "image/png")
 user.save!
 
