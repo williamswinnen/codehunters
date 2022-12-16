@@ -260,11 +260,15 @@
                   <div class="d-flex align-items-center" style="width: 20px;">
                     <p style="font-size: 30px;" class="green"><%= i+=1%></p>
                   </div>
-                  <%=cl_image_tag u.photo.key, style:"width: 50px; height: 50px; border-radius: 50%; margin-left: 20px; margin-right: 20px;" %>
+                  <% if u.photo.attached? %>
+                    <%=cl_image_tag u.photo.key, style:"width: 50px; height: 50px; border-radius: 50%; margin-left: 20px; margin-right: 20px;" %>
+                  <% else %>
+                    <%= image_tag("blank-profile.png", class: "avatar", style:"width: 50px; height: 50px; border-radius: 50%; margin-left: 20px; margin-right: 20px;")%>
+                  <% end %>
                   <p><%= u.username%></p>
                 </div>
                 <div class="d-flex justify-content-end">
-                  <p><%= u.ranking.round(2)%></p>
+                  <p><%= u.ranking.round(2) %></p>
                 </div>
               </div>
             <%end%>

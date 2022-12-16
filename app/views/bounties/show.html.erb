@@ -134,7 +134,7 @@
                       <% if solution.user.photo.attached? %>
                         <%= cl_image_tag solution.user.photo.key, style:"width: 50px; height: 50px; border-radius: 50%;" %>
                       <% else %>
-                        <%= image_tag("blank-profile.png")%>
+                        <%= image_tag("blank-profile.png", style:"width: 50px; height: 50px; border-radius: 50%;")%>
                       <% end %>
                       <div class="d-flex flex-column ms-2">
                         <p class="align-self-start username green font-weight-bold mb-0"><%= solution.user.username %></p>
