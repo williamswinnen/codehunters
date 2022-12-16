@@ -11,23 +11,23 @@
                 required: true,
                 autofocus: true,
                 label: false,
-                placeholder: "Ton nom de thug",
+                placeholder: "Username",
                 input_html: { autocomplete: "username" }%>
     <%= f.input :email,
                 required: true,
                 autofocus: true,
                 label: false,
-                placeholder: "Ton mail de thug",
+                placeholder: "Email",
                 input_html: { autocomplete: "email" }%>
     <%= f.input :password,
                 required: true,
                 label: false,
-                placeholder: "Ton password de thug",
+                placeholder: "Password",
                 hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
                 input_html: { autocomplete: "new-password" } %>
     <%= f.input :password_confirmation,
                 label: false,
-                placeholder: "Confirme ton password de thug",
+                placeholder: "Confirme ton password",
                 required: true,
                 input_html: { autocomplete: "new-password" } %>
   </div>
