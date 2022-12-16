@@ -87,7 +87,7 @@
             <% if bounty.user.photo.attached? %>
               <%= cl_image_tag bounty.user.photo.key, class:"avatar-bounty" %>
             <% else %>
-              <%= image_tag("blank-profile.png") %>
+              <%= image_tag("blank-profile.png", class:"avatar-bounty") %>
             <% end %>
             <p class="title"><%= bounty.user.username %></p>
           </div>

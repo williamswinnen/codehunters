@@ -51,7 +51,7 @@
               <% if bounty.user.photo.attached? %>
                 <%= cl_image_tag bounty.user.photo.key, class:"avatar-bounty" %>
               <% else %>
-                <%= image_tag("blank-profile.png") %>
+                <%= image_tag("blank-profile.png", class:"avatar-bounty") %>
               <% end %>
               <p class="title"><%= bounty.user.username %></p>
             </div>
@@ -92,7 +92,7 @@
               <% if bounty.user.photo.attached? %>
                 <%= cl_image_tag bounty.user.photo.key, class:"avatar-bounty" %>
               <% else %>
-                <%= image_tag("blank-profile.png") %>
+                <%= image_tag("blank-profile.png", class:"avatar-bounty") %>
               <% end %>
               <p class="title"><%= bounty.user.username %></p>
             </div>
@@ -133,7 +133,7 @@
               <% if bounty.user.photo.attached? %>
                 <%= cl_image_tag bounty.user.photo.key, class:"avatar-bounty" %>
               <% else %>
-                <%= image_tag("blank-profile.png") %>
+                <%= image_tag("blank-profile.png", class:"avatar-bounty") %>
               <% end %>
               <p class="title"><%= bounty.user.username %></p>
             </div>
@@ -156,7 +156,7 @@
                 <% if solution.bounty.user.photo.attached? %>
                   <%= cl_image_tag solution.bounty.user.photo.key, class:"card-img-top", alt:"..."%>
                 <% else %>
-                  <%= image_tag("blank-profile.png")%>
+                  <%= image_tag("blank-profile.png", class:"card-img-top", alt:"...")%>
                 <% end %>
             </div>
             <span class="green font-weight-bold mx-2 mt-2"><%=solution.bounty.user.username%></span>
@@ -181,7 +181,7 @@
                         <% if solution.user.photo.attached? %>
                           <%= cl_image_tag solution.user.photo.key, style:"width: 50px; height: 50px; border-radius: 50%;" %>
                         <% else %>
-                          <%= image_tag("blank-profile.png")%>
+                          <%= image_tag("blank-profile.png", style:"width: 50px; height: 50px; border-radius: 50%;")%>
                         <% end %>
                         <p class="username green font-weight-bold mt-2 mx-3"><%= solution.user.username %></p>
                       </div>
@@ -219,7 +219,7 @@
                   <% if homework.bounty.user.photo.attached? %>
                     <%= cl_image_tag homework.bounty.user.photo.key, style:"width: 50px; height: 50px; border-radius: 50%;" %>
                   <% else %>
-                    <%= image_tag("blank-profile.png")%>
+                    <%= image_tag("blank-profile.png", style:"width: 50px; height: 50px; border-radius: 50%;")%>
                   <% end %>
                 </div>
                 <p class="align-self-start username green font-weight-bold mt-2 mx-2"><%= homework.bounty.user.username %></p>
