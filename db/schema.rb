@@ -54,7 +54,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_10_221657) do
     t.string "title"
     t.string "status", default: "pending"
     t.string "smartcontractaddress"
-    t.string "company"
+    t.string "company", default: ''
     t.index ["user_id"], name: "index_bounties_on_user_id"
   end
 

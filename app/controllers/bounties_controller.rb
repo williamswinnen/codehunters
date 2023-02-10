@@ -33,6 +33,7 @@ class BountiesController < ApplicationController
     @bounty = Bounty.new(bounties_params)
     @bounty.user = current_user
     @bounty.price_cents = params[:price_cents]
+    @bounty.company = params[:company]
     authorize @bounty
     if @bounty.save
       redirect_to bounty_path(@bounty)
