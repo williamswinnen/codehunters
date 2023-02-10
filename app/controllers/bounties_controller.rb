@@ -46,16 +46,14 @@ class BountiesController < ApplicationController
     @solution = Solution.new
     @solutions = @bounty.user == current_user ? Solution.where(bounty: @bounty) : current_user.solutions.where(bounty: @bounty)
     authorize @bounty
-    if @bounty.github_repo.include?('github')
-      if @bounty.github_repo.split("/")[4] == "rubyHunters"
-        @github_path = "app/controllers/bounties_controller.rb"
-      elsif (@repo_name != "rubyHunters")
-        @github_path = @bounty.github_repo.split("/")[-3..].join("/")
-        @github_name = @bounty.github_repo.split("/")[3]
-        @repo_name = @bounty.github_repo.split("/")[4]
-      end
-      @homework = Homework.new
+    if @bounty.github_repo.split("/")[4] == "rubyHunters"
+      @github_path = "app/controllers/bounties_controller.rb"
+    elsif (@repo_name != "rubyHunters")
+      @github_path = @bounty.github_repo.split("/")[-3..].join("/")
+      @github_name = @bounty.github_repo.split("/")[3]
+      @repo_name = @bounty.github_repo.split("/")[4]
     end
+    @homework = Homework.new
   end
 
   def update
