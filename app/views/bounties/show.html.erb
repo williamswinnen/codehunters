@@ -80,6 +80,7 @@
             </div>
           </div>
           <p class="green mt-3">Smart contract adress: <%= @bounty.smartcontractaddress %></p>
+          <% if @bounty.github_repo.include?("github") %>
           <p class="mt-3">see more on the repo <span> <%=@repo_name%></span>:</p>
           <p class="align-self-center  card-github mt-0">
             <%= link_to @bounty.github_repo, class: "text-decoration-none text-white", data: {
@@ -89,6 +90,7 @@
             } do %>
             <i class="fa-brands fa-github"></i>
             <%end %>
+          <% end %>
           </p>
           <div class="ending-links-card d-flex justify-content-between mt-4">
             <div class="link-homework-card">
