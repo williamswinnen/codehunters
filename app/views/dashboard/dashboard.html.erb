@@ -43,7 +43,11 @@
                 </div>
                 <div class="bounty-difficulty">
                   <p class="title">Difficulty level </p>
-                  <%= image_tag "#{bounty.difficulty_level}-star.png" %>
+                  <% if bounty.difficulty_level%>
+                    <%= image_tag "#{bounty.difficulty_level}-star.png" %>
+                  <% else %>
+                    <p>not specified</p>
+                  <% end %>
                 </div>
               </div>
             <% end %>
