@@ -24,11 +24,11 @@
             <%= link_to bounty_path(bounty), class:"flex-grow-1 text-decoration-none" do %>
               <div class="bounty-info">
                 <div class="bounty-title">
-                  <p class="title-title">Title </p>
+                  <p class="title-title">Title</p>
                   <p class="content-title"><%= bounty.title %></p>
                 </div>
                 <div class="bounty-deadline">
-                  <p class="title">Deadline </p>
+                  <p class="title">Deadline</p>
                   <p class="content">
                     <% if bounty.deadline == nil %>
                       <%= "none" %>
@@ -46,7 +46,7 @@
                   <% if bounty.difficulty_level%>
                     <%= image_tag "#{bounty.difficulty_level}-star.png" %>
                   <% else %>
-                    <p>not specified</p>
+                    <p class='text-sm'>not specified</p>
                   <% end %>
                 </div>
               </div>
