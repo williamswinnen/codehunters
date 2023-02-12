@@ -1,4 +1,4 @@
-<div class="navbar-dashboard bounty-dashboard-container mt-5">
+ <div class="navbar-dashboard bounty-dashboard-container mt-5">
   <ul class="nav nav-tabs justify-content-evenly" id="myTab" role="tablist">
     <li class="nav-item" role="presentation">
       <button class="nav-link active" id="bounties-tab" data-bs-toggle="tab" data-bs-target="#bounties-tab-pane" type="button" role="tab" aria-controls="bounties" aria-selected="true">My Bounties</button>
@@ -91,7 +91,9 @@
                 </div>
                 <div class="bounty-difficulty">
                   <p class="title">Difficulty level </p>
-                  <%= image_tag "#{bounty.difficulty_level}-star.png" %>
+                  <% if bounty.difficulty_level%>
+                    <%= image_tag "#{bounty.difficulty_level}-star.png" %>
+                  <% end %>
                 </div>
               </div>
             <% end %>
