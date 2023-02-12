@@ -16,6 +16,7 @@ class SolutionsController < ApplicationController
   end
 
   def create
+    raise
     @solution = Solution.new(solution_params)
     authorize @solution
     @solution.bounty = @bounty
